@@ -1416,8 +1416,8 @@ header.fancy.menu-sticky .iq-header .row {
 }
 
 .iq-register .form-control {
-  border: 1px solid var(--iq-light-border);
-  border-radius: 0;
+  border: 1px solid var(--iq-dark-border);
+  border-radius: 5px;
   height: 45px !important;
   box-shadow: none;
 }

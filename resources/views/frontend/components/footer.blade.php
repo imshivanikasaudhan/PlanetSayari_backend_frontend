@@ -129,10 +129,8 @@ Login -->
         </div>
     </div>
 </div>
-<!--=================================
-Login -->
-<!--=================================
-Register -->
+<!--=========Login=========-->
+<!--=========Register=========-->
 <div class="modal fade iq-register" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -150,7 +148,17 @@ Register -->
                         <input type="text" class="form-control" id="recipient-email" placeholder="Email">
                     </div>
                     <div class="form-group mb-3">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Register As</option>
+                            <option value="broker">Broker</option>
+                            <option value="investor">Investor</option>
+                          </select>
+                    </div>
+                    <div class="form-group mb-3">
                         <input type="password" class="form-control" id="password" placeholder="Password">
+                    </div>
+                    <div class="form-group mb-3">
+                        <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password">
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
@@ -161,7 +169,7 @@ Register -->
                     <a class="button iq-mtb-10" href="javascript:void(0)">Sign Up</a>
                 </form>
             </div>
-            <div class="modal-footer text-center">
+            {{-- <div class="modal-footer text-center">
                 <div> Already Have an Account? <a href="javascript:void(0)" class="iq-font-yellow">Login</a></div>
                 <ul class="iq-media-blog iq-mt-20">
                     <li><a href="# "><i class="fa fa-twitter "></i></a></li>
@@ -169,7 +177,7 @@ Register -->
                     <li><a href="# "><i class="fa fa-google "></i></a></li>
                     <li><a href="# "><i class="fa fa-github "></i></a></li>
                 </ul>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
