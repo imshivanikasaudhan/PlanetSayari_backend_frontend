@@ -80,7 +80,7 @@
                                     <li><a href="{{asset('../strategy')}}"class="{{ request()->is('strategy') ? 'active' : ''}}">Strategy</a></li>
                                     <li><a href="{{asset('../our-journey')}}" class="{{ request()->is('our-journey') ? 'active' : ''}}">Our Journey</a></li>
                                     <!-- <li><a href="letter-of-credit.php" class="">Letter of Credit</a></li> -->
-                                    <li><a href="#" target="_blank" class="">Lite Paper</a>
+                                    <li><a href="{{URL::asset('frontend_files/Sayari-Lite-Paper.pdf') }}" target="_blank" class="">Lite Paper</a>
                                     </li>
                                 </ul>
                             </li>

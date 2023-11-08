@@ -140,7 +140,7 @@ Login -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{}}" method="POST">
+                <form action="{{route('register')}}" method="POST">
                     @csrf
                     <div class="form-group mb-3">
                         <input type="text" class="form-control" name="username" id="recipient-username" placeholder="User Name">
@@ -168,7 +168,7 @@ Login -->
                     <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
                         printer took a galley of type and scrambled it to make a type specimen book.</p>
                     {{-- <a class="button iq-mtb-10" href="javascript:void(0)">Sign Up</a> --}}
-                    <button type="button" class="button button-icon bt-lg iq-mr-15 mb-2">Sign Up</button>
+                    <button type="submit" class="button button-icon bt-lg iq-mr-15 mb-2">Sign Up</button>
                 </form>
             </div>
             <div class="modal-footer text-center">
