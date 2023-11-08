@@ -10,8 +10,7 @@
                 <div class="row">
                     <div class="col-md-1"></div>    
                     <div class="col-md-10">
-                        <div class="heading-title">
-    
+                        <div class="heading-title">    
                             <h1 class="title iq-mb-25 titillium-font main_heading_banner">The Secure Crypto Planet with the Best Crypto Coins</h1>
                             <p class="fs-4 lh-base main_subheading_banner">Revolutionizing the World of Finance and Investment with Blockchain Technology and Innovative Financial Instruments.</p>
                         </div>

@@ -118,7 +118,8 @@ Login -->
                 </form>
             </div>
             <div class="modal-footer text-center">
-                <div> Don't Have an Account? <a href="javascript:void(0)" class="iq-font-yellow">Register Now</a></div>
+                <div> Don't Have an Account? <a data-bs-toggle="modal"
+                    data-bs-target=".iq-register" data-bs-whatever="@fat" data-bs-dismiss="modal" aria-label="Close" class="iq-font-yellow" style="cursor: pointer">Register Now</a></div>
                 <ul class="iq-media-blog iq-mt-20">
                     <li><a href="# "><i class="fa fa-twitter "></i></a></li>
                     <li><a href="# "><i class="fa fa-facebook "></i></a></li>
@@ -137,28 +138,28 @@ Login -->
             <div class="modal-header text-center">
                 <h4 class="modal-title">Register</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{{}}" method="POST">
+                    @csrf
                     <div class="form-group mb-3">
-                        <input type="text" class="form-control" id="recipient-username" placeholder="User Name">
+                        <input type="text" class="form-control" name="username" id="recipient-username" placeholder="User Name">
                     </div>
                     <div class="form-group mb-3">
-                        <input type="text" class="form-control" id="recipient-email" placeholder="Email">
+                        <input type="text" class="form-control" id="recipient-email" placeholder="Email" name="email">
                     </div>
                     <div class="form-group mb-3">
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" name="registerAs">
                             <option selected>Register As</option>
                             <option value="broker">Broker</option>
                             <option value="investor">Investor</option>
                           </select>
                     </div>
                     <div class="form-group mb-3">
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
                     </div>
                     <div class="form-group mb-3">
-                        <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password">
+                        <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password" name="cpassword">
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
@@ -166,18 +167,20 @@ Login -->
                     </div>
                     <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
                         printer took a galley of type and scrambled it to make a type specimen book.</p>
-                    <a class="button iq-mtb-10" href="javascript:void(0)">Sign Up</a>
+                    {{-- <a class="button iq-mtb-10" href="javascript:void(0)">Sign Up</a> --}}
+                    <button type="button" class="button button-icon bt-lg iq-mr-15 mb-2">Sign Up</button>
                 </form>
             </div>
-            {{-- <div class="modal-footer text-center">
-                <div> Already Have an Account? <a href="javascript:void(0)" class="iq-font-yellow">Login</a></div>
-                <ul class="iq-media-blog iq-mt-20">
+            <div class="modal-footer text-center">
+                <div> Already Have an Account? <a class="iq-font-yellow" data-bs-toggle="modal" data-bs-dismiss="modal" aria-label="Close"
+                    data-bs-target=".iq-login" data-bs-whatever="@mdo" style="cursor: pointer">Login</a></div>
+                {{-- <ul class="iq-media-blog iq-mt-20">
                     <li><a href="# "><i class="fa fa-twitter "></i></a></li>
                     <li><a href="# "><i class="fa fa-facebook "></i></a></li>
                     <li><a href="# "><i class="fa fa-google "></i></a></li>
                     <li><a href="# "><i class="fa fa-github "></i></a></li>
-                </ul>
-            </div> --}}
+                </ul> --}}
+            </div>
         </div>
     </div>
 </div>

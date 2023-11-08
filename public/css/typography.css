@@ -1474,8 +1474,9 @@ hr {
       border: none;
 }
 .button:hover{
-      color:var(--iq-primary);
+      color:var(--iq-body-text);
 }
+
 .button:hover,
 .button:focus {
       /* color: var(--iq-primary); */
@@ -1621,7 +1622,7 @@ a.button:hover .text-btn {
 
 a.button:hover {
       background-color: var(--white);
-      border: 1px solid var(--iq-primary);
+      border: 1px solid var(--iq-body-text);
 }
 
 a.button:hover .icon-one {
