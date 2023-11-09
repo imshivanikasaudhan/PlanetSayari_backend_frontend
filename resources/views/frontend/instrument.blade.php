@@ -12,7 +12,7 @@
                         <p>A financial instrument refers to any asset with financial attributes that is used by a crypto
                             company to raise capital, facilitate transactions, generate revenue or distribute value to
                             its token holders and investors.</p>
-                        <a class="button my-4" href="javascript:void(0)">
+                        <a class="button my-4" href="contact">
                             <span class="button-inner-box">
                                 <span class="icon-one icon" style="color: var(--iq-primary);"><svg aria-hidden="true"
                                         focusable="false" data-prefix="fas" data-icon="long-arrow-alt-right" role="img"

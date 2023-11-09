@@ -14,7 +14,7 @@
                             token that would not only be a valuable asset but also contribute to positive change in the
                             crypto space. We started with a team of passionate individuals who shared a common belief in
                             blockchain technology's potential</p>
-                        <a class="button my-4" href="contact.php">
+                        <a class="button my-4" href="contact">
                             <span class="button-inner-box">
                                 <span class="icon-one icon"><svg aria-hidden="true" focusable="false" data-prefix="fas"
                                         data-icon="long-arrow-alt-right" role="img" xmlns="http://www.w3.org/2000/svg"

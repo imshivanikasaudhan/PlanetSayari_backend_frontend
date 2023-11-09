@@ -84,14 +84,15 @@ Login -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="{{route('index.login')}}" method="POST">
+                    @csrf
                     <div class="form-group mb-3">
-                        <input type="text" class="form-control" id="recipient-name" placeholder="Enter Name">
+                        <input type="text" class="form-control" name="username" id="recipient-name" placeholder="Username">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" id="recipient-password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" id="recipient-password" placeholder="Password">
                     </div>
-                    <a class="button iq-mtb-10" href="javascript:void(0)">
+                    {{-- <button class="button iq-mtb-10">
                         <span class="button-inner-box">
                             <span class="icon-one icon"><svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="long-arrow-alt-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
                                     <path fill="currentColor" d="M313.941 216H12c-6.627 0-12 5.373-12 12v56c0 6.627 5.373 12 12 12h301.941v46.059c0 21.382 25.851 32.09 40.971 16.971l86.059-86.059c9.373-9.373 9.373-24.569 0-33.941l-86.059-86.059c-15.119-15.119-40.971-4.411-40.971 16.971V216z">
@@ -103,7 +104,8 @@ Login -->
                                     </path>
                                 </svg></span>
                         </span>
-                    </a>
+                    </button> --}}
+                    <button type="submit" class="button button-icon bt-lg iq-mr-15 my-2">Sign In</button>
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-check">
@@ -151,8 +153,8 @@ Login -->
                     <div class="form-group mb-3">
                         <select class="form-select" aria-label="Default select example" name="registerAs">
                             <option selected>Register As</option>
-                            <option value="broker">Broker</option>
-                            <option value="investor">Investor</option>
+                            <option value="0">Broker</option>
+                            <option value="1">Investor</option>
                           </select>
                     </div>
                     <div class="form-group mb-3">

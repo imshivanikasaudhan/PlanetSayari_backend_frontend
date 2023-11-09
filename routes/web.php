@@ -17,7 +17,12 @@ Route::get('/', function () {
     return view('/index');    
 });
 
+Route::post('/dashboard', [AuthController::class, 'login'])->name('index.login');
 Route::post('/', [AuthController::class, 'register'])->name('register');
+
+Route::get('dashboard', function(){
+    return "This is dashboard";
+});
 
 Route::get('/contact', function () {
     return view('/contact');
