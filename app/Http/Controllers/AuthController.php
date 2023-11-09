@@ -32,19 +32,30 @@ class AuthController extends Controller
             // 'cpassword' => 'required|min:8',
         ]);
 
-        //save in users table
-        if ($validator->passes()){
 
-            $register = new User();
-            $register->name = $request->username;
-            $register->email = $request->email;
-            $register->registeras = $request->usertype;
-            $register->password = $request->password;
-            // 'username'=> $request->username,
-            // 'email'=> $request->email,
-            // 'registeras'=>$request->usertype,
-            // 'password'=> $request->password,
-        }
+         // Create a new user instance and set the user attributes
+         $user = new User();
+         $user->username = $request->username;
+         $user->email = $request->email;
+         $user->user_type = $request->registerAs;
+         $user->password = bcrypt($request->password);
+         $user->cpassword = bcrypt($request->cpassword);
+ 
+         // Save the new user to the database
+         $user->save();
+        //save in users table
+        // if ($validator->passes()){
+
+        //     $register = new Register();
+        //     $register->name = $request->username;
+        //     $register->email = $request->email;
+        //     $register->registeras = $request->usertype;
+        //     $register->password = $request->password;
+        //     // 'username'=> $request->username,
+        //     // 'email'=> $request->email,
+        //     // 'registeras'=>$request->usertype,
+        //     // 'password'=> $request->password,
+        // }
         // dd($register);
         // echo "Data send Successfully";
         // $validationRules =Validator::make($request->all(),[
