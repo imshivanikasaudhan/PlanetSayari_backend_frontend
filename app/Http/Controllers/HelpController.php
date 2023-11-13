@@ -12,6 +12,8 @@ class HelpController extends Controller
         return view('/help-contact');
     }
     public function helpContactStore(HelpContactRequest $request){
+
+        
         //transfer this validation to helpcontactrequest
         // $request->validate([
         //     'name'=> 'required',
