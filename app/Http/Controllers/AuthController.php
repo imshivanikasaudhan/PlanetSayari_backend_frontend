@@ -19,6 +19,8 @@ class AuthController extends Controller
         // return "this is dashborad";
 
         //login code here
+        return redirect('/dashboard')->witherror('error');
+
     }
 
     public function register(Request $request){

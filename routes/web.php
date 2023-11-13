@@ -17,12 +17,26 @@ Route::get('/', function () {
     return view('/index');    
 });
 
-Route::post('/dashboard', [AuthController::class, 'login'])->name('index.login');
+Route::post('/dashboard', [AuthController::class, 'login'])->name('dashboard');
 Route::post('/', [AuthController::class, 'register'])->name('register');
 
-Route::get('dashboard', function(){
-    return "This is dashboard";
+//Dashborad routes
+Route::get('/dashboard', function(){
+    return view('/dashboard');
 });
+Route::get('/request-deal', function(){
+    return view('/request-deal');
+});
+Route::get('/deal-status', function(){
+    return view('/deal-status');
+});
+Route::get('/help-contact', function(){
+    return view('/help-contact');
+});
+Route::get('/user-profile', function(){
+    return view('/user-profile');
+});
+// Dashboard Route End
 
 Route::get('/contact', function () {
     return view('/contact');

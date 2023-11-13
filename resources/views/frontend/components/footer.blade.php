@@ -84,7 +84,7 @@ Login -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{route('index.login')}}" method="POST">
+                <form action="{{route('dashboard')}}" method="POST">
                     @csrf
                     <div class="form-group mb-3">
                         <input type="text" class="form-control" name="username" id="recipient-name" placeholder="Username">
