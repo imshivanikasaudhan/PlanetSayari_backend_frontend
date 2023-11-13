@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HelpController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,9 +31,12 @@ Route::get('/request-deal', function(){
 Route::get('/deal-status', function(){
     return view('/deal-status');
 });
-Route::get('/help-contact', function(){
-    return view('/help-contact');
-});
+// Route::get('/help-contact', function(){
+//     return view('/help-contact');
+// });
+Route::get('help-contact', [HelpController::class, 'helpContact']);
+Route::post('help-contact', [HelpController::class, 'helpContactStore']);
+
 Route::get('/user-profile', function(){
     return view('/user-profile');
 });
