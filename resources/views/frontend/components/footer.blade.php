@@ -22,10 +22,10 @@ Footer -->
                             <h5 class="title">Important</h5>
                         </div>
                         <ul class="iq-pl-0">
-                            <li><a href="mission.php">Mission</a></li>
-                            <li><a href="strategy.php">Strategy</a></li>
-                            <li><a href="sayari-app.php">Sayari App</a></li>
-                            <li><a href="letter-of-credit.php">Letter of Credit</a></li>
+                            <li><a href="{{asset('mission')}}">Mission</a></li>
+                            <li><a href="{{asset('strategy')}}">Strategy</a></li>
+                            <li><a href="{{asset('sayari-app')}}">Sayari App</a></li>
+                            <li><a href="{{asset('letter-of-credit')}}">Letter of Credit</a></li>
                         </ul>
                     </div>
                 </div>
@@ -35,10 +35,10 @@ Footer -->
                             <h5 class="title">Portfolio</h5>
                         </div>
                         <ul class="iq-pl-0">
-                            <li><a href="funds-assets.php">Funds & Assets</a></li>
-                            <li><a href="programs.php">Programs</a></li>
-                            <li><a href="instrument.php">Instruments</a></li>
-                            <li><a href="projects.php">Projects</a></li>
+                            <li><a href="{{asset('funds-assets')}}">Funds & Assets</a></li>
+                            <li><a href="{{asset('programs')}}">Programs</a></li>
+                            <li><a href="{{asset('instrument')}}">Instruments</a></li>
+                            <li><a href="{{asset('projects')}}">Projects</a></li>
                         </ul>
                     </div>
                 </div>
@@ -48,9 +48,9 @@ Footer -->
                             <h5 class="title">Others</h5>
                         </div>
                         <ul class="iq-pl-0">
-                            <li><a href="# " target="_blank">Privacy Policy</a></li>
-                            <li><a href="letter-of-credit.pdf"target="_blank">Download LC Form</a></li>
-                            <li><a href="Sayari-Lite-Paper.pdf" target="_blank">Lite Paper</a></li>
+                            <li><a href="#" target="_blank">Privacy Policy</a></li>
+                            <li><a href="{{URL::asset('frontend_files/letter-of-credit.pdf')}}"target="_blank">Download LC Form</a></li>
+                            <li><a href="{{URL::asset('frontend_files/Sayari-Lite-Paper.pdf')}}" target="_blank">Lite Paper</a></li>
                         </ul>
                     </div>
                 </div>
