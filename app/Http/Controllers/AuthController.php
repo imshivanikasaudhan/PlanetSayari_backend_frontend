@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Validator;
 
 
 class AuthController extends Controller
-{
+{   
+    public function index(){
+        return view('/index');
+    }
     public function login(Request $request){
         //Validate Data
         $request->validate([
