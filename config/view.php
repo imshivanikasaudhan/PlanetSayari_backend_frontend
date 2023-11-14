@@ -16,7 +16,8 @@ return [
     'paths' => [
         resource_path('views'),
         resource_path('views/frontend'),
-        resource_path('views/backend'),
+        resource_path('views/backend/user'),
+        resource_path('views/backend/admin'),
     ],
 
     /*

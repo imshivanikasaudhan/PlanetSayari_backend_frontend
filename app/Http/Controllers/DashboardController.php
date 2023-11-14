@@ -35,10 +35,10 @@ class DashboardController extends Controller
     public function helpContactStore(HelpContactRequest $request){
 
         $userContact = new Usercontact();
-        $userContact->name = $request->name;
+        $userContact->full_name = $request->name;
         $userContact->email = $request->email;
-        $userContact->phone = $request->phone;
-        $userContact->Contact_Message = $request->Contact_Message;        
+        $userContact->number = $request->phone;
+        $userContact->message = $request->Contact_Message;        
  
          // Save the new user to the database
         $userContact->save();

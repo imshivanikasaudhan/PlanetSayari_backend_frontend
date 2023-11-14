@@ -24,8 +24,8 @@ class HelpContactRequest extends FormRequest
         return [
             'name'=> 'required',
             'email'=> 'required|email',
-            'phone'=> 'required|min:11|numeric',
-            'Contact_Message'=> 'required|min:50'
+            'phone'=> 'required|min:10',
+            'Contact_Message'=> 'required'
         ];
     }
 }

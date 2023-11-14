@@ -17,12 +17,14 @@ use App\Http\Controllers\DashboardController;
 |
 */
 
-Route::get('/', function () {
-    return view('/index');    
-});
+// Route::get('/', function () {
+//     return view('/index');    
+// });
 
+Route::get('/', [AuthController::class, 'index']);
 Route::post('/dashboard', [AuthController::class, 'login'])->name('dashboard');
 Route::post('/', [AuthController::class, 'register'])->name('register');
+
 
 //Dashborad routes
 Route::get('/dashboard', function(){
