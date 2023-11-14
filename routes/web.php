@@ -3,6 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HelpController;
+use App\Http\Controllers\RequestDealController;
+use App\Http\Controllers\DashboardController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,17 +28,21 @@ Route::post('/', [AuthController::class, 'register'])->name('register');
 Route::get('/dashboard', function(){
     return view('/dashboard');
 });
-Route::get('/request-deal', function(){
-    return view('/request-deal');
-});
+// Route::get('/request-deal', function(){
+//     return view('/request-deal');
+// });
+
+Route::get('/request-deal', [DashboardController::class, 'requestDeal']);
+Route::post('/request-deal', [DashboardController::class, 'requestDealStore']);
+
 Route::get('/deal-status', function(){
     return view('/deal-status');
 });
 // Route::get('/help-contact', function(){
 //     return view('/help-contact');
 // });
-Route::get('help-contact', [HelpController::class, 'helpContact']);
-Route::post('help-contact', [HelpController::class, 'helpContactStore']);
+Route::get('help-contact', [DashboardController::class, 'helpContact']);
+Route::post('help-contact', [DashboardController::class, 'helpContactStore']);
 
 Route::get('/user-profile', function(){
     return view('/user-profile');

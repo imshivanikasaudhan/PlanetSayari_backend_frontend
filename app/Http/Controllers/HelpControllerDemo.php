@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\HelpContactRequest;
+use App\Models\Usercontact;
+
 // use illuminate\Validation\Validator;
 
 class HelpController extends Controller
@@ -12,6 +14,16 @@ class HelpController extends Controller
         return view('/help-contact');
     }
     public function helpContactStore(HelpContactRequest $request){
+
+        $userContact = new Usercontact();
+        $userContact->name = $request->name;
+        $userContact->email = $request->email;
+        $userContact->phone = $request->phone;
+        $userContact->Contact_Message = $request->Contact_Message;        
+ 
+         // Save the new user to the database
+        $userContact->save();
+
 
         
         //transfer this validation to helpcontactrequest
