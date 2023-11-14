@@ -12,6 +12,7 @@ class AuthController extends Controller
     public function index(){
         return view('/index');
     }
+
     public function login(Request $request){
         //Validate Data
         $request->validate([
@@ -22,7 +23,12 @@ class AuthController extends Controller
         // return "this is dashborad";
 
         //login code here
-        return redirect('/dashboard')->witherror('error');
+        // if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+        //     return redirect()->intended('/dashboard');
+        // }
+    
+        return back()->withErrors(['email' => 'Invalid email or password.']);
+        // return redirect('/dashboard')->witherror('error');
 
     }
 
@@ -30,8 +36,8 @@ class AuthController extends Controller
         // dd($request->all());
         // Validate Data
         $validator = Validator::make($request->all(),[
-            'username'=> 'required',
-            'email'=>'required',
+            'username'=> 'required|unique:User',
+            'email'=>'required|email',
             'registerAs'=>'required',
             'password' => 'required|confirmed|min:8',
             // 'cpassword' => 'required|min:8',
