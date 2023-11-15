@@ -65,12 +65,12 @@
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{$users->username}}</div>
+                                        {{session('user_type')}}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{$users->email}} </div>
+                                          {{Auth::user()->email}}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Contact No</Address>
                                         </h6>

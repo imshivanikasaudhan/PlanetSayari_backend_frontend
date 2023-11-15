@@ -63,8 +63,11 @@ class DashboardController extends Controller
     }
 
     // user profile
-    public function userprofile($id){
-        $users = user::find($id);
-        return view('/user-profile', compact('users', 'id'));
+    // public function userprofile($id){
+    //     $users = user::find($id);
+    //     return view('/user-profile', compact('users', 'id'));
+    // }
+    public function userprofile(){
+        return view('/user-profile');
     }
 }

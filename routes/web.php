@@ -55,7 +55,7 @@ Route::get('/deal-status', function(){
 Route::get('help-contact', [DashboardController::class, 'helpContact']);
 Route::post('help-contact', [DashboardController::class, 'helpContactStore']);
 
-Route::get('/user-profile/{id}', [DashboardController::class, 'userprofile']);
+Route::get('/user-profile', [DashboardController::class, 'userprofile'])->name('user-profile');
 
 // Route::get('/user-profile', function(){
 //     return view('/user-profile');
