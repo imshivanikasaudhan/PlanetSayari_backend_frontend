@@ -8,11 +8,15 @@ Footer -->
                     <div class="logo">
                         <img id="logo_img_2" class="img-fluid" src="images/logo_verti.svg" alt="# ">
                         <ul class="iq-media-blog iq-mt-20">
-                            <li><a href="https://twitter.com/TokenSayari" target="_blank"><i class="fa fa-twitter "></i></a></li>
-                            <li><a href="https://www.facebook.com/profile.php?id=100090091656693" target="_blank"><i class="fa fa-facebook "></i></a></li>
+                            <li><a href="https://twitter.com/TokenSayari" target="_blank"><i
+                                        class="fa fa-twitter "></i></a></li>
+                            <li><a href="https://www.facebook.com/profile.php?id=100090091656693" target="_blank"><i
+                                        class="fa fa-facebook "></i></a></li>
                             <!-- <li><a href="https://m.youtube.com/watch?v=MB73HjuhUtQ&fbclid=PAAaYv4TYulyBBfby2Vwe6J8d0PqgG0e1HY9v2jf2OabXBsdmMw3cYRxWUEl8https://www.tiktok.com/@planetsayari" target="_blank"><i class="fa fa-youtube"></i></a></li> -->
-                            <li><a href="https://www.instagram.com/planet_sayari/" target="_blank"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="https://t.me/+katj3AYArktjMThi" target="_blank"><i class="fa fa-telegram"></i></a></li>
+                            <li><a href="https://www.instagram.com/planet_sayari/" target="_blank"><i
+                                        class="fa fa-instagram"></i></a></li>
+                            <li><a href="https://t.me/+katj3AYArktjMThi" target="_blank"><i
+                                        class="fa fa-telegram"></i></a></li>
                         </ul>
                     </div>
                 </div>
@@ -22,10 +26,10 @@ Footer -->
                             <h5 class="title">Important</h5>
                         </div>
                         <ul class="iq-pl-0">
-                            <li><a href="{{asset('mission')}}">Mission</a></li>
-                            <li><a href="{{asset('strategy')}}">Strategy</a></li>
-                            <li><a href="{{asset('sayari-app')}}">Sayari App</a></li>
-                            <li><a href="{{asset('letter-of-credit')}}">Letter of Credit</a></li>
+                            <li><a href="{{ asset('mission') }}">Mission</a></li>
+                            <li><a href="{{ asset('strategy') }}">Strategy</a></li>
+                            <li><a href="{{ asset('sayari-app') }}">Sayari App</a></li>
+                            <li><a href="{{ asset('letter-of-credit') }}">Letter of Credit</a></li>
                         </ul>
                     </div>
                 </div>
@@ -35,10 +39,10 @@ Footer -->
                             <h5 class="title">Portfolio</h5>
                         </div>
                         <ul class="iq-pl-0">
-                            <li><a href="{{asset('funds-assets')}}">Funds & Assets</a></li>
-                            <li><a href="{{asset('programs')}}">Programs</a></li>
-                            <li><a href="{{asset('instrument')}}">Instruments</a></li>
-                            <li><a href="{{asset('projects')}}">Projects</a></li>
+                            <li><a href="{{ asset('funds-assets') }}">Funds & Assets</a></li>
+                            <li><a href="{{ asset('programs') }}">Programs</a></li>
+                            <li><a href="{{ asset('instrument') }}">Instruments</a></li>
+                            <li><a href="{{ asset('projects') }}">Projects</a></li>
                         </ul>
                     </div>
                 </div>
@@ -49,8 +53,10 @@ Footer -->
                         </div>
                         <ul class="iq-pl-0">
                             <li><a href="#" target="_blank">Privacy Policy</a></li>
-                            <li><a href="{{URL::asset('frontend_files/letter-of-credit.pdf')}}"target="_blank">Download LC Form</a></li>
-                            <li><a href="{{URL::asset('frontend_files/Sayari-Lite-Paper.pdf')}}" target="_blank">Lite Paper</a></li>
+                            <li><a href="{{ URL::asset('frontend_files/letter-of-credit.pdf') }}"target="_blank">Download
+                                    LC Form</a></li>
+                            <li><a href="{{ URL::asset('frontend_files/Sayari-Lite-Paper.pdf') }}" target="_blank">Lite
+                                    Paper</a></li>
                         </ul>
                     </div>
                 </div>
@@ -84,13 +90,18 @@ Login -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{route('dashboard')}}" method="POST">
+                @if(session('error'))
+                    <div class="alert alert-danger" role="alert">{{session('error')}}</div>
+                @endif
+                <form action="{{ route('dashboard') }}" method="POST">
                     @csrf
                     <div class="form-group mb-3">
-                        <input type="text" class="form-control" name="username" id="recipient-name" placeholder="Username">
+                        <input type="text" class="form-control" name="username" id="recipient-name"
+                            placeholder="Username">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password" id="recipient-password" placeholder="Password">
+                        <input type="password" class="form-control" name="password" id="recipient-password"
+                            placeholder="Password">
                     </div>
                     {{-- <button class="button iq-mtb-10">
                         <span class="button-inner-box">
@@ -120,8 +131,9 @@ Login -->
                 </form>
             </div>
             <div class="modal-footer text-center">
-                <div> Don't Have an Account? <a data-bs-toggle="modal"
-                    data-bs-target=".iq-register" data-bs-whatever="@fat" data-bs-dismiss="modal" aria-label="Close" class="iq-font-yellow" style="cursor: pointer">Register Now</a></div>
+                <div> Don't Have an Account? <a data-bs-toggle="modal" data-bs-target=".iq-register"
+                        data-bs-whatever="@fat" data-bs-dismiss="modal" aria-label="Close" class="iq-font-yellow"
+                        style="cursor: pointer">Register Now</a></div>
                 <ul class="iq-media-blog iq-mt-20">
                     <li><a href="# "><i class="fa fa-twitter "></i></a></li>
                     <li><a href="# "><i class="fa fa-facebook "></i></a></li>
@@ -142,30 +154,47 @@ Login -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="{{route('register')}}" method="POST">
+                @if(session('success'))
+                    <div class="alert alert-success" role="alert">{{session('success')}}</div>
+                @endif
+                <form action="{{ route('register') }}" method="POST">
                     @csrf
                     <div class="form-group mb-3">
-                        <input type="text" class="form-control" name="username" id="recipient-username" placeholder="User Name">
+                        <input type="text" class="form-control" name="username" id="recipient-username"
+                            placeholder="User Name" required>
+                            @error('username')
+                                <div class="text-danger">{{$message}}</div>                              
+                            @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <input type="text" class="form-control" id="recipient-email" placeholder="Email" name="email">
+                        <input type="email" class="form-control" id="recipient-email" placeholder="Email"
+                            name="email" required>
+                        @error('email')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <select class="form-select" aria-label="Default select example" name="registerAs">
-                            <option selected>Register As</option>
+                        <select class="form-select" aria-label="Default select example" name="registerAs" required>
+                            <option value="">Register As</option>
                             <option value="0">Broker</option>
                             <option value="1">Investor</option>
-                          </select>
+                        </select>
+                        @error('registerAs')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+                        <input type="password" class="form-control" id="password" placeholder="Password"
+                            name="password" required>
                     </div>
                     <div class="form-group mb-3">
-                        <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password" name="cpassword">
+                        <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password"
+                            name="cpassword" required>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">I Agree to the Terms and Conditions</label>
+                            <input type="checkbox" class="form-check-input">I Agree to the Terms and
+                            Conditions</label>
                     </div>
                     <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown
                         printer took a galley of type and scrambled it to make a type specimen book.</p>
@@ -174,8 +203,9 @@ Login -->
                 </form>
             </div>
             <div class="modal-footer text-center">
-                <div> Already Have an Account? <a class="iq-font-yellow" data-bs-toggle="modal" data-bs-dismiss="modal" aria-label="Close"
-                    data-bs-target=".iq-login" data-bs-whatever="@mdo" style="cursor: pointer">Login</a></div>
+                <div> Already Have an Account? <a class="iq-font-yellow" data-bs-toggle="modal"
+                        data-bs-dismiss="modal" aria-label="Close" data-bs-target=".iq-login"
+                        data-bs-whatever="@mdo" style="cursor: pointer">Login</a></div>
                 {{-- <ul class="iq-media-blog iq-mt-20">
                     <li><a href="# "><i class="fa fa-twitter "></i></a></li>
                     <li><a href="# "><i class="fa fa-facebook "></i></a></li>

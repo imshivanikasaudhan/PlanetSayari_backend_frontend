@@ -18,7 +18,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link " >
-                <p>Hello User!</p>
+                <p>Hello, {{Auth::user()->username}}</p>
               </a>
             </li>
       
@@ -41,8 +41,12 @@
                     <i class="ti ti-status-change"></i>
                       <p class="mb-0 fs-3">Deal Status</p>
                     </a>
-                    
-                    <a href="{{asset('/')}}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                    <form action="{{route('logout')}}" method="POST">
+                      @csrf
+                      @method('DELETE')
+                      <button type="submit" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</button>
+                      {{-- <a href="{{route('logout')}}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a> --}}
+                    </form>
                   </div>
                 </div>
               </li>

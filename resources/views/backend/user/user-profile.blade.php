@@ -11,7 +11,7 @@
                                     height="150" class="rounded-circle">
                                 <div class="mt-3">
                                     <h4 class="text fs-10">
-                                        Vishal Saraiwal</h4>
+                                        {{Auth::user()->username}}</h4>
                                     <p class="text fs-15">
                                         User Type : <span>Investor</span> </p>
                                     <button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal"
@@ -57,18 +57,20 @@
                         </div>
                         <div class="col">
                             <div class="p-3 ">
+                                {{-- @foreach ($users as $user)                                     --}}
+                               
                                 <div class="row border rounded p-3 mb-3">
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Name</Address>
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        Vishal Saraiwal</div>
+                                        {{$users->username}}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        vishalsaraiwal68@gmail.com </div>
+                                        {{$users->email}} </div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Contact No</Address>
                                         </h6>
@@ -86,6 +88,7 @@
                                     <div class="col-sm-9 text-secondary mb-2">
                                         @vishalsaraiwal </div>
                                 </div>
+                                {{-- @endforeach --}}
                             </div>
                         </div>
 

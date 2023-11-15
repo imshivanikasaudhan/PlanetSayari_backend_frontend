@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HelpController;
 use App\Http\Controllers\RequestDealController;
 use App\Http\Controllers\DashboardController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,15 +22,23 @@ use App\Http\Controllers\DashboardController;
 //     return view('/index');    
 // });
 
-Route::get('/', [AuthController::class, 'index']);
-Route::post('/dashboard', [AuthController::class, 'login'])->name('dashboard');
-Route::post('/', [AuthController::class, 'register'])->name('register');
+Route::group(['Middleware'=>'guest'], function(){
+    Route::post('/dashboard', [AuthController::class, 'loginStore'])->name('dashboard');
+    Route::post('/', [AuthController::class, 'registerStore'])->name('register');
+});
+
+Route::group(['Middleware'=>'auth'], function(){
+    Route::get('/', [AuthController::class, 'index']);
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);    
+    Route::delete('/', [AuthController::class, 'logout'])->name('logout');
+});
 
 
 //Dashborad routes
-Route::get('/dashboard', function(){
-    return view('/dashboard');
-});
+
+// Route::get('/dashboard', function(){
+//     return view('/dashboard');
+// });
 // Route::get('/request-deal', function(){
 //     return view('/request-deal');
 // });
@@ -46,9 +55,11 @@ Route::get('/deal-status', function(){
 Route::get('help-contact', [DashboardController::class, 'helpContact']);
 Route::post('help-contact', [DashboardController::class, 'helpContactStore']);
 
-Route::get('/user-profile', function(){
-    return view('/user-profile');
-});
+Route::get('/user-profile/{id}', [DashboardController::class, 'userprofile']);
+
+// Route::get('/user-profile', function(){
+//     return view('/user-profile');
+// });
 // Dashboard Route End
 
 Route::get('/contact', function () {

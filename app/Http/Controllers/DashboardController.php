@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\HelpContactRequest;
 use App\Models\Usercontact;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {   
+    // dashboard Function
+    public function dashboard(){
+        return view('/dashboard');
+    }
 
     // Request Deal function
     public function requestDeal(){
@@ -55,5 +60,11 @@ class DashboardController extends Controller
 
         //for redirection
         return back()->with('Success', 'Form Submitted Successfully');
+    }
+
+    // user profile
+    public function userprofile($id){
+        $users = user::find($id);
+        return view('/user-profile', compact('users', 'id'));
     }
 }
