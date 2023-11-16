@@ -78,8 +78,11 @@ Route::get('/broker-request-view', function (){
 Route::get('/investor-request-view', function (){
     return view('admin-investor-request');
 });
-Route::get('/admin-user-data', function (){
-    return view('admin-user-data');
+Route::get('/admin-investor-data', function (){
+    return view('admin-investor-data');
+});
+Route::get('/admin-broker-data', function (){
+    return view('admin-broker-data');
 });
 Route::get('/admin-user-query', function (){
     return view('admin-user-query');
