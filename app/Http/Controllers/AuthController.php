@@ -90,8 +90,8 @@ class AuthController extends Controller
         //     'cpassword' => 'required|min:8',
         // ]);        
         
-        // return redirect('/')->witherror('error');
-        return back()->with('success', 'Register Successfully');
+        return redirect('/dashboard')->witherror('error');
+        // return back()->with('success', 'Register Successfully');
     }
 
     public function logout(){
