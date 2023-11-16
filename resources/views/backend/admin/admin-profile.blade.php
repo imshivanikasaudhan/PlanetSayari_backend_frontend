@@ -1,4 +1,4 @@
-@include('components/navbar')
+@include('navbar')
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="main-body my-3">
         <div class="row gutters-sm">

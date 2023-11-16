@@ -18,7 +18,7 @@
             </li>
             <li class="nav-item">
               <a class="nav-link " >
-                <p>Hello User!</p>
+                <p>Hello Admin!</p>
               </a>
             </li>
       
@@ -33,16 +33,11 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">
-                    <a href="{{asset('user-profile')}}" class="d-flex align-items-center gap-2 dropdown-item">
+                    <a href="{{asset('admin-profile')}}" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
                       <p class="mb-0 fs-3">My Profile</p>
-                    </a>
-                    <a href="{{asset('deal-status')}}" class="d-flex align-items-center gap-2 dropdown-item">
-                    <i class="ti ti-status-change"></i>
-                      <p class="mb-0 fs-3">Deal Status</p>
-                    </a>
-                    
-                    <a href="{{asset('/')}}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                    </a>                  
+                    <a href="{{asset('/ps-admin')}}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                   </div>
                 </div>
               </li>

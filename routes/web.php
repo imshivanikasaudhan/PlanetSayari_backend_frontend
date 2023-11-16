@@ -72,6 +72,21 @@ Route::get('/admin-dashboard', function (){
 Route::get('/admin-profile', function (){
     return view('admin-profile');
 });
+Route::get('/broker-request-view', function (){
+    return view('admin-broker-request');
+});
+Route::get('/investor-request-view', function (){
+    return view('admin-investor-request');
+});
+Route::get('/admin-user-data', function (){
+    return view('admin-user-data');
+});
+Route::get('/admin-user-query', function (){
+    return view('admin-user-query');
+});
+Route::get('/admin-website-contact', function (){
+    return view('admin-website-contact');
+});
 
 // Admin Dashborad Route End
 

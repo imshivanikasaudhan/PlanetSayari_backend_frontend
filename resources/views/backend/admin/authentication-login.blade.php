@@ -12,9 +12,9 @@
             <div class="card mb-0">
               <div class="card-body">
                 <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                  <img src="../assets/images/logos/dark-logo.svg" width="180" alt="">
+                  <img src="backend/assets/images/logos/logo_hori.svg" width="180" alt="">
                 </a>
-                <p class="text-center">Your Social Campaigns</p>
+                <h2 class="text-center mb-5">Welcome Admin</h2>
                 <form>
                   <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Username</label>
