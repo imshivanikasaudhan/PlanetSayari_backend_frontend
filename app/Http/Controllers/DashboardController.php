@@ -48,7 +48,7 @@ class DashboardController extends Controller
         $userContact->number = $request->phone;
         $userContact->message = $request->Contact_Message;        
  
-         // Save the new user to the database
+        // Save the new user to the database
         $userContact->save();
         
         //transfer this validation to helpcontactrequest
@@ -71,6 +71,7 @@ class DashboardController extends Controller
     //     $users = user::find($id);
     //     return view('/user-profile', compact('users', 'id'));
     // }
+
     public function userprofile(){    
         // $user = User();       
         
@@ -78,34 +79,42 @@ class DashboardController extends Controller
         return view('/user-profile');
     }
     public function userprofile_Update(User $user, Request $request){
+
         // Validation fields
         $validator = Validator::make($request->all(),[
-            'full_name' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
-            'skypid' => 'required',
-            'city' => 'required',
-            'address' => 'required',
-            'pincode' => 'required',
+            'full_name' => 'nullable',
+            'email' => 'nullable',
+            'phone' => 'nullable',
+            'gender' => 'nullable',
+            'skypid' => 'nullable',
+            'city' => 'nullable',
+            'address' => 'nullable',
+            'pincode' => 'nullable',
+            'country' => 'nullable',
             'image' => 'sometimes|image:gif,png,jpeg,jpg'
         ]);
-
         if ($validator->passes()){
             //Option #1
             //save data here
-            // $employee = Employee::find($id);
-            // $user->full_name = $request->full_name;
-            // $employee->address = $request->address;
-            // $user->save();
-
-            // $employee = new Employee();
-            // $employee->fill($request->post())->save();
-            // $request->Session()-flash('success', 'Employee added successfully.');
-
+            
+            //NOTE:- 'user_id' field is coming from user profile form from input field.    
+            $user = User::find($request->user_id);
+            $user->full_name = $request->full_name;
+            $user->email = $request->email;
+            $user->phone = $request->phone;
+            $user->gender = $request->gender;
+            $user->skype = $request->skypid;
+            $user->city = $request->city;
+            $user->pin = $request->pincode;
+            $user->address = $request->address;
+            $user->country = $request->country;
+            $user->image = $request->image;
+            $user->save();
+            
             //Option #2
-           $user->fill($request->post())->save();
+            //$user->fill($request->post())->save();
 
-            //Upload image here
+            //Upload Image Here
             if($request->image){
                 $oldImage = $user->image;
                 $text = $request->image->getClientOriginalExtension();

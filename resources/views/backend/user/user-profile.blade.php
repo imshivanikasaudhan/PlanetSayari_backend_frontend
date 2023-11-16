@@ -6,9 +6,17 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-12 col-md-6 d-flex flex-column align-items-center text-center">
-                                <img src="@if (Auth::user()->image) {{Auth::user()->image}} @else backend\assets\images\profile\user-1.jpg @endif " alt="@if (Auth::user()->user_type == 0) Broker @else Investor @endif" width="150"
+                            <div class="col-lg-12 col-md-6 d-flex flex-column align-items-center text-center"> 
+                                
+                                @if (Auth::user()->image == null)
+                                    <img src="backend\assets\images\profile\user-1.jpg" alt="@if (Auth::user()->user_type == 0) Broker @else Investor @endif" width="150"
                                     height="150" class="rounded-circle">
+                                @else
+                                    <img src="backend\assets\images\profile\{{Auth::user()->image}}" alt="@if (Auth::user()->user_type == 0) Broker @else Investor @endif" width="150"
+                                    height="150" class="rounded-circle">                               
+                                    
+                                @endif    
+                                
                                 <div class="mt-3">
                                     <h4 class="text fs-10">
                                         {{Auth::user()->username}}</h4>
@@ -111,11 +119,10 @@
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">City</h6>
                                     </div>
-                                    <div class="col-sm-9 text-secondary mb-2">
-                                        Noida </div>
+                                    <div class="col-sm-9 text-secondary mb-2"> 
+                                        {{Auth::user()->city}} </div>
                                     <div class="col-sm-3 mb-2">
-                                        <h6 class="mb-0">Pincode</Address>
-                                        </h6>
+                                        <h6 class="mb-0">Pincode</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
                                         {{Auth::user()->pin}}</div>
@@ -145,9 +152,19 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <form method="POST" action="{{route('update-profile')}}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
+                                    <input type="hidden" value="{{Auth::user()->id}}" name="user_id"/>
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
@@ -210,7 +227,7 @@
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label for="InputAddress" class="form-label">Full Address</label>
-                                                <textarea name="InputAddress" id="" rows="3" class="form-control" name="address">{{Auth::user()->address}}</textarea>
+                                                <textarea id="" rows="3" class="form-control" name="address">{{Auth::user()->address}}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -226,7 +243,7 @@
                                             <div class="mb-3">
                                                 <label for="InputCountry" class="form-label">Country</label>
                                                 <select id="InputCountry" name="country" class="form-control" >
-                                                    <option selected>Select Country</option>
+                                                    <option value="">Select Country</option>
                                                     <option value="Afghanistan">Afghanistan</option>
                                                     <option value="Åland Islands">Åland Islands</option>
                                                     <option value="Albania">Albania</option>
@@ -507,11 +524,19 @@
                                             </div>
                                         </div>
                                     </div>
+                                    @if($errors->any())
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn rounded-pill btn-dark"
+                                           >Cancel</button>
+                                        <button type="submit" class="btn rounded-pill btn-info">Update changes</button>
+                                    </div>
+                                    @else
                                     <div class="modal-footer">
                                         <button type="button" class="btn rounded-pill btn-dark"
                                             data-bs-dismiss="modal">Cancel</button>
                                         <button type="submit" class="btn rounded-pill btn-info">Update changes</button>
                                     </div>
+                                    @endif
                                 </form>
                             </div>                            
                         </div>

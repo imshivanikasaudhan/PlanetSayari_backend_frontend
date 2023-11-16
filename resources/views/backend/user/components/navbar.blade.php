@@ -18,7 +18,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link " >
-                <p>Hello, {{Auth::user()->username}}</p>
+                @if(Auth::user())
+                 <p>Hello, {{Auth::user()->username}}</p>
+                @endif
               </a>
             </li>
       
