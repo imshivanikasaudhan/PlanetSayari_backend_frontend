@@ -13,7 +13,13 @@
                                     <h4 class="text fs-10">
                                         {{Auth::user()->username}}</h4>
                                     <p class="text fs-15">
-                                        User Type : <span>Investor</span> </p>
+                                        User Type : <span>
+                                            @if (Auth::user()->user_type == 0)
+                                                Broker
+                                            @else
+                                                Investor
+                                            @endif
+                                        </span> </p>
                                     <button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal"
                                         data-bs-target="#EditModal">Edit
                                         Profile</button>
@@ -57,7 +63,7 @@
                         </div>
                         <div class="col">
                             <div class="p-3 ">
-                                {{-- @foreach ($users as $user)                                     --}}
+                                {{-- @foreach ($users as $user)--}}
                                
                                 <div class="row border rounded p-3 mb-3">
                                     <div class="col-sm-3 mb-2">
@@ -65,28 +71,28 @@
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{session('user_type')}}</div>
+                                        {{Auth::user()->full_name}}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                          {{Auth::user()->email}}</div>
+                                        {{Auth::user()->email}}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Contact No</Address>
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        +91 9193378534</div>
+                                        {{Auth::user()->phone}}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Gender</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        Male </div>
+                                        {{Auth::user()->gender}}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Skype</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        @vishalsaraiwal </div>
+                                        {{Auth::user()->skype}} </div>
                                 </div>
                                 {{-- @endforeach --}}
                             </div>
@@ -101,7 +107,7 @@
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        OC 827-830, 8th floor, Gaur City centre, Greater Noida West, Uttar Pradesh</div>
+                                        {{Auth::user()->address}}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">City</h6>
                                     </div>
@@ -112,12 +118,12 @@
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        201301</div>
+                                        {{Auth::user()->pin}}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Country</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        India </div>
+                                        {{Auth::user()->country}} </div>
                                 </div>
                             </div>
                         </div>

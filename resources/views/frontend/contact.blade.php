@@ -252,4 +252,4 @@
     </div>
     <!-- Main Content End -->
 
-   @include ('components/footer);
+   @include ('components/footer')

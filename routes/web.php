@@ -34,7 +34,7 @@ Route::group(['Middleware'=>'auth'], function(){
 });
 
 
-//Dashborad routes
+//User Dashborad Routes
 
 // Route::get('/dashboard', function(){
 //     return view('/dashboard');
@@ -60,7 +60,20 @@ Route::get('/user-profile', [DashboardController::class, 'userprofile'])->name('
 // Route::get('/user-profile', function(){
 //     return view('/user-profile');
 // });
-// Dashboard Route End
+// User Dashboard Route End
+
+// Admin Dashborad Route Start
+Route::get('/ps-admin', function (){
+    return view('authentication-login');
+});
+Route::get('/admin-dashboard', function (){
+    return view('admin-dashboard');
+});
+Route::get('/admin-profile', function (){
+    return view('admin-profile');
+});
+
+// Admin Dashborad Route End
 
 Route::get('/contact', function () {
     return view('/contact');

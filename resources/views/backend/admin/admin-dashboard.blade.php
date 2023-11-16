@@ -1,4 +1,4 @@
-@include ('components/navbar')
+@include ('navbar')
 
 <div class="container-fluid">
   <!--  Row 1 -->
