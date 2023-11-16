@@ -6,6 +6,9 @@ use App\Http\Requests\HelpContactRequest;
 use App\Models\Usercontact;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class DashboardController extends Controller
 {   
@@ -63,18 +66,65 @@ class DashboardController extends Controller
     }
 
     // user profile
+
     // public function userprofile($id){
     //     $users = user::find($id);
     //     return view('/user-profile', compact('users', 'id'));
     // }
-    public function userprofile(){
+    public function userprofile(){    
+        // $user = User();       
         
+        // return view('user-profile',['user'=>$user]);      
         return view('/user-profile');
     }
-    public function userprofile_Update(Request $request){
-        $request->validate([
-
+    public function userprofile_Update(User $user, Request $request){
+        // Validation fields
+        $validator = Validator::make($request->all(),[
+            'full_name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'skypid' => 'required',
+            'city' => 'required',
+            'address' => 'required',
+            'pincode' => 'required',
+            'image' => 'sometimes|image:gif,png,jpeg,jpg'
         ]);
-        dd($request->all());
+
+        if ($validator->passes()){
+            //Option #1
+            //save data here
+            // $employee = Employee::find($id);
+            // $user->full_name = $request->full_name;
+            // $employee->address = $request->address;
+            // $user->save();
+
+            // $employee = new Employee();
+            // $employee->fill($request->post())->save();
+            // $request->Session()-flash('success', 'Employee added successfully.');
+
+            //Option #2
+           $user->fill($request->post())->save();
+
+            //Upload image here
+            if($request->image){
+                $oldImage = $user->image;
+                $text = $request->image->getClientOriginalExtension();
+                $newFileName = time().'.'.$text;
+                $request->image->move(public_path().'/backend/assets/images/profile/',$newFileName); //This will save file in the folder
+
+                $user->image = $newFileName;
+                $user->save();
+
+                File::delete(public_path().'/backend/assets/images/profile/'.$oldImage);
+            }          
+
+            return redirect()->route('user-profile')->with('success','Employee added successfully.');           
+        }else{
+            //return with errors
+            // return redirect()->route('user-profile');
+            return redirect()->route('user-profile')->withErrors($validator)->withInput();
+        }
+        
+        // dd($request->all());
     }
 }

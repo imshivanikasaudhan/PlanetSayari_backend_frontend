@@ -7,7 +7,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-12 col-md-6 d-flex flex-column align-items-center text-center">
-                                <img src="backend\assets\images\profile\user-1.jpg" alt="Customer" width="150"
+                                <img src="@if (Auth::user()->image) {{Auth::user()->image}} @else backend\assets\images\profile\user-1.jpg @endif " alt="@if (Auth::user()->user_type == 0) Broker @else Investor @endif" width="150"
                                     height="150" class="rounded-circle">
                                 <div class="mt-3">
                                     <h4 class="text fs-10">
@@ -145,7 +145,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST" {{route('update-profile')}}>
+                                <form method="POST" action="{{route('update-profile')}}" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="row">
@@ -153,7 +153,7 @@
                                             <div class="mb-3">
                                                 <label for="Profile-pic" class="form-label">Choose Profile Pic</label>
                                                 <input type="file" class="form-control" id="Profile-pic"
-                                                    aria-describedby="Profile-pic">
+                                                    aria-describedby="Profile-pic" name="image">
                                             </div>
                                         </div>
                                     </div>
@@ -162,7 +162,7 @@
                                             <div class="mb-3">
                                                 <label for="inputname" class="form-label">Name</label>
                                                 <input type="text" class="form-control" id="inputname"
-                                                    aria-describedby="inputname" name="name" value="{{Auth::user()->full_name}}">
+                                                    aria-describedby="inputname" name="full_name" value="{{Auth::user()->full_name}}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
