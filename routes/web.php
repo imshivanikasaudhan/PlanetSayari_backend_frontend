@@ -56,7 +56,7 @@ Route::get('help-contact', [DashboardController::class, 'helpContact']);
 Route::post('help-contact', [DashboardController::class, 'helpContactStore']);
 
 Route::get('/user-profile', [DashboardController::class, 'userprofile'])->name('user-profile');
-
+Route::put('/user-profile', [DashboardController::class, 'userprofile_Update'])->name('update-profile');
 // Route::get('/user-profile', function(){
 //     return view('/user-profile');
 // });
