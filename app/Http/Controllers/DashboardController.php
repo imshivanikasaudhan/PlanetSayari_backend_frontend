@@ -68,6 +68,13 @@ class DashboardController extends Controller
     //     return view('/user-profile', compact('users', 'id'));
     // }
     public function userprofile(){
+        
         return view('/user-profile');
+    }
+    public function userprofile_Update(Request $request){
+        $request->validate([
+
+        ]);
+        dd($request->all());
     }
 }

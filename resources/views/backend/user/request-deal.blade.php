@@ -52,21 +52,25 @@
                 <div class="text-danger">{{$message}}</div>
             @enderror  
             </div>
-            <div class="mb-3">
-              {{-- <label for="Inputuserinvestor" class="form-label">Invester Amount</label>
-              <input type="integer" name="Investers" class="form-control" id="Inputuserinvestor"> --}}
-              <label for="InputBudget" class="form-label">Invester Amount : </label>
-              <input type="text" id="put" placeholder="Example  :   $2000 Million" class="form-control mb-4">
-              <input type="range" min="1000" max="500000" value="1000" name="investment" id="get" class="form-range" onchange="budgetValue()" onmousemove="budgetValue()" required>
-              @error('investment')
-                  <div class="text-danger">{{$message}}</div>
-              @enderror
-            </div>
-            <div class="mb-3">
-              <label for="exampleInputPassword1" class="form-label">Broker Percentage</label>
-              <input type="integer" name="broker" class="form-control" id="exampleInputPassword1" placeholder="5%" value="5%"
-                disabled>
-            </div>
+            @if (Auth::user()->user_type == 1)
+              <div class="mb-3">
+                {{-- <label for="Inputuserinvestor" class="form-label">Invester Amount</label>
+                <input type="integer" name="Investers" class="form-control" id="Inputuserinvestor"> --}}
+                <label for="InputBudget" class="form-label">Invester Amount : </label>
+                <input type="text" id="put" placeholder="Example  :   $2000 Million" class="form-control mb-4">
+                <input type="range" min="1000" max="500000" value="1000" name="investment" id="get" class="form-range" onchange="budgetValue()" onmousemove="budgetValue()" required>
+                @error('investment')
+                    <div class="text-danger">{{$message}}</div>
+                @enderror
+              </div>
+            @else
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Broker Percentage</label>
+                <input type="integer" name="broker" class="form-control" id="exampleInputPassword1" placeholder="5%" value="5%"
+                  disabled>
+              </div>
+            @endif            
+            
             <div class="mb-3 form-check">
               <!-- <div class="mb-3">
                         <label for="exampleInputPassword1" class="form-label">Password</label>

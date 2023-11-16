@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('gender')->nullable();
             $table->string('skype')->nullable();
             $table->string('address')->nullable();
-            $table->string('state')->nullable();
+            $table->string('city')->nullable();
             $table->string('country')->nullable();
             $table->string('pin')->nullable();
             $table->integer('user_type');

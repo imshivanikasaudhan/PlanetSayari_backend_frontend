@@ -145,7 +145,9 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST">
+                                <form method="POST" {{route('update-profile')}}>
+                                    @csrf
+                                    @method('PUT')
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
@@ -160,14 +162,14 @@
                                             <div class="mb-3">
                                                 <label for="inputname" class="form-label">Name</label>
                                                 <input type="text" class="form-control" id="inputname"
-                                                    aria-describedby="inputname">
+                                                    aria-describedby="inputname" name="name" value="{{Auth::user()->full_name}}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="inputemail" class="form-label">Email</label>
                                                 <input type="Email" class="form-control" id="inputemail"
-                                                    aria-describedby="inputemail">
+                                                    aria-describedby="inputemail" name="email" value="{{Auth::user()->email}}">
                                             </div>
                                         </div>
                                     </div>
@@ -176,14 +178,14 @@
                                             <div class="mb-3">
                                                 <label for="inputcontact" class="form-label">Contact Number</label>
                                                 <input type="number" class="form-control" id="inputcontact"
-                                                    aria-describedby="inputcontact">
+                                                    aria-describedby="inputcontact" name="phone" value="{{Auth::user()->phone}}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="inputgender" class="form-label">Gender</label>
-                                                <select name="inputgender" id="" class="form-control">
-                                                    <option selected>Select Gender</option>
+                                                <select name="gender" id="inputgender" class="form-control" value="{{Auth::user()->gender}}">
+                                                    <option value="">Select Gender</option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
                                                 </select>
@@ -194,13 +196,13 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="InputSkpye" class="form-label">Skype</label>
-                                                <input type="text" class="form-control" id="InputSkpye">
+                                                <input type="text" class="form-control" id="InputSkpye" name="skypid" value="{{Auth::user()->skype}}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="InputCity" class="form-label">City</label>
-                                                <input type="text" class="form-control" id="InputCity">
+                                                <input type="text" class="form-control" id="InputCity" name="city" value="{{Auth::user()->city}}">
                                             </div>
                                         </div>
                                     </div>
@@ -208,7 +210,7 @@
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label for="InputAddress" class="form-label">Full Address</label>
-                                                <textarea name="InputAddress" id="" rows="3" class="form-control"></textarea>
+                                                <textarea name="InputAddress" id="" rows="3" class="form-control" name="address">{{Auth::user()->address}}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -217,13 +219,13 @@
                                             <div class="mb-3">
                                                 <label for="InputPincode" class="form-label">Pincode</label>
                                                 <input type="number" class="form-control" id="InputPincode"
-                                                    maxlength="6">
+                                                    maxlength="6" name="pincode" value="{{Auth::user()->pin}}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="InputCountry" class="form-label">Country</label>
-                                                <select id="InputCountry" name="InputCountry" class="form-control">
+                                                <select id="InputCountry" name="country" class="form-control" >
                                                     <option selected>Select Country</option>
                                                     <option value="Afghanistan">Afghanistan</option>
                                                     <option value="Åland Islands">Åland Islands</option>
@@ -505,17 +507,17 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn rounded-pill btn-dark"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn rounded-pill btn-info">Update changes</button>
+                                    </div>
                                 </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn rounded-pill btn-dark"
-                                    data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn rounded-pill btn-info">Update changes</button>
-                            </div>
+                            </div>                            
                         </div>
                     </div>
                 </div>
+
                 <!-- ChangePass Modal -->
                 <div class="modal fade" id="ChangePassModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                     aria-hidden="true">
@@ -527,7 +529,8 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST">
+                                <form method="PUT" action="">
+                                    @csrf
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
@@ -552,13 +555,14 @@
                                                     aria-describedby="InputConfirmNewPass">
                                             </div>
                                         </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn rounded-pill btn-dark"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn rounded-pill btn-info">Update Password</button>
+                                        </div>
                                 </form>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn rounded-pill btn-dark"
-                                    data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn rounded-pill btn-info">Update Password</button>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
