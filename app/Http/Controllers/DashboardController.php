@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\HelpContactRequest;
 use App\Models\Usercontact;
+use App\Models\Investor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,17 +24,29 @@ class DashboardController extends Controller
     }
     public function requestDealStore(Request $request){
         $request->validate([
-            'name'=> 'required',
+            'full_name'=> 'required',
             'email'=> 'required|email',
-            'mobile'=> 'required',
-            'skypid'=> 'required',
+            'phone'=> 'required',
+            'skypeid'=> 'required',
             'address'=> 'required',
             'country'=> 'required',
-            'investment'=> 'required',
+            'inst_amt'=> 'required',
         ]);
-
+        
         // dd($request->all());
-        return back()->with('Success', 'Form Submitted Successfully');
+        $RequestDeal = new Investor();
+        $RequestDeal->full_name = $request->full_name;
+        $RequestDeal->email = $request->email;
+        $RequestDeal->phone = $request->phone;
+        $RequestDeal->skypeid = $request->skypeid;
+        $RequestDeal->address = $request->address;
+        $RequestDeal->country = $request->country;
+        $RequestDeal->inst_amt = $request->inst_amt;     
+        
+        // Save the new user to the database
+        $RequestDeal->save();
+
+        return back()->with('Success', 'Request Submitted Successfully');
     }
 
     // Help Contact form function 

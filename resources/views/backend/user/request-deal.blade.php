@@ -6,13 +6,16 @@
       <h5 class="card-title fw-semibold mb-4">Request Investment Deal</h5>
       <div class="card">
         <div class="card-body">
+          @if(session('Success'))
+              <div class="alert alert-success">{{session('Success')}}</div>
+          @endif
           <form method="POST" action="request-deal">
             @csrf
             <div class="mb-3">
               <label for="Inputusername" class="form-label">Full Name</label>
-              <input type="text" name="name" class="form-control" id="Inputusername" aria-describedby="emailHelp" value="{{old('name')}}">
+              <input type="text" name="full_name" class="form-control" id="Inputusername" aria-describedby="emailHelp" value="{{old('full_name')}}">
               {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
-              @error('name')
+              @error('full_name')
                   <div class="text-danger">{{$message}}</div>
               @enderror
             </div>
@@ -25,16 +28,16 @@
             </div>
             <div class="mb-3">
               <label for="Inputusernumber" class="form-label">Contact No.</label>
-              <input type="integer" name="mobile" class="form-control" id="Inputusernumber" minlength="9"
-                maxlength="12" value="{{old('mobile')}}">
-              @error('mobile')
+              <input type="integer" name="phone" class="form-control" id="Inputusernumber" minlength="9"
+                maxlength="12" value="{{old('phone')}}">
+              @error('phone')
                   <div class="text-danger">{{$message}}</div>
               @enderror  
             </div>
             <div class="mb-3">
               <label for="Inputuserskyp" class="form-label">Skype ID</label>
-              <input type="text" name="skypid" class="form-control" id="Inputuserskyp" value="{{old('skypid')}}">
-              @error('skypid')
+              <input type="text" name="skypeid" class="form-control" id="Inputuserskyp" value="{{old('skypeid')}}">
+              @error('skypeid')
                   <div class="text-danger">{{$message}}</div>
               @enderror
             </div>
@@ -58,8 +61,8 @@
                 <input type="integer" name="Investers" class="form-control" id="Inputuserinvestor"> --}}
                 <label for="InputBudget" class="form-label">Invester Amount : </label>
                 <input type="text" id="put" placeholder="Example  :   $2000 Million" class="form-control mb-4">
-                <input type="range" min="1000" max="500000" value="1000" name="investment" id="get" class="form-range" onchange="budgetValue()" onmousemove="budgetValue()" required>
-                @error('investment')
+                <input type="range" min="1000" max="500000" value="1000" name="inst_amt" id="get" class="form-range" onchange="budgetValue()" onmousemove="budgetValue()" required>
+                @error('inst_amt')
                     <div class="text-danger">{{$message}}</div>
                 @enderror
               </div>
@@ -71,14 +74,10 @@
               </div>
             @endif            
             
-            <div class="mb-3 form-check">
-              <!-- <div class="mb-3">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
-                      </div> -->
+            <!-- <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
+            </div> -->
 
             <button type="submit" class="btn btn-primary">Request Deal</button>
           </form>

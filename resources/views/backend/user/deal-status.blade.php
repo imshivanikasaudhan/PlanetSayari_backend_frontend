@@ -31,7 +31,6 @@
                 <th class="border-bottom-0">
                   <h6 class="fw-semibold mb-0">Status</h6>
                 </th>
-
               </tr>
             </thead>
             <tbody>
@@ -62,92 +61,7 @@
                     <span class="badge bg-success rounded-3 fw-semibold">In Touch</span>
                   </div>
                 </td>
-              </tr>
-              <tr>
-                <td class="border-bottom-0">
-                  <h6 class="fw-semibold mb-1">User Name</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <p class="mb-0 fw-normal">username68@gmail.com</p>
-                </td>
-
-                <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-0">+919876543210</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <h6 class="fw-semibold mb-0 fs-4">$1.2 M</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <div class="d-flex align-items-center gap-2">
-                    <a href="#" target="_blank"> <span class="badge bg-secondary rounded-3 fw-semibold">View</span></a>
-                  </div>
-                </td>
-                <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-0">02/10/2023</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <div class="d-flex align-items-center gap-2">
-                    <span class="badge bg-success rounded-3 fw-semibold">Success</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="border-bottom-0">
-                  <h6 class="fw-semibold mb-1">User Name</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <p class="mb-0 fw-normal">username68@gmail.com</p>
-                </td>
-
-                <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-0">+919876543210</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <h6 class="fw-semibold mb-0 fs-4">$2.0 M</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <div class="d-flex align-items-center gap-2">
-                    <a href="#" target="_blank"> <span class="badge bg-secondary rounded-3 fw-semibold">View</span></a>
-                  </div>
-                </td>
-                <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-0">02/09/2023</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <div class="d-flex align-items-center gap-2">
-                    <span class="badge bg-success rounded-3 fw-semibold">Success</span>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td class="border-bottom-0">
-                  <h6 class="fw-semibold mb-1">User Name</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <p class="mb-0 fw-normal">username68@gmail.com</p>
-                </td>
-
-                <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-0">+919876543210</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <h6 class="fw-semibold mb-0 fs-4">$1.9 M</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <div class="d-flex align-items-center gap-2">
-                    <a href="#" target="_blank"> <span class="badge bg-secondary rounded-3 fw-semibold">View</span></a>
-                  </div>
-                </td>
-                <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-0">02/08/2023</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <div class="d-flex align-items-center gap-2">
-                    <span class="badge bg-success rounded-3 fw-semibold">Success</span>
-                  </div>
-                </td>
-              </tr>
-
+              </tr>           
             </tbody>
           </table>
         </div>

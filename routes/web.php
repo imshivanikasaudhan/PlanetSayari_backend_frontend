@@ -34,32 +34,19 @@ Route::group(['Middleware'=>'auth'], function(){
 });
 
 
-//User Dashborad Routes
-
-// Route::get('/dashboard', function(){
-//     return view('/dashboard');
-// });
-// Route::get('/request-deal', function(){
-//     return view('/request-deal');
-// });
-
+//User Dashboard Routes
 Route::get('/request-deal', [DashboardController::class, 'requestDeal']);
 Route::post('/request-deal', [DashboardController::class, 'requestDealStore']);
 
 Route::get('/deal-status', function(){
     return view('/deal-status');
 });
-// Route::get('/help-contact', function(){
-//     return view('/help-contact');
-// });
+
 Route::get('help-contact', [DashboardController::class, 'helpContact']);
 Route::post('help-contact', [DashboardController::class, 'helpContactStore']);
 
 Route::get('/user-profile', [DashboardController::class, 'userprofile'])->name('user-profile');
 Route::put('/user-profile', [DashboardController::class, 'userprofile_Update'])->name('update-profile');
-// Route::get('/user-profile', function(){
-//     return view('/user-profile');
-// });
 // User Dashboard Route End
 
 // Admin Dashborad Route Start
