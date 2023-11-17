@@ -38,9 +38,10 @@ Route::group(['Middleware'=>'auth'], function(){
 Route::get('/request-deal', [DashboardController::class, 'requestDeal']);
 Route::post('/request-deal', [DashboardController::class, 'requestDealStore']);
 
-Route::get('/deal-status', function(){
-    return view('/deal-status');
-});
+Route::get('/deal-status', [DashboardController::class, 'statusDeal']);
+// Route::get('/deal-status', function(){
+//     return view('/deal-status');
+// });
 
 Route::get('help-contact', [DashboardController::class, 'helpContact']);
 Route::post('help-contact', [DashboardController::class, 'helpContactStore']);
