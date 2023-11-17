@@ -33,20 +33,32 @@
             </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">User Dashboard</span>
+              <span class="hide-menu">User Data</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{{asset('../admin-user-data')}}" aria-expanded="false">
+              <a class="sidebar-link" href="{{asset('../admin-investor-data')}}" aria-expanded="false">
                 <span>
-                  <i class="ti ti-file-description"></i>
+                <i class="ti ti-clipboard-data"></i>
                 </span>
-                <span class="hide-menu">User Data</span>
+                <span class="hide-menu">Investor Data</span>
               </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{asset('../admin-broker-data')}}" aria-expanded="false">
+                <span>
+                <i class="ti ti-file-database"></i>
+                </span>
+                <span class="hide-menu">Broker Data</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">User Request</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{asset('../investor-request-view')}}" aria-expanded="false">
                 <span>
-                <i class="ti ti-status-change"></i>
+                <i class="ti ti-report"></i>
                 </span>
                 <span class="hide-menu">Investor Request</span>
               </a>
@@ -54,29 +66,30 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{asset('../broker-request-view')}}" aria-expanded="false">
                 <span>
-                <i class="ti ti-status-change"></i>
+                <i class="ti ti-report"></i>
                 </span>
                 <span class="hide-menu">Broker Request</span>
               </a>
             </li>
+            
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Help Queries</span>
+            </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{asset('../admin-user-query')}}" aria-expanded="false">
                 <span>
-                <i class="ti ti-message-chatbot"></i>
+                <i class="ti ti-message-plus"></i>
                 </span>
-                <span class="hide-menu">User Help Queries</span>
+                <span class="hide-menu">User Dashboard Queries</span>
               </a>
-            </li>
-            <li class="nav-small-cap">
-              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-              <span class="hide-menu">Website Queries</span>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{asset('../admin-website-contact')}}" aria-expanded="false">
                 <span>
-                <i class="ti ti-message-chatbot"></i>
+                <i class="ti ti-messages"></i>
                 </span>
-                <span class="hide-menu">Contact</span>
+                <span class="hide-menu">Website Queries</span>
               </a>
             </li>
             <li class="nav-small-cap">
