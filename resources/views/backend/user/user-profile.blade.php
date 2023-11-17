@@ -6,8 +6,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-12 col-md-6 d-flex flex-column align-items-center text-center"> 
-                                
+                            <div class="col-lg-12 col-md-6 d-flex flex-column align-items-center text-center">                                 
                                 @if (Auth::user()->image == null)
                                     <img src="backend\assets\images\profile\user-1.jpg" alt="@if (Auth::user()->user_type == 0) Broker @else Investor @endif" width="150"
                                     height="150" class="rounded-circle">
@@ -170,7 +169,7 @@
                                             <div class="mb-3">
                                                 <label for="Profile-pic" class="form-label">Choose Profile Pic</label>
                                                 <input type="file" class="form-control" id="Profile-pic"
-                                                    aria-describedby="Profile-pic" name="image">
+                                                    aria-describedby="Profile-pic" name="image" accept="image/jpg, image/jpeg, image/png">
                                             </div>
                                         </div>
                                     </div>
