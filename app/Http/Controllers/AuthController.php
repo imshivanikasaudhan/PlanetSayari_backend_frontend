@@ -15,6 +15,7 @@ class AuthController extends Controller
         return view('/index');
     }
 
+    // Login Function
     public function loginStore(Request $request){
         //Validate Data
         // $request->validate([
@@ -31,13 +32,13 @@ class AuthController extends Controller
         ];
         if (Auth::attempt($credentials)) {
             return redirect('/dashboard')->with('success', 'Login Successfully');
-        }
-       
+        }       
     
         // return back()->withErrors(['email' => 'Invalid email or password.']);
         return redirect('/')->with('error', 'Username or Password Incorrect');
     }
 
+    // Register Function
     public function registerStore(Request $request){
         // dd($request->all());
         // Validate Data
@@ -97,6 +98,7 @@ class AuthController extends Controller
         return back()->with('success', 'Register Successfully');
     }
 
+    // Logout Function
     public function logout(){
         Auth::logout();
         return redirect('/');
