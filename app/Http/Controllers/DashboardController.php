@@ -49,6 +49,12 @@ class DashboardController extends Controller
         return back()->with('Success', 'Request Submitted Successfully');
     }
 
+    // Deal Status Function
+    public function statusDeal(){
+        $dealStatus = Investor::all();
+        return view('/deal-status', compact('dealStatus'));
+    }
+
     // Help Contact form function 
     public function helpContact(){
         return view('/help-contact');

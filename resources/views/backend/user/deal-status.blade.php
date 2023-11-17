@@ -11,7 +11,7 @@
               <tr>
 
                 <th class="border-bottom-0">
-                  <h6 class="fw-semibold mb-0">Name</h6>
+                  <h6 class="fw-semibold mb-0">Full Name</h6>
                 </th>
                 <th class="border-bottom-0">
                   <h6 class="fw-semibold mb-0">Email Id</h6>
@@ -23,10 +23,17 @@
                   <h6 class="fw-semibold mb-0">Investment Value</h6>
                 </th>
                 <th class="border-bottom-0">
-                  <h6 class="fw-semibold mb-0">Documents</h6>
+                  <h6 class="fw-semibold mb-0">Skype ID</h6>
                 </th>
                 <th class="border-bottom-0">
-                  <h6 class="fw-semibold mb-0">Date of Request</h6>
+                  <h6 class="fw-semibold mb-0">Documents</h6>
+                </th>
+                
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Address</h6>
+                </th>
+                <th class="border-bottom-0">
+                  <h6 class="fw-semibold mb-0">Country</h6>
                 </th>
                 <th class="border-bottom-0">
                   <h6 class="fw-semibold mb-0">Status</h6>
@@ -34,19 +41,23 @@
               </tr>
             </thead>
             <tbody>
+              @foreach ($dealStatus as $Status)
               <tr>
                 <td class="border-bottom-0">
-                  <h6 class="fw-semibold mb-1">User Name</h6>
+                  <h6 class="fw-semibold mb-1">{{$Status->full_name}}</h6>
                 </td>
                 <td class="border-bottom-0">
-                  <p class="mb-0 fw-normal">username68@gmail.com</p>
+                  <p class="mb-0 fw-normal">{{$Status->email}}</p>
                 </td>
 
                 <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-0">+919876543210</h6>
+                  <h6 class="fw-normal mb-0">{{$Status->phone}}</h6>
                 </td>
                 <td class="border-bottom-0">
-                  <h6 class="fw-semibold mb-0 fs-4">$3.9 M</h6>
+                  <h6 class="fw-semibold mb-0 fs-4">${{$Status->inst_amt}} M</h6>
+                </td>
+                <td class="border-bottom-0">
+                  <h6 class="fw-normal mb-0">{{$Status->skypeid}}</h6>
                 </td>
                 <td class="border-bottom-0">
                   <div class="d-flex align-items-center gap-2">
@@ -54,14 +65,18 @@
                   </div>
                 </td>
                 <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-0">02/11/2023</h6>
+                  <h6 class="fw-normal mb-0">{{$Status->address}}</h6>
+                </td>
+                <td class="border-bottom-0">
+                  <h6 class="fw-normal mb-0">{{$Status->country}}</h6>
                 </td>
                 <td class="border-bottom-0">
                   <div class="d-flex align-items-center gap-2">
                     <span class="badge bg-success rounded-3 fw-semibold">In Touch</span>
                   </div>
                 </td>
-              </tr>           
+              </tr> 
+              @endforeach                        
             </tbody>
           </table>
         </div>
