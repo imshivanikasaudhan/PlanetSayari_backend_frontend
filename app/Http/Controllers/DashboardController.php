@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\File;
 
 class DashboardController extends Controller
 {   
-    // dashboard Function
+    // Dashboard Function
     public function dashboard(){
         return view('/dashboard');
     }
 
-    // Request Deal function
+    // Request Deal Function
     public function requestDeal(){
         return view('/request-deal');
     }
@@ -30,7 +30,8 @@ class DashboardController extends Controller
             'skypeid'=> 'required',
             'address'=> 'required',
             'country'=> 'required',
-            'inst_amt'=> 'required',
+            'inst_amt'=> 'nullable',
+            'broker_per'=> 'nullable',
         ]);
         
         // dd($request->all());
@@ -41,7 +42,15 @@ class DashboardController extends Controller
         $RequestDeal->skypeid = $request->skypeid;
         $RequestDeal->address = $request->address;
         $RequestDeal->country = $request->country;
-        $RequestDeal->inst_amt = $request->inst_amt;     
+        $RequestDeal->inst_amt = $request->inst_amt;   
+        $RequestDeal->broker_per = $request->broker_per;   
+        // if($RequestDeal->user_type = 1){
+        //     $RequestDeal->inst_amt = $request->inst_amt;   
+            
+        // }else{
+        //     $RequestDeal->broker_per = $request->broker_per;   
+
+        // }
         
         // Save the new user to the database
         $RequestDeal->save();
@@ -55,7 +64,7 @@ class DashboardController extends Controller
         return view('/deal-status', compact('dealStatus'));
     }
 
-    // Help Contact form function 
+    // Help Contact Form Function 
     public function helpContact(){
         return view('/help-contact');
     }
@@ -65,18 +74,9 @@ class DashboardController extends Controller
         $userContact->full_name = $request->name;
         $userContact->email = $request->email;
         $userContact->number = $request->phone;
-        $userContact->message = $request->Contact_Message;        
- 
-        // Save the new user to the database
+        $userContact->message = $request->Contact_Message; 
+
         $userContact->save();
-        
-        //transfer this validation to helpcontactrequest
-        // $request->validate([
-        //     'name'=> 'required',
-        //     'email'=> 'required|email',
-        //     'phone'=> 'required',
-        //     'Contact_Message'=> 'required|min:305'
-        // ]);
         //for debug
         // dd($request->all());
 
@@ -84,17 +84,8 @@ class DashboardController extends Controller
         return back()->with('Success', 'Form Submitted Successfully');
     }
 
-    // user profile
-
-    // public function userprofile($id){
-    //     $users = user::find($id);
-    //     return view('/user-profile', compact('users', 'id'));
-    // }
-
-    public function userprofile(){    
-        // $user = User();       
-        
-        // return view('user-profile',['user'=>$user]);      
+    // User Profile Function
+    public function userprofile(){      
         return view('/user-profile');
     }
     public function userprofile_Update(User $user, Request $request){
@@ -112,10 +103,7 @@ class DashboardController extends Controller
             'country' => 'nullable',
             'image' => 'sometimes|image:gif,png,jpeg,jpg'
         ]);
-        if ($validator->passes()){
-            //Option #1
-            //save data here
-            
+        if ($validator->passes()){            
             //NOTE:- 'user_id' field is coming from user profile form from input field.    
             $user = User::find($request->user_id);
             $user->full_name = $request->full_name;
@@ -129,9 +117,6 @@ class DashboardController extends Controller
             $user->country = $request->country;
             $user->image = $request->image;
             $user->save();
-            
-            //Option #2
-            //$user->fill($request->post())->save();
 
             //Upload Image Here
             if($request->image){
@@ -146,7 +131,7 @@ class DashboardController extends Controller
                 File::delete(public_path().'/backend/assets/images/profile/'.$oldImage);
             }          
 
-            return redirect()->route('user-profile')->with('success','Employee added successfully.');           
+            return redirect()->route('user-profile')->with('success','Profile Updated Successfully.');           
         }else{
             //return with errors
             // return redirect()->route('user-profile');

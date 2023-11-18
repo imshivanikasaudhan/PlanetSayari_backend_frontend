@@ -146,7 +146,7 @@ Login -->
 </div>
 <!--=========Login=========-->
 <!--=========Register=========-->
-<div class="modal fade iq-register" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade iq-register" tabindex="-1" role="dialog" aria-hidden="true" id="">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -174,26 +174,31 @@ Login -->
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <select class="form-select" aria-label="Default select example" name="registerAs" required>
+                        <select class="form-select" aria-label="Default select example" name="user_type" required>
                             <option value="">Register As</option>
                             <option value="0">Broker</option>
                             <option value="1">Investor</option>
                         </select>
-                        @error('registerAs')
+                        @error('user_type')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <input type="password" class="form-control" id="password" placeholder="Password"
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password"
                             name="password" required>
+                        @error('password')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror    
                     </div>
                     <div class="form-group mb-3">
-                        <input type="password" class="form-control" id="cpassword" placeholder="Confirm Password"
-                            name="cpassword" required>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="cpassword" placeholder="Confirm Password"
+                            name="password_confirmation" required>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">I Agree to the Terms and
+                            <input type="checkbox" class="form-check-input" required>I Agree to the Terms and
                             Conditions</label>
                     </div>
                     <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown

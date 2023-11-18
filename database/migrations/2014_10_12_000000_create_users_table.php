@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('pin')->nullable();
             $table->integer('user_type');
             $table->string('password');
-            $table->string('cpassword');
+            // $table->string('cpassword');
             $table->timestamp('email_verified_at')->nullable();
             // $table->string('password');
             $table->rememberToken();

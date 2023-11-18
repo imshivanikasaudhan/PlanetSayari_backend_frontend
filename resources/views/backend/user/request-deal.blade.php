@@ -13,7 +13,7 @@
             @csrf
             <div class="mb-3">
               <label for="Inputusername" class="form-label">Full Name</label>
-              <input type="text" name="full_name" class="form-control" id="Inputusername" aria-describedby="emailHelp" value="{{old('full_name')}}">
+              <input type="text" name="full_name" class="form-control" id="Inputusername" aria-describedby="emailHelp" value="{{Auth::user()->full_name}}">
               {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
               @error('full_name')
                   <div class="text-danger">{{$message}}</div>
@@ -21,7 +21,7 @@
             </div>
             <div class="mb-3">
               <label for="Inputuseremail" class="form-label">Email</label>
-              <input type="email" name="email" class="form-control" id="Inputuseremail" value="{{old('email')}}">
+              <input type="email" name="email" class="form-control" id="Inputuseremail" value="{{Auth::user()->email}}">
               @error('email')
                   <div class="text-danger">{{$message}}</div>
               @enderror
@@ -29,28 +29,28 @@
             <div class="mb-3">
               <label for="Inputusernumber" class="form-label">Contact No.</label>
               <input type="integer" name="phone" class="form-control" id="Inputusernumber" minlength="9"
-                maxlength="12" value="{{old('phone')}}">
+                maxlength="12" value="{{Auth::user()->phone}}">
               @error('phone')
                   <div class="text-danger">{{$message}}</div>
               @enderror  
             </div>
             <div class="mb-3">
               <label for="Inputuserskyp" class="form-label">Skype ID</label>
-              <input type="text" name="skypeid" class="form-control" id="Inputuserskyp" value="{{old('skypeid')}}">
+              <input type="text" name="skypeid" class="form-control" id="Inputuserskyp" value="{{Auth::user()->skype}}">
               @error('skypeid')
                   <div class="text-danger">{{$message}}</div>
               @enderror
             </div>
             <div class="mb-3">
               <label for="InputContact_Message" class="form-label">Full Address</label>
-              <textarea class="form-control" name="address" id="InputContact_Message" rows="3" placeholder="Type Full Address ..." spellcheck="false">{{old('address')}}</textarea>
+              <textarea class="form-control" name="address" id="InputContact_Message" rows="3" placeholder="Type Full Address ..." spellcheck="false">{{Auth::user()->address}}</textarea>
             @error('address')
                 <div class="text-danger">{{$message}}</div>
             @enderror
             </div>
             <div class="mb-3">
               <label for="Inputusercountry" class="form-label">Country</label>
-              <input type="text" name="country" class="form-control" id="Inputusercountry" value="{{old('country')}}">
+              <input type="text" name="country" class="form-control" id="Inputusercountry" value="{{Auth::user()->country}}">
             @error('country')
                 <div class="text-danger">{{$message}}</div>
             @enderror  
@@ -69,8 +69,11 @@
             @else
               <div class="mb-3">
                 <label for="exampleInputPassword1" class="form-label">Broker Percentage</label>
-                <input type="integer" name="broker" class="form-control" id="exampleInputPassword1" placeholder="5%" value="5%"
-                  disabled>
+                <input type="integer" name="broker_per" class="form-control" id="exampleInputPassword1" placeholder="5%" value="5%"
+                  >
+                @error('broker_per')
+                  <div class="text-danger">{{$message}}</div>
+                @enderror  
               </div>
             @endif            
             

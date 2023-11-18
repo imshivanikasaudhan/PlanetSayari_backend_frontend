@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Investor extends Model
 {
     use HasFactory;
-    protected $table = 'invertor_request';
+    protected $table = 'investor_request';
 }
