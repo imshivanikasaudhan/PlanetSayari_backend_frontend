@@ -36,6 +36,7 @@ class DashboardController extends Controller
         
         // dd($request->all());
         $RequestDeal = new Investor();
+        $RequestDeal->user_id = $request->user_id;
         $RequestDeal->full_name = $request->full_name;
         $RequestDeal->email = $request->email;
         $RequestDeal->phone = $request->phone;
@@ -60,6 +61,7 @@ class DashboardController extends Controller
 
     // Deal Status Function
     public function statusDeal(){
+        // $user_id = Auth::User()->id;
         $dealStatus = Investor::all();
         return view('/deal-status', compact('dealStatus'));
     }

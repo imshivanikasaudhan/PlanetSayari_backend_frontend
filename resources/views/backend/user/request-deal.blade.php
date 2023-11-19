@@ -11,6 +11,7 @@
           @endif
           <form method="POST" action="request-deal">
             @csrf
+            <input type="hidden" name="user_id" class="form-control" id="Inputusername" aria-describedby="emailHelp" value="{{Auth::user()->id}}">
             <div class="mb-3">
               <label for="Inputusername" class="form-label">Full Name</label>
               <input type="text" name="full_name" class="form-control" id="Inputusername" aria-describedby="emailHelp" value="{{Auth::user()->full_name}}">

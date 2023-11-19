@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('investor_request', function (Blueprint $table) {
             $table->id();
+            $table->string('user_id')->nullable();
             $table->string('full_name');
             $table->string('email');
             $table->string('phone');
