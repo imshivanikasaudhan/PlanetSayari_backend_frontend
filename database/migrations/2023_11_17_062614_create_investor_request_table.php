@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('skypeid');
             $table->string('address');
             $table->string('country');
-            $table->string('inst_amt');
-            $table->string('broker_per');
+            $table->string('inst_amt')->nullable();
+            $table->string('broker_per')->nullable();
             $table->timestamps();
         });
     }

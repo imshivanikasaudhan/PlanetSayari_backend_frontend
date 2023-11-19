@@ -90,8 +90,8 @@ Login -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                @if(session('error'))
-                    <div class="alert alert-danger" role="alert">{{session('error')}}</div>
+                @if (session('error'))
+                    <div class="alert alert-danger" role="alert">{{ session('error') }}</div>
                 @endif
                 <form action="{{ route('dashboard') }}" method="POST">
                     @csrf
@@ -154,17 +154,17 @@ Login -->
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                @if(session('success'))
-                    <div class="alert alert-success" role="alert">{{session('success')}}</div>
+                @if (session('success'))
+                    <div class="alert alert-success" role="alert">{{ session('success') }}</div>
                 @endif
                 <form action="{{ route('register') }}" method="POST">
                     @csrf
                     <div class="form-group mb-3">
                         <input type="text" class="form-control" name="username" id="recipient-username"
-                            placeholder="User Name" required>
-                            @error('username')
-                                <div class="text-danger">{{$message}}</div>                              
-                            @enderror
+                            placeholder="User Name" value="{{ old('username') }}" required>
+                        @error('username')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="form-group mb-3">
                         <input type="email" class="form-control" id="recipient-email" placeholder="Email"
@@ -184,17 +184,17 @@ Login -->
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Password"
-                            name="password" required>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror"
+                            id="password" placeholder="Password" name="password" required>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
-                        @enderror    
+                        @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="cpassword" placeholder="Confirm Password"
-                            name="password_confirmation" required>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror"
+                            id="cpassword" placeholder="Confirm Password" name="password_confirmation" required>
                     </div>
                     <div class="form-check">
                         <label class="form-check-label">
