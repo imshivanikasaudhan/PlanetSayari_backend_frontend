@@ -74,7 +74,7 @@
                                     </td>
                                     <td class="border-bottom-0">
                                         <div class="d-flex align-items-center gap-2">
-                                            <a href="#" target="_blank"> <span
+                                            <a href="backend/assets/images/{{ $Status->document }}" target="_blank"> <span
                                                     class="badge bg-secondary rounded-3 fw-semibold">View</span></a>
                                         </div>
                                     </td>
