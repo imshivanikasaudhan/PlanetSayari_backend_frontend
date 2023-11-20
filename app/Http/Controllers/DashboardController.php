@@ -53,13 +53,6 @@ class DashboardController extends Controller
         $RequestDeal->broker_per = $request->broker_per;   
         // $RequestDeal->document = $request->document;
         
-        // $file = $request->document;
-        // $filename = $file->getClientOriginalName();
-        // $extension = $file->getClientOriginalExtension();
-        
-        // $filePath = storage_path('/backend/assets/files/' . $filename);
-        // // dd($filePath);
-        // Storage::put($filePath, $file->getContent());
         // Upload File Here
         if($request->document){
             // dd($request->document);
@@ -75,11 +68,8 @@ class DashboardController extends Controller
         }
         
         // Save the new user to the database
-        $RequestDeal->save();
-        
+        $RequestDeal->save(); 
                   
-        
-
         return back()->with('Success', 'Request Submitted Successfully');
     }
 

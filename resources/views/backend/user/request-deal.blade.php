@@ -78,9 +78,13 @@
                 @enderror  
               </div>
             @endif 
+
             <div class="mb-3">
               <label for="Profile-pic" class="form-label">Other Documents</label>
               <input type="file" class="form-control" name="document">
+              @error('document')
+                <div class="text-danger">{{$message}}</div>
+              @enderror
             </div>           
             
             <!-- <div class="mb-3 form-check">
