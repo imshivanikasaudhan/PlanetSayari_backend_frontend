@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('country');
             $table->string('inst_amt')->nullable();
             $table->string('broker_per')->nullable();
+            $table->string('document')->nullable();
             $table->timestamps();
         });
     }

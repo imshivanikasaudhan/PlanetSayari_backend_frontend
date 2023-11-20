@@ -9,7 +9,7 @@
           @if(session('Success'))
               <div class="alert alert-success">{{session('Success')}}</div>
           @endif
-          <form method="POST" action="request-deal">
+          <form method="POST" action="request-deal" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="user_id" class="form-control" id="Inputusername" aria-describedby="emailHelp" value="{{Auth::user()->id}}">
             <div class="mb-3">
@@ -42,6 +42,7 @@
                   <div class="text-danger">{{$message}}</div>
               @enderror
             </div>
+            
             <div class="mb-3">
               <label for="InputContact_Message" class="form-label">Full Address</label>
               <textarea class="form-control" name="address" id="InputContact_Message" rows="3" placeholder="Type Full Address ..." spellcheck="false">{{Auth::user()->address}}</textarea>
@@ -76,7 +77,11 @@
                   <div class="text-danger">{{$message}}</div>
                 @enderror  
               </div>
-            @endif            
+            @endif 
+            <div class="mb-3">
+              <label for="Profile-pic" class="form-label">Other Documents</label>
+              <input type="file" class="form-control" name="document">
+            </div>           
             
             <!-- <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">

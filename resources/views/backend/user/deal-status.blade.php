@@ -48,7 +48,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($dealStatus as $Status)
+                            @foreach ($statusDeal as $Status)
                                 <tr>
                                     <td class="border-bottom-0">
                                         <h6 class="fw-semibold mb-1">{{ $Status->full_name }}</h6>

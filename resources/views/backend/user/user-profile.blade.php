@@ -6,19 +6,19 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-lg-12 col-md-6 d-flex flex-column align-items-center text-center">                                 
+                            <div class="col-lg-12 col-md-6 d-flex flex-column align-items-center text-center">
                                 @if (Auth::user()->image == null)
-                                    <img src="backend\assets\images\profile\user-1.jpg" alt="@if (Auth::user()->user_type == 0) Broker @else Investor @endif" width="150"
-                                    height="150" class="rounded-circle">
+                                    <img src="backend\assets\images\profile\user-1.jpg"
+                                        alt="@if (Auth::user()->user_type == 0) Broker @else Investor @endif"
+                                        width="150" height="150" class="rounded-circle">
                                 @else
-                                    <img src="backend\assets\images\profile\{{Auth::user()->image}}" alt="@if (Auth::user()->user_type == 0) Broker @else Investor @endif" width="150"
-                                    height="150" class="rounded-circle">                               
-                                    
-                                @endif    
-                                
+                                    <img src="backend\assets\images\profile\{{ Auth::user()->image }}"
+                                        alt="@if (Auth::user()->user_type == 0) Broker @else Investor @endif"
+                                        width="150" height="150" class="rounded-circle">
+                                @endif
                                 <div class="mt-3">
                                     <h4 class="text fs-10">
-                                        {{Auth::user()->username}}</h4>
+                                        {{ Auth::user()->username }}</h4>
                                     <p class="text fs-15">
                                         User Type : <span>
                                             @if (Auth::user()->user_type == 0)
@@ -70,36 +70,36 @@
                         </div>
                         <div class="col">
                             <div class="p-3 ">
-                                {{-- @foreach ($users as $user)--}}
-                               
+                                {{-- @foreach ($users as $user) --}}
+
                                 <div class="row border rounded p-3 mb-3">
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Name</Address>
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{Auth::user()->full_name}}</div>
+                                        {{ Auth::user()->full_name }}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{Auth::user()->email}}</div>
+                                        {{ Auth::user()->email }}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Contact No</Address>
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{Auth::user()->phone}}</div>
+                                        {{ Auth::user()->phone }}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Gender</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{Auth::user()->gender}}</div>
+                                        {{ Auth::user()->gender }}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Skype</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{Auth::user()->skype}} </div>
+                                        {{ Auth::user()->skype }} </div>
                                 </div>
                                 {{-- @endforeach --}}
                             </div>
@@ -114,22 +114,22 @@
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{Auth::user()->address}}</div>
+                                        {{ Auth::user()->address }}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">City</h6>
                                     </div>
-                                    <div class="col-sm-9 text-secondary mb-2"> 
-                                        {{Auth::user()->city}} </div>
+                                    <div class="col-sm-9 text-secondary mb-2">
+                                        {{ Auth::user()->city }} </div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Pincode</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{Auth::user()->pin}}</div>
+                                        {{ Auth::user()->pin }}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Country</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{Auth::user()->country}} </div>
+                                        {{ Auth::user()->country }} </div>
                                 </div>
                             </div>
                         </div>
@@ -160,18 +160,31 @@
                                         </ul>
                                     </div>
                                 @endif
-                                <form method="POST" action="{{route('update-profile')}}" enctype="multipart/form-data">
+                                <form method="POST" action="{{ route('update-profile') }}"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
-                                    <input type="hidden" value="{{Auth::user()->id}}" name="user_id"/>
+                                    <input type="hidden" value="{{ Auth::user()->id }}" name="user_id" />
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label for="Profile-pic" class="form-label">Choose Profile Pic</label>
-                                                {{-- <input type="text" class="form-control" id="Profile-pic"
-                                                    aria-describedby="Profile-pic" name="image" accept="image/jpg, image/jpeg, image/png" value="{{Auth::user()->image}}"> --}}
-                                                <input type="file" class="form-control" id="Profile-pic"
-                                                    aria-describedby="Profile-pic" name="image" accept="image/jpg, image/jpeg, image/png">
+                                                <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
+                                                    accept="image/jpg, image/jpeg, image/png" >
+                                                @error('image')
+                                                    <p class="invalid-feedback">{{$message}}</p>
+                                                @enderror    
+                                                <div class="pt-3">    
+                                                    @if (Auth::user()->image != '' && file_exists(public_path() . '/backend/assets/images/profile/' . Auth::user()->image))
+                                                        <img src="{{ url('backend/assets/images/profile/' . Auth::user()->image) }}"
+                                                            alt="" width="100" height="100"
+                                                            class="rounded-circle">
+                                                    @else
+                                                        <img src="{{ url('backend/assets/images/profile/user-1.jpg') }}"
+                                                            alt="" width="100" height="100"
+                                                            class="rounded-circle">
+                                                    @endif
+                                                </div>    
                                             </div>
                                         </div>
                                     </div>
@@ -180,14 +193,16 @@
                                             <div class="mb-3">
                                                 <label for="inputname" class="form-label">Name</label>
                                                 <input type="text" class="form-control" id="inputname"
-                                                    aria-describedby="inputname" name="full_name" value="{{Auth::user()->full_name}}">
+                                                    aria-describedby="inputname" name="full_name"
+                                                    value="{{ Auth::user()->full_name }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="inputemail" class="form-label">Email</label>
                                                 <input type="Email" class="form-control" id="inputemail"
-                                                    aria-describedby="inputemail" name="email" value="{{Auth::user()->email}}">
+                                                    aria-describedby="inputemail" name="email"
+                                                    value="{{ Auth::user()->email }}">
                                             </div>
                                         </div>
                                     </div>
@@ -196,22 +211,25 @@
                                             <div class="mb-3">
                                                 <label for="inputcontact" class="form-label">Contact Number</label>
                                                 <input type="number" class="form-control" id="inputcontact"
-                                                    aria-describedby="inputcontact" name="phone" value="{{Auth::user()->phone}}">
+                                                    aria-describedby="inputcontact" name="phone"
+                                                    value="{{ Auth::user()->phone }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="inputgender" class="form-label">Gender</label>
-                                                <select name="gender" id="inputgender" class="form-control">                                                    
-                                                        @if ((Auth::user()->gender == "Male"))
-                                                            <option value="{{Auth::user()->gender}} "> {{Auth::user()->gender}} </option>
-                                                            <option value="Female"> Female </option>
-                                                        @else
+                                                <select name="gender" id="inputgender" class="form-control">
+                                                    @if (Auth::user()->gender == 'Male')
+                                                        <option value="{{ Auth::user()->gender }} ">
+                                                            {{ Auth::user()->gender }} </option>
+                                                        <option value="Female"> Female </option>
+                                                    @else
                                                         {
-                                                            <option value="{{Auth::user()->gender}} "> {{Auth::user()->gender}} </option>
-                                                            <option value="Male"> Male </option>
+                                                        <option value="{{ Auth::user()->gender }} ">
+                                                            {{ Auth::user()->gender }} </option>
+                                                        <option value="Male"> Male </option>
                                                         }
-                                                        @endif
+                                                    @endif
                                                 </select>
                                             </div>
                                         </div>
@@ -220,13 +238,15 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="InputSkpye" class="form-label">Skype</label>
-                                                <input type="text" class="form-control" id="InputSkpye" name="skypid" value="{{Auth::user()->skype}}">
+                                                <input type="text" class="form-control" id="InputSkpye"
+                                                    name="skypid" value="{{ Auth::user()->skype }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="InputCity" class="form-label">City</label>
-                                                <input type="text" class="form-control" id="InputCity" name="city" value="{{Auth::user()->city}}">
+                                                <input type="text" class="form-control" id="InputCity"
+                                                    name="city" value="{{ Auth::user()->city }}">
                                             </div>
                                         </div>
                                     </div>
@@ -234,7 +254,7 @@
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label for="InputAddress" class="form-label">Full Address</label>
-                                                <textarea id="" rows="3" class="form-control" name="address">{{Auth::user()->address}}</textarea>
+                                                <textarea id="" rows="3" class="form-control" name="address">{{ Auth::user()->address }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -243,13 +263,13 @@
                                             <div class="mb-3">
                                                 <label for="InputPincode" class="form-label">Pincode</label>
                                                 <input type="number" class="form-control" id="InputPincode"
-                                                    maxlength="6" name="pincode" value="{{Auth::user()->pin}}">
+                                                    maxlength="6" name="pincode" value="{{ Auth::user()->pin }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="InputCountry" class="form-label">Country</label>
-                                                <select id="InputCountry" name="country" class="form-control" >
+                                                <select id="InputCountry" name="country" class="form-control">
                                                     <option value="">Select Country</option>
                                                     <option value="Afghanistan">Afghanistan</option>
                                                     <option value="Åland Islands">Åland Islands</option>
@@ -531,21 +551,22 @@
                                             </div>
                                         </div>
                                     </div>
-                                    @if($errors->any())
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn rounded-pill btn-dark"
-                                           >Cancel</button>
-                                        <button type="submit" class="btn rounded-pill btn-info">Update changes</button>
-                                    </div>
+                                    @if ($errors->any())
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn rounded-pill btn-dark">Cancel</button>
+                                            <button type="submit" class="btn rounded-pill btn-info">Update
+                                                changes</button>
+                                        </div>
                                     @else
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn rounded-pill btn-dark"
-                                            data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn rounded-pill btn-info">Update changes</button>
-                                    </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn rounded-pill btn-dark"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="btn rounded-pill btn-info">Update
+                                                changes</button>
+                                        </div>
                                     @endif
                                 </form>
-                            </div>                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -590,11 +611,12 @@
                                         <div class="modal-footer">
                                             <button type="button" class="btn rounded-pill btn-dark"
                                                 data-bs-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="btn rounded-pill btn-info">Update Password</button>
+                                            <button type="submit" class="btn rounded-pill btn-info">Update
+                                                Password</button>
                                         </div>
                                 </form>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
