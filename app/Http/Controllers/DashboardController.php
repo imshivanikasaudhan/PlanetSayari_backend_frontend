@@ -10,12 +10,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {   
     // Dashboard Function
     public function dashboard(){
-        return view('/dashboard');
+        $user = Auth::user();
+        $statusDeal = $user->statusDeal;
+        return view('/dashboard', compact('statusDeal'));
+
+        // return view('/dashboard');
     }
 
     // Request Deal Function
@@ -32,6 +37,7 @@ class DashboardController extends Controller
             'country'=> 'required',
             'inst_amt'=> 'nullable',
             'broker_per'=> 'nullable',
+            'document' => 'required|mimes:pdf|max:4096', // Set file size limit in kilobytes,
         ]);
         
         // dd($request->all());
@@ -45,25 +51,43 @@ class DashboardController extends Controller
         $RequestDeal->country = $request->country;
         $RequestDeal->inst_amt = $request->inst_amt;   
         $RequestDeal->broker_per = $request->broker_per;   
-        // if($RequestDeal->user_type = 1){
-        //     $RequestDeal->inst_amt = $request->inst_amt;   
-            
-        // }else{
-        //     $RequestDeal->broker_per = $request->broker_per;   
+        // $RequestDeal->document = $request->document;
+        
+        // $file = $request->document;
+        // $filename = $file->getClientOriginalName();
+        // $extension = $file->getClientOriginalExtension();
+        
+        // $filePath = storage_path('/backend/assets/files/' . $filename);
+        // // dd($filePath);
+        // Storage::put($filePath, $file->getContent());
+        // Upload File Here
+        if($request->document){
+            // dd($request->document);
+            $oldImage = $RequestDeal->document;
+            $text = $request->document->getClientOriginalExtension();
+            $newFileName = time().'.'.$text;
+            $request->document->move(public_path().'/backend/assets/images/',$newFileName); //This will save file in the folder
 
-        // }
+            $RequestDeal->document = $newFileName;
+            $RequestDeal->save();
+
+            File::delete(public_path().'/backend/assets/images/'.$oldImage);
+        }
         
         // Save the new user to the database
         $RequestDeal->save();
+        
+                  
+        
 
         return back()->with('Success', 'Request Submitted Successfully');
     }
 
     // Deal Status Function
     public function statusDeal(){
-        // $user_id = Auth::User()->id;
-        $dealStatus = Investor::all();
-        return view('/deal-status', compact('dealStatus'));
+        $user = Auth::user();
+        $statusDeal = $user->statusDeal;
+        return view('/deal-status', compact('statusDeal'));
     }
 
     // Help Contact Form Function 
@@ -117,7 +141,7 @@ class DashboardController extends Controller
             $user->pin = $request->pincode;
             $user->address = $request->address;
             $user->country = $request->country;
-            $user->image = $request->image;
+            // $user->image = $request->image;
             $user->save();
 
             //Upload Image Here
