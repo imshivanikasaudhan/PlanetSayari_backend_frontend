@@ -30,36 +30,42 @@
                 <th class="border-bottom-0">
                   <h6 class="fw-semibold mb-0">View</h6>
                 </th>
-
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td class="border-bottom-0">
-                  <h6 class="fw-semibold mb-1">vishh1422</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-1">Vishal Saraiwal</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <p class="mb-0 fw-normal">vishalsaraiwal68@gmail.com</p>
-                </td>
+              @foreach ($users as $user)    
 
-                <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-0">+91 9876543210</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <h6 class="fw-semibold mb-0 fs-4">Male</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <h6 class="fw-semibold mb-0 fs-4">India</h6>
-                </td>
-                <td class="border-bottom-0">
-                  <div class="d-flex align-items-center gap-2">
-                    <a href="#" target="_blank"> <span class="badge bg-secondary rounded-3 fw-semibold">View</span></a>
-                  </div>
-                </td>
-              </tr>
+              @if ($user->user_type ==1)
+                <tr>
+                  <td class="border-bottom-0">
+                    <h6 class="fw-semibold mb-1">{{ $user->username }}</h6>
+                  </td>
+                  <td class="border-bottom-0">
+                    <h6 class="fw-normal mb-1">{{ $user->full_name }}</h6>
+                  </td>
+                  <td class="border-bottom-0">
+                    <p class="mb-0 fw-normal">{{ $user->email }}</p>
+                  </td>
+  
+                  <td class="border-bottom-0">
+                    <h6 class="fw-normal mb-0">{{ $user->phone }}</h6>
+                  </td>
+                  <td class="border-bottom-0">
+                    <h6 class="fw-semibold mb-0 fs-4">{{ $user->gender }}</h6>
+                  </td>
+                  <td class="border-bottom-0">
+                    <h6 class="fw-semibold mb-0 fs-4">India</h6>
+                  </td>
+                  <td class="border-bottom-0">
+                    <div class="d-flex align-items-center gap-2">
+                      <a href="#" target="_blank"> <span class="badge bg-secondary rounded-3 fw-semibold">View</span></a>
+                    </div>
+                  </td>
+                </tr>
+              @endif
+                          
+              
+              @endforeach
             </tbody>
           </table>
         </div>

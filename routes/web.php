@@ -1,9 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\HelpController;
-use App\Http\Controllers\RequestDealController;
 use App\Http\Controllers\DashboardController;
 use GuzzleHttp\Middleware;
 
@@ -39,6 +38,8 @@ Route::get('/request-deal', [DashboardController::class, 'requestDeal']);
 Route::post('/request-deal', [DashboardController::class, 'requestDealStore']);
 
 Route::get('/deal-status', [DashboardController::class, 'statusDeal']);
+Route::get('/delete/{id}', [DashboardController::class, 'deleteStatusDeal']);
+
 // Route::get('/deal-status', function(){
 //     return view('/deal-status');
 // });
@@ -51,27 +52,35 @@ Route::put('/user-profile', [DashboardController::class, 'userprofile_Update'])-
 // User Dashboard Route End
 
 // Admin Dashborad Route Start
-Route::get('/ps-admin', function (){
-    return view('authentication-login');
-});
+Route::get('/ps-admin', [AdminController::class, 'Adminlogin']);
+
 Route::get('/admin-dashboard', function (){
     return view('admin-dashboard');
 });
 Route::get('/admin-profile', function (){
     return view('admin-profile');
 });
-Route::get('/broker-request-view', function (){
-    return view('admin-broker-request');
-});
-Route::get('/investor-request-view', function (){
-    return view('admin-investor-request');
-});
-Route::get('/admin-investor-data', function (){
-    return view('admin-investor-data');
-});
-Route::get('/admin-broker-data', function (){
-    return view('admin-broker-data');
-});
+// Route::get('/broker-request-view', function (){
+//     return view('admin-broker-request');
+// });
+
+Route::get('/investor-request-view', [AdminController::class, 'AdminInvestorRequest']);
+Route::get('/broker-request-view', [AdminController::class, 'AdminBrokerRequest']);
+Route::get('/admin-investor-data', [AdminController::class, 'AdminInvestorData']);
+Route::get('/admin-broker-data', [AdminController::class, 'AdminBrokerData']);
+
+// Route::get('/investor-request-view', function (){
+//     return view('admin-investor-request');
+// });
+
+// Route::get('/admin-investor-data', function (){
+//     return view('admin-investor-data');
+// });
+
+// Route::get('/admin-broker-data', function (){
+//     return view('admin-broker-data');
+// });
+
 Route::get('/admin-user-query', function (){
     return view('admin-user-query');
 });
@@ -80,6 +89,7 @@ Route::get('/admin-website-contact', function (){
 });
 
 // Admin Dashborad Route End
+
 
 Route::get('/contact', function () {
     return view('/contact');

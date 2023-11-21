@@ -80,6 +80,14 @@ class DashboardController extends Controller
         return view('/deal-status', compact('statusDeal'));
     }
 
+    // Delete Function
+    public function deleteStatusDeal($id){         
+        $DealStatus = Investor::find($id);
+        // dd($DealStatus);
+        $DealStatus->delete();
+        return redirect('/deal-status')->with('status', 'Data Deleted Successfully');
+    }
+
     // Help Contact Form Function 
     public function helpContact(){
         return view('/help-contact');
@@ -152,8 +160,10 @@ class DashboardController extends Controller
             //return with errors
             // return redirect()->route('user-profile');
             return redirect()->route('user-profile')->withErrors($validator)->withInput();
-        }
-        
+        }        
         // dd($request->all());
     }
+
+
+    
 }

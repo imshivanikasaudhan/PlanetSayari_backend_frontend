@@ -590,7 +590,7 @@
                                                 <label for="InputCurrentPass" class="form-label">Current
                                                     Password</label>
                                                 <input type="password" class="form-control" id="InputCurrentPass"
-                                                    aria-describedby="InputCurrentPass">
+                                                    aria-describedby="InputCurrentPass"  value="{{ Auth::user()->password }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
