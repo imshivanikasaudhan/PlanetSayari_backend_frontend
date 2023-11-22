@@ -11,7 +11,7 @@
                                     height="150" class="rounded-circle">
                                 <div class="mt-3">
                                     <h4 class="text fs-10">
-                                        Vishal Saraiwal</h4>
+                                        {{$statusDeal->full_name}}</h4>
                                     <p class="text fs-15">
                                         User Type : <span>Investor</span> </p>
                                     <button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal"
@@ -40,7 +40,6 @@
                                             </button>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>

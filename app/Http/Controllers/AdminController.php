@@ -11,22 +11,38 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
-{
+{   
+    public function PlanetAdminLogin(){
+        return view('authentication-login');
+    }
+    // Admin Login Function
     public function Adminlogin(Request $request){
 
-        // $credentials = [
-        //     'email' => $request->email,
-        //     'password' => $request->password
-        // ];
-        // if (Auth::attempt($credentials)) {
-        //     return redirect('/admin-dashboard')->with('success', 'Login Successfully');
-        // }
-        // dd($request);
+        // Validate Data
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
 
+        if (Auth::attempt($request->only('email', 'password'))) {
+            return redirect('/admin-dashboard');
+        }
+        // dd($request->all());
         // return back()->withErrors(['email' => 'Invalid email or password.']);
-        return redirect('/admin-dashboard')->with('error', 'Username or Password Incorrect');
+        return redirect('/ps-admin')->with('error', 'Email or Password Incorrect');
 
-        return view('authentication-login');
+        // return view('authentication-login');
+    }
+
+    public function registerView(){
+        return view('authentication-register');
+    }
+
+    // Admin Logout Function
+    public function logout(){
+        \Session()::flush();
+        \Auth()::logout();
+        return redirect('');
     }
 
     // Admin Broker Investor Function
@@ -71,9 +87,12 @@ class AdminController extends Controller
 
 
     // User Data Fetch Function
-    public function userData(){
-        // return 'test';
-        return view('\view-investor-data');
+    public function userData($username){
+        $ViewDetail = User::find($username);
+        dd($ViewDetail);
+        $statusDeal = $ViewDetail->statusDeal;
+        // $ContactFormData = DB::select('select * from users');
+        return view('\view-investor-data', compact('statusDeal'));
     }
 
     
