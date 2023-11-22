@@ -68,6 +68,8 @@ Route::get('/investor-request-view', [AdminController::class, 'AdminInvestorRequ
 Route::get('/broker-request-view', [AdminController::class, 'AdminBrokerRequest']);
 Route::get('/admin-investor-data', [AdminController::class, 'AdminInvestorData']);
 Route::get('/admin-broker-data', [AdminController::class, 'AdminBrokerData']);
+Route::get('/admin-user-query', [AdminController::class, 'UserFormData']);
+Route::get('/User-{username}',[AdminController::class, 'userData']);
 
 // Route::get('/investor-request-view', function (){
 //     return view('admin-investor-request');
@@ -81,9 +83,9 @@ Route::get('/admin-broker-data', [AdminController::class, 'AdminBrokerData']);
 //     return view('admin-broker-data');
 // });
 
-Route::get('/admin-user-query', function (){
-    return view('admin-user-query');
-});
+// Route::get('/admin-user-query', function (){
+//     return view('admin-user-query');
+// });
 Route::get('/admin-website-contact', function (){
     return view('admin-website-contact');
 });

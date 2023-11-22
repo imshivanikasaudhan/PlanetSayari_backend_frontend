@@ -8,8 +8,9 @@
         <div class="table-responsive">
           <table class="table text-nowrap mb-0 align-middle">
             <thead class="text-dark fs-4">
+                            
+              
               <tr>
-
                 <th class="border-bottom-0">
                   <h6 class="fw-semibold mb-0">Name</h6>
                 </th>
@@ -28,39 +29,41 @@
                 <th class="border-bottom-0">
                   <h6 class="fw-semibold mb-0">Time</h6>
                 </th>
-                <th class="border-bottom-0">
+                {{-- <th class="border-bottom-0">
                   <h6 class="fw-semibold mb-0">View</h6>
-                </th>
+                </th> --}}
               </tr>
+              
             </thead>
             <tbody>
-             
+            @foreach ($ContactFormData as $FormData)    
               <tr>
                 <td class="border-bottom-0">
-                  <h6 class="fw-semibold mb-1"> Vishal Saraiwal</h6>
+                  <h6 class="fw-semibold mb-1"> {{$FormData->full_name}}</h6>
                 </td>
                 <td class="border-bottom-0">
-                  <p class="mb-0 fw-normal">vishalsaraiwal68@gmail.com</p>
+                  <p class="mb-0 fw-normal">{{$FormData->email}}</p>
                 </td>
 
                 <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-0">+91 9876543210</h6>
+                  <h6 class="fw-normal mb-0">{{$FormData->number}}</h6>
                 </td>
                 <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-0 fs-4">Hello Team</h6>
+                  <h6 class="fw-normal mb-0 fs-4">{{$FormData->message}}</h6>
                 </td>
                 <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-0">02/11/2023</h6>
+                  <h6 class="fw-normal mb-0">{{$FormData->date}}</h6>
                 </td>
                 <td class="border-bottom-0">
-                  <h6 class="fw-normal mb-0">10:30:52</h6>
+                  <h6 class="fw-normal mb-0">{{$FormData->time}}</h6>
                 </td>
-                <td class="border-bottom-0">
+                {{-- <td class="border-bottom-0">
                   <div class="d-flex align-items-center gap-2">
                     <a href="#"><span class="badge bg-success rounded-3 fw-semibold">View</span></a>
                   </div>
-                </td>
+                </td> --}}
               </tr>
+            @endforeach  
             </tbody>
           </table>
         </div>
