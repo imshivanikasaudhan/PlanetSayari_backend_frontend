@@ -51,12 +51,12 @@ Route::get('/user-profile', [DashboardController::class, 'userprofile'])->name('
 Route::put('/user-profile', [DashboardController::class, 'userprofile_Update'])->name('update-profile');
 // User Dashboard Route End
 
-// Admin Dashborad Route Start
-Route::get('/ps-admin', [AdminController::class, 'PlanetAdminLogin'])->name('login');
-Route::post('/ps-admin', [AdminController::class, 'Adminlogin'])->name('login');
+// Admin Dashboard Route Start
+Route::get('/ps-admin', [AdminController::class, 'PlanetAdminLogin']);
+Route::post('/ps-admin', [AdminController::class, 'Adminlogin'])->name('admin-login');
 
-Route::get('/ps-register', [AdminController::class, 'registerView'])->name('register');
-Route::post('/ps-register', [AdminController::class, 'register'])->name('register');
+Route::get('/ps-register', [AdminController::class, 'registerView']);
+Route::post('/ps-register', [AdminController::class, 'register'])->name('admin-register');
 
 
 Route::get('/admin-dashboard', function (){

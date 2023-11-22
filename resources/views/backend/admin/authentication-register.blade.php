@@ -14,11 +14,11 @@
                 <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
                   <img src="backend/assets/images/logos/logo_hori.svg" width="180" alt="">
                 </a>
-                <h2 class="text-center mb-5">Welcome Admin</h2>
+                <h2 class="text-center mb-5">Welcome Admin Register</h2>
                 @if(session('error'))
                   <div class="alert alert-danger">{{session('error')}}</div>
                 @endif
-                <form action="{{route('login')}}" method="POST">
+                <form action="{{route('admin-register')}}" method="POST">
                   @csrf
                   {{-- @method('POST') --}}
                   <div class="mb-3">

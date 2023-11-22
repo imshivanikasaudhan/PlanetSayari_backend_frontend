@@ -18,7 +18,7 @@
                 @if(session('error'))
                   <div class="alert alert-danger">{{session('error')}}</div>
                 @endif
-                <form action="{{route('login')}}" method="POST">
+                <form action="{{route('admin-login')}}" method="POST">
                   @csrf
                   {{-- @method('POST') --}}
                   <div class="mb-3">
