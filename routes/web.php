@@ -52,11 +52,15 @@ Route::put('/user-profile', [DashboardController::class, 'userprofile_Update'])-
 // User Dashboard Route End
 
 // Admin Dashboard Route Start
-Route::get('/ps-admin', [AdminController::class, 'PlanetAdminLogin']);
-Route::post('/ps-admin', [AdminController::class, 'Adminlogin'])->name('admin-login');
+Route::group(['Middleware'=>'guest'], function(){
+    Route::post('/ps-admin', [AdminController::class, 'Adminlogin'])->name('admin-login');
+});
+Route::group(['Middleware'=>'auth'], function(){
+    Route::get('/ps-admin', [AdminController::class, 'PlanetAdminLogin']);
+});
 
 Route::get('/ps-register', [AdminController::class, 'registerView']);
-Route::post('/ps-register', [AdminController::class, 'register'])->name('admin-register');
+Route::post('/ps-register', [AdminController::class, 'AdminRegisterStore'])->name('admin-register');
 
 
 Route::get('/admin-dashboard', function (){

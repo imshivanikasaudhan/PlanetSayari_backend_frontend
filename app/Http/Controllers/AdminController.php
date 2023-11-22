@@ -9,6 +9,7 @@ use App\Models\Usercontact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {   
@@ -36,6 +37,25 @@ class AdminController extends Controller
 
     public function registerView(){
         return view('authentication-register');
+    }
+    public function AdminRegisterStore(Request $request){
+        // Validate Data
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+        // save data
+        Admin::create([
+            'email'=> $request->email,
+            'password'=> Hash::make($request->password),
+        ]);
+        
+        //login user 
+        if (Auth::attempt($request->only('email', 'password'))) {
+            return redirect('/admin-dashboard');
+        }
+        return redirect('/ps-register')->with('error', 'Email or Password Incorrect');
     }
 
     // Admin Logout Function

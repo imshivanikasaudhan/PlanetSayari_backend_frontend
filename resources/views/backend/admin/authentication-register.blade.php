@@ -23,7 +23,7 @@
                   {{-- @method('POST') --}}
                   <div class="mb-3">
                     <label for="InputEmail" class="form-label">Email</label>
-                    <input type="text" class="form-control" id="InputEmail" aria-describedby="emailHelp" name="email" value="">
+                    <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" name="email" value="">
                     @error('email')
                       <div class="text-danger">{{$message}}</div>                              
                     @enderror
@@ -32,6 +32,13 @@
                     <label for="InputPassword" class="form-label">Password</label>
                     <input type="password" class="form-control" id="InputPassword" name="password">
                     @error('password')
+                      <div class="text-danger">{{$message}}</div>                              
+                    @enderror
+                  </div>
+                  <div class="mb-4">
+                    <label for="InputPassword" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" id="InputPassword" name="cpassword">
+                    @error('cpassword')
                       <div class="text-danger">{{$message}}</div>                              
                     @enderror
                   </div>
