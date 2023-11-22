@@ -137,6 +137,9 @@
                     </div>
                 </div>
             </div>
+
+
+
             <div class="container card overflow-hidden">
                 <div class="modal" tabindex="-1">
                 </div>
@@ -219,17 +222,25 @@
                                             <div class="mb-3">
                                                 <label for="inputgender" class="form-label">Gender</label>
                                                 <select name="gender" id="inputgender" class="form-control">
-                                                    @if (Auth::user()->gender == 'Male')
-                                                        <option value="{{ Auth::user()->gender }} ">
-                                                            {{ Auth::user()->gender }} </option>
-                                                        <option value="Female"> Female </option>
-                                                    @else
-                                                        {
-                                                        <option value="{{ Auth::user()->gender }} ">
-                                                            {{ Auth::user()->gender }} </option>
+                                                    @if ((Auth::user()->gender == ''))
+                                                        <option value="Select Gender"> Select Gender </option>
                                                         <option value="Male"> Male </option>
-                                                        }
+                                                        <option value="Female"> Female </option>
+                                                    @else    
+                                                    @if (Auth::user()->gender == 'Male')
+                                                            <option value="{{ Auth::user()->gender }} ">
+                                                                {{ Auth::user()->gender }} </option>
+                                                            <option value="Female"> Female </option>
+                                                    
+                                                        @else
+                                                            {
+                                                            <option value="{{ Auth::user()->gender }} ">
+                                                                {{ Auth::user()->gender }} </option>
+                                                            <option value="Male"> Male </option>
+                                                            }
                                                     @endif
+                                                    @endif
+                                                    
                                                 </select>
                                             </div>
                                         </div>
@@ -269,7 +280,7 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="InputCountry" class="form-label">Country</label>
-                                                <select id="InputCountry" name="country" class="form-control">
+                                                <select id="InputCountry" name="country" class="form-control" required>
                                                     <option value="">Select Country</option>
                                                     <option value="Afghanistan">Afghanistan</option>
                                                     <option value="Åland Islands">Åland Islands</option>

@@ -14,7 +14,7 @@
             <div class="mb-3">
               <label for="Contact_Name" class="form-label">Enter your Name</label>
               <input type="text" class="form-control" id="Contact_Name" aria-describedby="nameHelp"
-                placeholder="Your Full Name" name="name" value="{{old('name')}}">
+                placeholder="Your Full Name" name="name" value="{{Auth::user()->full_name}}">
               @error('name')
               <div class="text-danger">{{$message}}</div>                              
               @enderror
@@ -22,7 +22,7 @@
             <div class="mb-3">
               <label for="Contact_email" class="form-label">Email address</label>
               <input type="email" class="form-control" id="Contact_email" aria-describedby="emailHelp"
-                placeholder="examle@gmail.com" name="email" value="{{old('email')}}">
+                placeholder="examle@gmail.com" name="email" value="{{Auth::user()->email}}">
               @error('email')
                 <div class="text-danger">{{$message}}</div>                  
               @enderror
@@ -31,7 +31,7 @@
             <div class="mb-3">
               <label for="Contact_number" class="form-label">Enter Contact No.</label>
               <input type="number" class="form-control" id="Contact_number" aria-describedby="contactHelp"
-                placeholder="+91 189462030" name="phone" value="{{old('phone')}}">
+                placeholder="+91 189462030" name="phone" value="{{Auth::user()->phone}}">
               @error('phone')
                   <div class="text-danger">{{$message}}</div>
               @enderror
