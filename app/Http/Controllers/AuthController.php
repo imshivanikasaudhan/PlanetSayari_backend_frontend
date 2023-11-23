@@ -74,9 +74,6 @@ class AuthController extends Controller
 
         }
 
-
-
-
         // New Code
         // Validate Data
         // $request->validate([
@@ -99,9 +96,6 @@ class AuthController extends Controller
         //     return redirect('/dashboard');
         // }
         // return redirect('/')->withError('username or email already exist');
-
-
-
 
 
         // dd($request->all());        
@@ -131,4 +125,10 @@ class AuthController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+
+    // Password Forget Function
+    // public function Resetpassword(Request $request){
+    //     $request-validate();
+    // }
 }

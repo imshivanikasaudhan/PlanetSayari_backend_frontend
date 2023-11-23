@@ -38,6 +38,7 @@ class AdminController extends Controller
     public function registerView(){
         return view('authentication-register');
     }
+
     public function AdminRegisterStore(Request $request){
         // Validate Data
         $request->validate([
@@ -107,12 +108,12 @@ class AdminController extends Controller
 
 
     // User Data Fetch Function
-    public function userData($username){
-        $ViewDetail = User::find($username);
-        dd($ViewDetail);
-        $statusDeal = $ViewDetail->statusDeal;
-        // $ContactFormData = DB::select('select * from users');
-        return view('\view-investor-data', compact('statusDeal'));
+    public function userData(){
+        $username = request()->route('username');
+        $userData = User::find($username);
+        // $userData = User::find($username);
+        dd($userData);
+        return view('\view-investor-data', ['userData' => $userData]);
     }
 
     

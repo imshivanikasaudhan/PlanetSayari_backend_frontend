@@ -54,13 +54,19 @@
                       <h6 class="fw-semibold mb-0 fs-4">{{ $user->gender }}</h6>
                     </td>
                     <td class="border-bottom-0">
-                      <h6 class="fw-semibold mb-0 fs-4">India</h6>
+                      <h6 class="fw-semibold mb-0 fs-4">{{ $user->country }}</h6>
                     </td>
+                    {{-- <td class="border-bottom-0">
+                      <div class="d-flex align-items-center gap-2">
+                        <a href="{{url('view-investor-data/'. $user->username) }}"> <span class="badge bg-secondary rounded-3 fw-semibold">View</span></a>
+                      </div>
+                    </td> --}}
                     <td class="border-bottom-0">
                       <div class="d-flex align-items-center gap-2">
-                        <a href="{{url('/User-'.$user->username)}}"> <span class="badge bg-secondary rounded-3 fw-semibold">View</span></a>
+                        {{-- <a href="{{url('view-investor-data/'. $user->username) }}"> <span class="badge bg-secondary rounded-3 fw-semibold">View</span></a> --}}
+                        <a href="{{ route('view-investor-data', ['username' => $user->username]) }}"> <span class="badge bg-secondary rounded-3 fw-semibold">View</span></a>
                       </div>
-                    </td>
+                  </td>
                   </tr>
                 @endif                         
               

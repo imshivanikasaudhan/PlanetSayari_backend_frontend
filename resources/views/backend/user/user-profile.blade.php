@@ -595,20 +595,21 @@
                             <div class="modal-body">
                                 <form method="PUT" action="">
                                     @csrf
+                                    @method('PUT')
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label for="InputCurrentPass" class="form-label">Current
                                                     Password</label>
                                                 <input type="password" class="form-control" id="InputCurrentPass"
-                                                    aria-describedby="InputCurrentPass"  value="{{ Auth::user()->password }}">
+                                                    aria-describedby="InputCurrentPass"  value="" name="CurrentPass">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label for="InputNewPass" class="form-label">New Password</label>
                                                 <input type="password" class="form-control" id="InputNewPass"
-                                                    aria-describedby="InputNewPass">
+                                                    aria-describedby="InputNewPass" name="NewPassword">
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -616,7 +617,7 @@
                                                 <label for="InputConfirmNewPass" class="form-label">New Password
                                                     Confirm</label>
                                                 <input type="password" class="form-control" id="InputConfirmNewPass"
-                                                    aria-describedby="InputConfirmNewPass">
+                                                    aria-describedby="InputConfirmNewPass" name="ConfirmNewPass">
                                             </div>
                                         </div>
                                         <div class="modal-footer">
@@ -625,6 +626,7 @@
                                             <button type="submit" class="btn rounded-pill btn-info">Update
                                                 Password</button>
                                         </div>
+                                    </div>    
                                 </form>
                             </div>
 

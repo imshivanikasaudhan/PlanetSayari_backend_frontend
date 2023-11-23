@@ -7,11 +7,11 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-12 col-md-6 d-flex flex-column align-items-center text-center">
-                                <img src="..\backend\assets\images\profile\user-1.jpg" alt="Customer" width="150"
+                                <img src="\backend\assets\images\profile\user-1.jpg" alt="Customer" width="150"
                                     height="150" class="rounded-circle">
                                 <div class="mt-3">
                                     <h4 class="text fs-10">
-                                        {{$statusDeal->full_name}}</h4>
+                                        {{}}</h4>
                                     <p class="text fs-15">
                                         User Type : <span>Investor</span> </p>
                                     <button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal"

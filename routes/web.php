@@ -49,6 +49,8 @@ Route::post('help-contact', [DashboardController::class, 'helpContactStore']);
 
 Route::get('/user-profile', [DashboardController::class, 'userprofile'])->name('user-profile');
 Route::put('/user-profile', [DashboardController::class, 'userprofile_Update'])->name('update-profile');
+// Route::put('/user-profile', [DashboardController::class, 'password_Update'])->name('update-profile-password');
+
 // User Dashboard Route End
 
 // Admin Dashboard Route Start
@@ -78,7 +80,7 @@ Route::get('/broker-request-view', [AdminController::class, 'AdminBrokerRequest'
 Route::get('/admin-investor-data', [AdminController::class, 'AdminInvestorData']);
 Route::get('/admin-broker-data', [AdminController::class, 'AdminBrokerData']);
 Route::get('/admin-user-query', [AdminController::class, 'UserFormData']);
-Route::get('/User-{username}',[AdminController::class, 'userData']);
+Route::get('/view-investor-data/{username}',[AdminController::class, 'userData']);
 
 // Route::get('/investor-request-view', function (){
 //     return view('admin-investor-request');
