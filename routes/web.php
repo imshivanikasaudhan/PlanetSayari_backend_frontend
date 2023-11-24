@@ -80,7 +80,7 @@ Route::get('/broker-request-view', [AdminController::class, 'AdminBrokerRequest'
 Route::get('/admin-investor-data', [AdminController::class, 'AdminInvestorData']);
 Route::get('/admin-broker-data', [AdminController::class, 'AdminBrokerData']);
 Route::get('/admin-user-query', [AdminController::class, 'UserFormData']);
-Route::get('/view-investor-data/{username}',[AdminController::class, 'userData']);
+Route::get('/User-{id}',[AdminController::class, 'userData']);
 
 // Route::get('/investor-request-view', function (){
 //     return view('admin-investor-request');

@@ -58,7 +58,7 @@
                   </td>
                   <td class="border-bottom-0">
                     <div class="d-flex align-items-center gap-2">
-                      <a href="{{url('/User-'.$user->username)}}"> <span class="badge bg-secondary rounded-3 fw-semibold">View</span></a>
+                      <a href="{{url('/User-'.$user->id)}}"> <span class="badge bg-secondary rounded-3 fw-semibold">View</span></a>
                     </div>
                   </td>
                 </tr>

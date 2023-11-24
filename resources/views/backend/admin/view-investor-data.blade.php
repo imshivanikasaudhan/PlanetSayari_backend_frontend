@@ -11,9 +11,10 @@
                                     height="150" class="rounded-circle">
                                 <div class="mt-3">
                                     <h4 class="text fs-10">
-                                        {{}}</h4>
+                                        {{$userData->username}}</h4>
+                                        </h4>
                                     <p class="text fs-15">
-                                        User Type : <span>Investor</span> </p>
+                                        User Type : <span>Investor {{$userData->user_type}}</span> </p>
                                     <button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal"
                                         data-bs-target="#EditModal">Edit
                                         Profile</button>

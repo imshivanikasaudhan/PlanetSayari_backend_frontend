@@ -25,9 +25,21 @@ class AdminController extends Controller
             'password' => 'required'
         ]);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
-            return redirect('/admin-dashboard');
-        }
+        Admin::where("email", $request->email)->first();
+        return redirect('/admin-dashboard');
+
+        // if($request->user_type == 'ps-admin'){
+        //     Admin::where("email",$request->email)->first();
+        //     return redirect();        
+        // }
+        // else if ($request->user_type == 'user'){
+        //     User::where("email",$request->email)->first();
+        //     return redirect();
+        // }
+        // if (Auth::attempt($request->only('email', 'password'))) {
+        //     return redirect('/admin-dashboard');
+        // }
+        
         // dd($request->all());
         // return back()->withErrors(['email' => 'Invalid email or password.']);
         return redirect('/ps-admin')->with('error', 'Email or Password Incorrect');
@@ -108,12 +120,10 @@ class AdminController extends Controller
 
 
     // User Data Fetch Function
-    public function userData(){
-        $username = request()->route('username');
-        $userData = User::find($username);
-        // $userData = User::find($username);
-        dd($userData);
-        return view('\view-investor-data', ['userData' => $userData]);
+    public function userData($id){
+        $userData = User::find($id);
+        // dd($userData);
+        return view('\view-investor-data', compact('userData'));
     }
 
     

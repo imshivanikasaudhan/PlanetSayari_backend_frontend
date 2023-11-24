@@ -21,6 +21,7 @@
                 <form action="{{route('admin-register')}}" method="POST">
                   @csrf
                   {{-- @method('POST') --}}
+                  <input type="hidden" name="user_type" value="ps-admin">
                   <div class="mb-3">
                     <label for="InputEmail" class="form-label">Email</label>
                     <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" name="email" value="">
