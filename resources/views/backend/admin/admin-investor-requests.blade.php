@@ -47,7 +47,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($InvestorRequest as $RequestData)
+                            @php
+                                $reversedInvestorRequest = array_reverse($InvestorRequest);
+                            @endphp
+                            @foreach($reversedInvestorRequest as $RequestData)
                                 @if ($RequestData->broker_per == null)
                                     <tr>
                                         <td class="border-bottom-0">

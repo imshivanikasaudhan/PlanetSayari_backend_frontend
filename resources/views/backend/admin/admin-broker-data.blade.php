@@ -33,9 +33,11 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($users as $user)    
-
-              @if ($user->user_type ==0)
+              @php 
+              $users = array_reverse($users);
+              @endphp
+              @foreach($users as $user)
+         @if ($user->user_type ==0)
                 <tr>
                   <td class="border-bottom-0">
                     <h6 class="fw-semibold mb-1">{{ $user->username }}</h6>
