@@ -47,7 +47,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($BrokerRequest as $RequestData)
+                            @php
+                                $reversedBrokerRequest = array_reverse($BrokerRequest);
+                            @endphp
+                            @foreach($reversedBrokerRequest as $RequestData)
                                 @if ($RequestData->inst_amt == null)
                                     <tr>
                                         <td class="border-bottom-0">

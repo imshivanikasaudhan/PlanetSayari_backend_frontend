@@ -2,7 +2,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="main-body my-3">
         <div class="row gutters-sm">
-            <div class="col-lg-4 col-md-12 mb-3">
+            <div class="col-lg-12 col-md-12 mb-3">
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
@@ -23,8 +23,9 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
-            <div class="col-lg-8 col-md-12">
+            <div class="col-lg-12 col-md-12">
                 <div class="card mb-3 p-3">
                     <div class="card-body">
                         <div class="row">
@@ -35,7 +36,7 @@
                                         Broker
                                     @else
                                         Investor
-                                    @endif Details
+                                    @endif Deal Request
                                 </h5>
                             </div>
                         </div>
@@ -77,7 +78,7 @@
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">
                                             @if ($requestId->inst_amt == null)
-                                                Broker
+                                            Brokerage
                                             @else
                                                 Investor Amount
                                             @endif
@@ -87,7 +88,7 @@
                                         @if ($requestId->inst_amt == null)
                                             {{$requestId->broker_per}}
                                         @else
-                                            {{$requestId->inst_amt}}
+                                            $ {{$requestId->inst_amt}} Million
                                         @endif
                                     </div>                                        
                                 </div>
