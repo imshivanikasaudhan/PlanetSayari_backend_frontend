@@ -75,8 +75,7 @@
                                         </td>
                                         <td class="border-bottom-0">
                                             <div class="d-flex align-items-center gap-2">
-                                                <a href="#"> <span
-                                                        class="badge bg-secondary rounded-3 fw-semibold">View</span></a>
+                                                <a href="#"> <span class="badge bg-secondary rounded-3 fw-semibold">View</span></a>
                                             </div>
                                         </td>
                                     </tr>

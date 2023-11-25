@@ -99,7 +99,7 @@ class AdminController extends Controller
         $InvestorRequest = Investor::all();
         // Execute a raw SQL query
         $InvestorRequest = DB::select('select * from investor_request');
-        return view('admin-investor-request', compact('InvestorRequest'));
+        return view('admin-investor-requests', compact('InvestorRequest'));
     }
 
     // Admin Broker Request Function
@@ -107,7 +107,7 @@ class AdminController extends Controller
         $BrokerRequest = Investor::all();
         // Execute a raw SQL query
         $BrokerRequest = DB::select('select * from investor_request');
-        return view('admin-broker-request', compact('BrokerRequest'));
+        return view('admin-broker-requests', compact('BrokerRequest'));
     }
 
     // Contact Data Fetch Data Function
@@ -122,8 +122,14 @@ class AdminController extends Controller
     // User Data Fetch Function
     public function userData($id){
         $userData = User::find($id);
-        // dd($userData);
         return view('\view-investor-data', compact('userData'));
+    }
+    // Request Data Fetch Function
+    public function requestView($id){
+        // dd($id);
+        // $requestView = Investor::all();
+        $requestId = Investor::find($id);
+        return view('\view-request', compact('requestId'));
     }
 
     

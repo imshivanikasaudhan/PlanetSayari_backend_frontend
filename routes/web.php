@@ -81,6 +81,7 @@ Route::get('/admin-investor-data', [AdminController::class, 'AdminInvestorData']
 Route::get('/admin-broker-data', [AdminController::class, 'AdminBrokerData']);
 Route::get('/admin-user-query', [AdminController::class, 'UserFormData']);
 Route::get('/User-{id}',[AdminController::class, 'userData']);
+Route::get('/user-request-{id}',[AdminController::class, 'requestView']);
 
 // Route::get('/investor-request-view', function (){
 //     return view('admin-investor-request');

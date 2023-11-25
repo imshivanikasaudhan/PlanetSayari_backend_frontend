@@ -126,7 +126,6 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-
     // Password Forget Function
     // public function Resetpassword(Request $request){
     //     $request-validate();

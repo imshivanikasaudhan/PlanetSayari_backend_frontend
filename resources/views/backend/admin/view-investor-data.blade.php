@@ -14,8 +14,10 @@
                                         {{$userData->username}}</h4>
                                         </h4>
                                     <p class="text fs-15">
-                                        User Type : <span>Investor {{$userData->user_type}}</span> </p>
-                                    <button type="button" class="btn rounded-pill btn-info" data-bs-toggle="modal"
+                                        User Type : <span> @if ($userData == 0)
+                                            
+                                        @endif Investor {{$userData->user_type}}</span> </p>
+                                    <button type="submit" class="btn rounded-pill btn-info" data-bs-toggle="modal"
                                         data-bs-target="#EditModal">Edit
                                         Profile</button>
                                 </div>
@@ -63,28 +65,28 @@
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        Vishal Saraiwal</div>
+                                        {{$userData->full_name}}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        vishalsaraiwal68@gmail.com </div>
+                                        {{$userData->email}}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Contact No</Address>
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        +91 9193378534</div>
+                                        {{$userData->phone}}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Gender</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        Male </div>
+                                        {{$userData->gender}} </div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Skype</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        @vishalsaraiwal </div>
+                                        {{$userData->skype}} </div>
                                 </div>
                             </div>
                         </div>
@@ -98,23 +100,23 @@
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        OC 827-830, 8th floor, Gaur City centre, Greater Noida West, Uttar Pradesh</div>
+                                        {{$userData->address}}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">City</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        Noida </div>
+                                        {{$userData->city}} </div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Pincode</Address>
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        201301</div>
+                                        {{$userData->pin}}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Country</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        India </div>
+                                        {{$userData->country}} </div>
                                 </div>
                             </div>
                         </div>
