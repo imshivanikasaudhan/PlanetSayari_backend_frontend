@@ -75,10 +75,10 @@ Route::get('/admin-profile', function (){
 //     return view('admin-broker-request');
 // });
 
-Route::get('/investor-request-view', [AdminController::class, 'AdminInvestorRequest']);
-Route::get('/broker-request-view', [AdminController::class, 'AdminBrokerRequest']);
-Route::get('/admin-investor-data', [AdminController::class, 'AdminInvestorData']);
-Route::get('/admin-broker-data', [AdminController::class, 'AdminBrokerData']);
+Route::get('/user-investor-request', [AdminController::class, 'AdminInvestorRequest']);
+Route::get('/user-broker-request', [AdminController::class, 'AdminBrokerRequest']);
+Route::get('/user-investor-data', [AdminController::class, 'AdminInvestorData']);
+Route::get('/user-broker-data', [AdminController::class, 'AdminBrokerData']);
 Route::get('/admin-user-query', [AdminController::class, 'UserFormData']);
 Route::get('/User-{id}',[AdminController::class, 'userData']);
 Route::get('/user-request-{id}',[AdminController::class, 'requestView']);

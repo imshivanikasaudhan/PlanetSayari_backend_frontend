@@ -58,12 +58,12 @@
                                         </h6>
                                     </div>                                    
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{$requestId->gender}} </div>
+                                        {{$requestId->phone}} </div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Skype</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{$requestId->skype}} </div>
+                                        {{$requestId->skypeid}} </div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Address</h6>
                                     </div>

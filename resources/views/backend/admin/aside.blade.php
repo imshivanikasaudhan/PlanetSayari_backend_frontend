@@ -36,7 +36,7 @@
               <span class="hide-menu">User Data</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{{asset('../admin-investor-data')}}" aria-expanded="false">
+              <a class="sidebar-link" href="{{asset('../user-investor-data')}}" aria-expanded="false">
                 <span>
                 <i class="ti ti-clipboard-data"></i>
                 </span>
@@ -44,7 +44,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{{asset('../admin-broker-data')}}" aria-expanded="false">
+              <a class="sidebar-link" href="{{asset('../user-broker-data')}}" aria-expanded="false">
                 <span>
                 <i class="ti ti-file-database"></i>
                 </span>
@@ -56,7 +56,7 @@
               <span class="hide-menu">User Request</span>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{{asset('../investor-request-view')}}" aria-expanded="false">
+              <a class="sidebar-link" href="{{asset('../user-investor-request')}}" aria-expanded="false">
                 <span>
                 <i class="ti ti-report"></i>
                 </span>
@@ -64,7 +64,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{{asset('../broker-request-view')}}" aria-expanded="false">
+              <a class="sidebar-link" href="{{asset('../user-broker-request')}}" aria-expanded="false">
                 <span>
                 <i class="ti ti-report"></i>
                 </span>

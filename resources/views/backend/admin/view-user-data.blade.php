@@ -59,7 +59,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-sm-8">
-                                <h5 style="color:black">Personal Details</h5>
+                                <h5 style="color:black">
+                                    @if ($userData->user_type == 0)
+                                        <span>Broker Details</span> 
+                                    @else
+                                        <span>Investor Details</span> 
+                                    @endif 
+                                </h5>
                             </div>
                         </div>
                         <div class="col">
