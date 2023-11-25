@@ -25,8 +25,17 @@ class AdminController extends Controller
             'password' => 'required'
         ]);
 
-        Admin::where("email", $request->email)->first();
-        return redirect('/admin-dashboard');
+        // Admin::where("email", $request->email && "password" , $request->email)->first();
+        // return redirect('/admin-dashboard');
+
+        $admin = Admin::where('email', $request->email)->first();
+
+        if ($admin && md5($request->password, $admin->password)) {
+            return redirect('/admin-dashboard');
+        } else {
+            // return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
+            return redirect('/ps-admin')->with('error', 'Email or Password Incorrect');
+        }
 
         // if($request->user_type == 'ps-admin'){
         //     Admin::where("email",$request->email)->first();
@@ -42,8 +51,8 @@ class AdminController extends Controller
         
         // dd($request->all());
         // return back()->withErrors(['email' => 'Invalid email or password.']);
+        
         return redirect('/ps-admin')->with('error', 'Email or Password Incorrect');
-
         // return view('authentication-login');
     }
 
