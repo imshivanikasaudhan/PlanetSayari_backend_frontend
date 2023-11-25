@@ -149,7 +149,9 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="POST">
+                                <form method="POST" action="">
+                                    @csrf
+                                    @method('PUT')
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
@@ -164,14 +166,14 @@
                                             <div class="mb-3">
                                                 <label for="inputname" class="form-label">Name</label>
                                                 <input type="text" class="form-control" id="inputname"
-                                                    aria-describedby="inputname">
+                                                    aria-describedby="inputname" value="{{$userData->full_name}}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="inputemail" class="form-label">Email</label>
                                                 <input type="Email" class="form-control" id="inputemail"
-                                                    aria-describedby="inputemail">
+                                                    aria-describedby="inputemail" value="{{$userData->email}}">
                                             </div>
                                         </div>
                                     </div>
@@ -180,17 +182,32 @@
                                             <div class="mb-3">
                                                 <label for="inputcontact" class="form-label">Contact Number</label>
                                                 <input type="number" class="form-control" id="inputcontact"
-                                                    aria-describedby="inputcontact">
+                                                    aria-describedby="inputcontact" value="{{$userData->phone}}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="inputgender" class="form-label">Gender</label>
-                                                <select name="inputgender" id="" class="form-control">
-                                                    <option selected>Select Gender</option>
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
-                                                </select>
+                                                <select name="gender" id="inputgender" class="form-control">
+                                                    @if (($userData->gender == ''))
+                                                        <option value="Select Gender"> Select Gender </option>
+                                                        <option value="Male"> Male </option>
+                                                        <option value="Female"> Female </option>
+                                                    @else    
+                                                    @if ($userData->gender == 'Male')
+                                                            <option value="{{ $userData->gender }} ">
+                                                                {{ $userData->gender }} </option>
+                                                            <option value="Female"> Female </option>
+                                                    
+                                                        @else
+                                                            {
+                                                            <option value="{{ $userData->gender }} ">
+                                                                {{ $userData->gender }} </option>
+                                                            <option value="Male"> Male </option>
+                                                            }
+                                                    @endif
+                                                    @endif                                                    
+                                                </select>                                                
                                             </div>
                                         </div>
                                     </div>
@@ -198,13 +215,13 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="InputSkpye" class="form-label">Skype</label>
-                                                <input type="text" class="form-control" id="InputSkpye">
+                                                <input type="text" class="form-control" id="InputSkpye" value="{{ $userData->skype }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="InputCity" class="form-label">City</label>
-                                                <input type="text" class="form-control" id="InputCity">
+                                                <input type="text" class="form-control" id="InputCity" value="{{ $userData->city }}">
                                             </div>
                                         </div>
                                     </div>
@@ -212,7 +229,7 @@
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label for="InputAddress" class="form-label">Full Address</label>
-                                                <textarea name="InputAddress" id="" rows="3" class="form-control"></textarea>
+                                                <textarea name="InputAddress" id="" rows="3" class="form-control">{{ $userData->address }}</textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -221,13 +238,13 @@
                                             <div class="mb-3">
                                                 <label for="InputPincode" class="form-label">Pincode</label>
                                                 <input type="number" class="form-control" id="InputPincode"
-                                                    maxlength="6">
+                                                    maxlength="6" value="{{ $userData->pin }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="InputCountry" class="form-label">Country</label>
-                                                <select id="InputCountry" name="InputCountry" class="form-control">
+                                                <select id="InputCountry" name="InputCountry" class="form-control" required>
                                                     <option selected>Select Country</option>
                                                     <option value="Afghanistan">Afghanistan</option>
                                                     <option value="Åland Islands">Åland Islands</option>
@@ -509,14 +526,14 @@
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn rounded-pill btn-dark"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn rounded-pill btn-info">Update changes</button>
+                                    </div>
                                 </form>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn rounded-pill btn-dark"
-                                    data-bs-dismiss="modal">Cancel</button>
-                                <button type="button" class="btn rounded-pill btn-info">Update changes</button>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

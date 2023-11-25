@@ -25,17 +25,8 @@ class AdminController extends Controller
             'password' => 'required'
         ]);
 
-        // Admin::where("email", $request->email && "password" , $request->email)->first();
-        // return redirect('/admin-dashboard');
-
-        $admin = Admin::where('email', $request->email)->first();
-
-        if ($admin && md5($request->password, $admin->password)) {
-            return redirect('/admin-dashboard');
-        } else {
-            // return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
-            return redirect('/ps-admin')->with('error', 'Email or Password Incorrect');
-        }
+        Admin::where("email", $request->email AND "password", $request->password)->first();
+        return redirect('/admin-dashboard');
 
         // if($request->user_type == 'ps-admin'){
         //     Admin::where("email",$request->email)->first();
@@ -51,8 +42,8 @@ class AdminController extends Controller
         
         // dd($request->all());
         // return back()->withErrors(['email' => 'Invalid email or password.']);
-        
         return redirect('/ps-admin')->with('error', 'Email or Password Incorrect');
+
         // return view('authentication-login');
     }
 
@@ -107,15 +98,14 @@ class AdminController extends Controller
     public function AdminInvestorRequest(){
         $InvestorRequest = Investor::all();
         // Execute a raw SQL query
-        $InvestorRequest = DB::select('select * from investor_request');
+        $InvestorRequest = DB::select('select *, DATE(created_at) AS date, TIME(created_at) As time from investor_request ');
         return view('admin-investor-requests', compact('InvestorRequest'));
     }
-
     // Admin Broker Request Function
     public function AdminBrokerRequest(){
         $BrokerRequest = Investor::all();
         // Execute a raw SQL query
-        $BrokerRequest = DB::select('select * from investor_request');
+        $BrokerRequest = DB::select('select *, DATE(created_at) AS date, TIME(created_at) As time from investor_request');
         return view('admin-broker-requests', compact('BrokerRequest'));
     }
 
@@ -131,6 +121,12 @@ class AdminController extends Controller
     // User Data Fetch Function
     public function userData($id){
         $userData = User::find($id);
+        return view('\view-user-data', compact('userData'));
+    }
+    // User Data Fetch Update Function
+    public function userDataUpate($id){
+        $userData = User::find($id);
+        dd($userData);
         return view('\view-user-data', compact('userData'));
     }
     // Request Data Fetch Function
