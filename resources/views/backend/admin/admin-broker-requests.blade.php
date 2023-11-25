@@ -31,15 +31,12 @@
                                 <th class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">Broker Percent</h6>
                                 </th>
-                                <!-- <th class="border-bottom-0">
-                  <h6 class="fw-semibold mb-0">Documents</h6>
-                </th>
-                <th class="border-bottom-0">
-                  <h6 class="fw-semibold mb-0">Date of Request</h6>
-                </th>
-                <th class="border-bottom-0">
-                  <h6 class="fw-semibold mb-0">Time of Request</h6>
-                </th> -->
+                                <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Date</h6>
+                                  </th>
+                                  <th class="border-bottom-0">
+                                    <h6 class="fw-semibold mb-0">Time</h6>
+                                  </th>
                                 <th class="border-bottom-0">
                                     <h6 class="fw-semibold mb-0">View</h6>
                                 </th>
@@ -76,6 +73,12 @@
                                         <td class="border-bottom-0">
                                             <h6 class="fw-semibold mb-0 fs-4">{{ $RequestData->broker_per }}</h6>
                                         </td>
+                                        <td class="border-bottom-0">
+                                            <h6 class="fw-normal mb-0">{{$RequestData->date}}</h6>
+                                          </td>
+                                          <td class="border-bottom-0">
+                                            <h6 class="fw-normal mb-0">{{$RequestData->time}}</h6>
+                                          </td>
                                         <td class="border-bottom-0">
                                             <div class="d-flex align-items-center gap-2">
                                                 <a href="{{url('/user-request-'. $RequestData->id)}}"> <span class="badge bg-secondary rounded-3 fw-semibold">View</span></a>
