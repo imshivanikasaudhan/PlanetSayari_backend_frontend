@@ -14,9 +14,13 @@
                                         {{$userData->username}}</h4>
                                         </h4>
                                     <p class="text fs-15">
-                                        User Type : <span> @if ($userData == 0)
-                                            
-                                        @endif Investor {{$userData->user_type}}</span> </p>
+                                        User Type :   
+                                            @if ($userData->user_type == 0)
+                                             <span>Broker </span> 
+                                            @else
+                                        <span>  Investor </span> 
+                                            @endif    
+                                    </p>
                                     <button type="submit" class="btn rounded-pill btn-info" data-bs-toggle="modal"
                                         data-bs-target="#EditModal">Edit
                                         Profile</button>
