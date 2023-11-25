@@ -122,7 +122,7 @@ class AdminController extends Controller
     // User Data Fetch Function
     public function userData($id){
         $userData = User::find($id);
-        return view('\view-investor-data', compact('userData'));
+        return view('\view-user-data', compact('userData'));
     }
     // Request Data Fetch Function
     public function requestView($id){
