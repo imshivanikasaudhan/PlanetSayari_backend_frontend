@@ -17,6 +17,9 @@ class DashboardController extends Controller
     // Dashboard Function
     public function dashboard(){
         $user = Auth::user();
+        if($user == null){
+            return redirect('/');
+        }
         $statusDeal = $user->statusDeal;
         return view('/dashboard', compact('statusDeal'));
 
@@ -76,6 +79,9 @@ class DashboardController extends Controller
     // Deal Status Function
     public function statusDeal(){
         $user = Auth::user();
+        if($user == null){
+            return redirect('/');
+        }
         $statusDeal = $user->statusDeal;
         return view('/deal-status', compact('statusDeal'));
     }
@@ -101,9 +107,6 @@ class DashboardController extends Controller
         $userContact->message = $request->Contact_Message; 
 
         $userContact->save();
-        //for debug
-        // dd($request->all());
-
         //for redirection
         return back()->with('Success', 'Form Submitted Successfully');
     }

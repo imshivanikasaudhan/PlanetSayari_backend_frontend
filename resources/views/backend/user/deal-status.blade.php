@@ -92,10 +92,21 @@
                                     <td class="border-bottom-0">
                                         <h6 class="fw-normal mb-0">{{ $Status->country }}</h6>
                                     </td>
-                                    <td class="border-bottom-0">
-                                        <div class="d-flex align-items-center gap-2">
-                                            <span class="badge bg-success rounded-3 fw-semibold">In Touch</span>
-                                        </div>
+                                    <td class="border-bottom-0">                                        
+                                        @if ($Status->status == 'pending')
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="badge bg-warning rounded-3 fw-semibold">Pending</span>
+                                            </div>
+                                       
+                                        @elseif($Status->status == 'processing')                                            
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="badge bg-info rounded-3 fw-semibold">processing</span>
+                                            </div> 
+                                        @else
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span class="badge bg-success rounded-3 fw-semibold">Verified</span>
+                                            </div>                                           
+                                        @endif
                                     </td>
                                     <td class="border-bottom-0">
                                         <div class="d-flex align-items-center gap-2">
