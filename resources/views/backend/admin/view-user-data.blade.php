@@ -24,7 +24,8 @@
                                     <button type="submit" class="btn rounded-pill btn-info" data-bs-toggle="modal"
                                         data-bs-target="#EditModal">Edit
                                         Profile</button>
-                                    <button type="submit" class="btn rounded-pill btn-success">Activate</button>
+                                    <a href="user-{{$userData->id}}" class="btn rounded-pill btn-{{$userData->status ? 'success' : 'danger'}}">{{$userData->status ? 'Activate' : 'Deactivate'}}</a>    
+                                    {{-- <button type="submit" class="btn rounded-pill btn-success">Activate</button> --}}
                                 </div>
                             </div>
                             <div class="col-lg-12 col-md-6 my-3">

@@ -16,6 +16,7 @@ class AdminController extends Controller
     public function PlanetAdminLogin(){
         return view('authentication-login');
     }
+    
     // Admin Login Function
     public function Adminlogin(Request $request){
 
@@ -25,12 +26,12 @@ class AdminController extends Controller
             'password' => 'required'
         ]);
 
-        Admin::where("email", $request->email AND "password", $request->password)->first();
+        Admin::where("email", $request->email)->where("password", $request->password)->first();
         return redirect('/admin-dashboard');
 
         // if($request->user_type == 'ps-admin'){
-        //     Admin::where("email",$request->email)->first();
-        //     return redirect();        
+        //     Admin::where("email",$request->email)->where("password", $request->password)->first();
+        //     return redirect('/admin-dashboard');        
         // }
         // else if ($request->user_type == 'user'){
         //     User::where("email",$request->email)->first();
@@ -123,18 +124,35 @@ class AdminController extends Controller
         $userData = User::find($id);
         return view('\view-user-data', compact('userData'));
     }
+
+    // testing active or deactivate
+    public function userDataUpdate($id){
+        $userData = User::find($id);
+
+    }
     // User Data Fetch Update Function
     public function userDataUpate($id){
         $userData = User::find($id);
-        dd($userData);
+        // dd($userData);
         return view('\view-user-data', compact('userData'));
     }
+
     // Request Data Fetch Function
     public function requestView($id){
         // dd($id);
         // $requestView = Investor::all();
         $requestId = Investor::find($id);
         return view('\view-request', compact('requestId'));
+    }
+
+    // Request Data Status Update Function
+    public function requestViewUpdate(Request $request){
+        //NOTE:- 'request_id' field is coming from user profile form from input field. 
+        $requestData = Investor::find($request->request_id);
+        $requestData->status = $request->status;
+        $requestData->save();
+        //for redirection
+        return back()->with('Success', 'Form Submitted Successfully');
     }
 
     

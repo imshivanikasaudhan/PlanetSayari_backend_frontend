@@ -93,12 +93,12 @@
                                         <h6 class="fw-normal mb-0">{{ $Status->country }}</h6>
                                     </td>
                                     <td class="border-bottom-0">                                        
-                                        @if ($Status->status == 'pending')
+                                        @if ($Status->status == 'Pending')
                                             <div class="d-flex align-items-center gap-2">
                                                 <span class="badge bg-warning rounded-3 fw-semibold">Pending</span>
                                             </div>
                                        
-                                        @elseif($Status->status == 'processing')                                            
+                                        @elseif($Status->status == 'Processing')                                            
                                             <div class="d-flex align-items-center gap-2">
                                                 <span class="badge bg-info rounded-3 fw-semibold">processing</span>
                                             </div> 
