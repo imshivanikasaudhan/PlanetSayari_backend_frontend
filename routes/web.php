@@ -85,8 +85,8 @@ Route::get('/user-investor-data', [AdminController::class, 'AdminInvestorData'])
 Route::get('/user-broker-data', [AdminController::class, 'AdminBrokerData']);
 Route::get('/admin-user-query', [AdminController::class, 'UserFormData']);
 Route::get('/User-{id}',[AdminController::class, 'userData']);
-Route::get('/user-{id}',[AdminController::class, 'userDataUpdate']);
-Route::put('/User-{id}',[AdminController::class, 'userDataUpate']);
+// Route::get('/user-{id}',[AdminController::class, 'userDataUpdate']);
+Route::put('/User-{id}',[AdminController::class, 'userDataUpdate']);
 Route::get('/user-request-{id}',[AdminController::class, 'requestView']);
 
 // testing for activate or deactivate account

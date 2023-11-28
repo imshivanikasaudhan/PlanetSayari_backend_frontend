@@ -138,7 +138,7 @@ class AdminController extends Controller
     }
 
     // User Data Fetch Update Function
-    public function userDataUpate($id){
+    public function userDataUpdate($id){
         $userData = User::find($id);
         // dd($userData);
         return view('\view-user-data', compact('userData'));
