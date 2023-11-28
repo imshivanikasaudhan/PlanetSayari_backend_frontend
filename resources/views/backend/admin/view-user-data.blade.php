@@ -6,25 +6,45 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
+                            @if (session('success'))
+                                <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                    <strong>{{ session('success') }}</strong> 
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                {{-- <div class="alert alert-info" role="alert">{{ session('success') }}</div> --}}
+                            @endif
                             <div class="col-lg-12 col-md-6 d-flex flex-column align-items-center text-center">
                                 <img src="\backend\assets\images\profile\user-1.jpg" alt="Customer" width="150"
                                     height="150" class="rounded-circle">
                                 <div class="mt-3">
                                     <h4 class="text fs-10">
-                                        {{$userData->username}}</h4>
-                                        </h4>
+                                        {{ $userData->username }}</h4>
+                                    </h4>
                                     <p class="text fs-15">
-                                        User Type :   
-                                            @if ($userData->user_type == 0)
-                                             <span>Broker </span> 
-                                            @else
-                                        <span>  Investor </span> 
-                                            @endif    
+                                        User Type :
+                                        @if ($userData->user_type == 0)
+                                            <span>Broker </span>
+                                        @else
+                                            <span> Investor </span>
+                                        @endif
                                     </p>
                                     <button type="submit" class="btn rounded-pill btn-info" data-bs-toggle="modal"
                                         data-bs-target="#EditModal">Edit
                                         Profile</button>
-                                    <a href="user-{{$userData->id}}" class="btn rounded-pill btn-{{$userData->status ? 'success' : 'danger'}}">{{$userData->status ? 'Activate' : 'Deactivate'}}</a>    
+
+                                    
+                                    @if ($userData->status == 'active')
+                                        <a href="{{ route('deactivate.account', $userData->id) }}"
+                                            class="btn rounded-pill btn-danger">Deactivate</a>
+                                    @else
+                                        <a href="{{ route('activate.account', $userData->id) }}"
+                                            class="btn rounded-pill btn-success">Activate</a>
+                                    @endif
+
+                                    {{-- <a href="{{ route('deactivate.account', $userData->id) }}" class="btn rounded-pill btn-danger">Deactivate</a> --}}
+
+                                    {{-- <a href="{{ route('activate.account', $userData->id) }}" class="btn rounded-pill btn-{{ $userData->status ? 'success' : 'danger' }}">{{ $userData->status ? 'Activate' : 'Deactivate' }}</a> --}}
+                                    {{-- <a href="user-{{ $userData->id }}" class="btn rounded-pill btn-{{ $userData->status ? 'success' : 'danger' }}">{{ $userData->status ? 'Activate' : 'Deactivate' }}</a> --}}
                                     {{-- <button type="submit" class="btn rounded-pill btn-success">Activate</button> --}}
                                 </div>
                             </div>
@@ -62,10 +82,10 @@
                             <div class="col-sm-8">
                                 <h5 style="color:black">
                                     @if ($userData->user_type == 0)
-                                        <span>Broker Details</span> 
+                                        <span>Broker Details</span>
                                     @else
-                                        <span>Investor Details</span> 
-                                    @endif 
+                                        <span>Investor Details</span>
+                                    @endif
                                 </h5>
                             </div>
                         </div>
@@ -77,28 +97,28 @@
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{$userData->full_name}}</div>
+                                        {{ $userData->full_name }}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Email</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{$userData->email}}</div>
+                                        {{ $userData->email }}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Contact No</Address>
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{$userData->phone}}</div>
+                                        {{ $userData->phone }}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Gender</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{$userData->gender}} </div>
+                                        {{ $userData->gender }} </div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Skype</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{$userData->skype}} </div>
+                                        {{ $userData->skype }} </div>
                                 </div>
                             </div>
                         </div>
@@ -112,23 +132,23 @@
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{$userData->address}}</div>
+                                        {{ $userData->address }}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">City</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{$userData->city}} </div>
+                                        {{ $userData->city }} </div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Pincode</Address>
                                         </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{$userData->pin}}</div>
+                                        {{ $userData->pin }}</div>
                                     <div class="col-sm-3 mb-2">
                                         <h6 class="mb-0">Country</h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary mb-2">
-                                        {{$userData->country}} </div>
+                                        {{ $userData->country }} </div>
                                 </div>
                             </div>
                         </div>
@@ -167,14 +187,14 @@
                                             <div class="mb-3">
                                                 <label for="inputname" class="form-label">Name</label>
                                                 <input type="text" class="form-control" id="inputname"
-                                                    aria-describedby="inputname" value="{{$userData->full_name}}">
+                                                    aria-describedby="inputname" value="{{ $userData->full_name }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="inputemail" class="form-label">Email</label>
                                                 <input type="Email" class="form-control" id="inputemail"
-                                                    aria-describedby="inputemail" value="{{$userData->email}}">
+                                                    aria-describedby="inputemail" value="{{ $userData->email }}">
                                             </div>
                                         </div>
                                     </div>
@@ -183,32 +203,31 @@
                                             <div class="mb-3">
                                                 <label for="inputcontact" class="form-label">Contact Number</label>
                                                 <input type="number" class="form-control" id="inputcontact"
-                                                    aria-describedby="inputcontact" value="{{$userData->phone}}">
+                                                    aria-describedby="inputcontact" value="{{ $userData->phone }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="inputgender" class="form-label">Gender</label>
                                                 <select name="gender" id="inputgender" class="form-control">
-                                                    @if (($userData->gender == ''))
+                                                    @if ($userData->gender == '')
                                                         <option value="Select Gender"> Select Gender </option>
                                                         <option value="Male"> Male </option>
                                                         <option value="Female"> Female </option>
-                                                    @else    
-                                                    @if ($userData->gender == 'Male')
+                                                    @else
+                                                        @if ($userData->gender == 'Male')
                                                             <option value="{{ $userData->gender }} ">
                                                                 {{ $userData->gender }} </option>
                                                             <option value="Female"> Female </option>
-                                                    
                                                         @else
                                                             {
                                                             <option value="{{ $userData->gender }} ">
                                                                 {{ $userData->gender }} </option>
                                                             <option value="Male"> Male </option>
                                                             }
+                                                        @endif
                                                     @endif
-                                                    @endif                                                    
-                                                </select>                                                
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -216,13 +235,15 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="InputSkpye" class="form-label">Skype</label>
-                                                <input type="text" class="form-control" id="InputSkpye" value="{{ $userData->skype }}">
+                                                <input type="text" class="form-control" id="InputSkpye"
+                                                    value="{{ $userData->skype }}">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="InputCity" class="form-label">City</label>
-                                                <input type="text" class="form-control" id="InputCity" value="{{ $userData->city }}">
+                                                <input type="text" class="form-control" id="InputCity"
+                                                    value="{{ $userData->city }}">
                                             </div>
                                         </div>
                                     </div>
@@ -245,7 +266,8 @@
                                         <div class="col-lg-6">
                                             <div class="mb-3">
                                                 <label for="InputCountry" class="form-label">Country</label>
-                                                <select id="InputCountry" name="InputCountry" class="form-control" required>
+                                                <select id="InputCountry" name="InputCountry" class="form-control"
+                                                    required>
                                                     <option selected>Select Country</option>
                                                     <option value="Afghanistan">Afghanistan</option>
                                                     <option value="Åland Islands">Åland Islands</option>
@@ -530,11 +552,12 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn rounded-pill btn-dark"
                                             data-bs-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="btn rounded-pill btn-info">Update changes</button>
+                                        <button type="submit" class="btn rounded-pill btn-info">Update
+                                            changes</button>
                                     </div>
                                 </form>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

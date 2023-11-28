@@ -125,11 +125,18 @@ class AdminController extends Controller
         return view('\view-user-data', compact('userData'));
     }
 
-    // testing active or deactivate
-    public function userDataUpdate($id){
-        $userData = User::find($id);
-
+    // Active or Deactivate User    
+    public function activateAccount(User $user)    {
+        $user->status = 'active';
+        $user->save();
+        return redirect()->back()->with('success', 'Account Activated Successfully.');
     }
+    public function deactivateAccount(User $user){
+        $user->status = 'inactive';
+        $user->save();
+        return redirect()->back()->with('success', 'Account Deactivated Successfully.');
+    }
+
     // User Data Fetch Update Function
     public function userDataUpate($id){
         $userData = User::find($id);

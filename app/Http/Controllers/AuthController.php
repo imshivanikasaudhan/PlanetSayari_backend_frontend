@@ -28,15 +28,30 @@ class AuthController extends Controller
         // return "this is dashborad";
 
         // login code here
-        $credentials = [
-            'username' => $request->username,
-            'password' => $request->password
-        ];
+        // $credentials = [
+        //     'username' => $request->username,
+        //     'password' => $request->password
+        // ];
+
+        // login code here
+        $credentials = $request->only('username', 'password');
+
         if (Auth::attempt($credentials)) {
-            return redirect('/dashboard')->with('success', 'Login Successfully');
+            $user = Auth::user();
+            if ($user->status === 'active') {
+                // User is active, log them in
+                // return $this->authenticated($request, $user);
+                return redirect('/dashboard');
+            } else {
+                // User is inactive, display error message
+                return redirect()
+                    ->to('/')
+                    // ->withErrors('error', 'Your account is inactive.');
+                    ->with('error', 'Your Account is Inactive.');
+            }
         }
 
-        // return back()->withErrors(['email' => 'Invalid email or password.']);
+        // Credentials are invalid
         return redirect('/')->with('error', 'Username or Password Incorrect');
     }
 

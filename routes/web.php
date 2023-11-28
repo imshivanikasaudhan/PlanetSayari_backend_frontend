@@ -51,6 +51,10 @@ Route::get('/user-profile', [DashboardController::class, 'userprofile'])->name('
 Route::put('/user-profile', [DashboardController::class, 'userprofile_Update'])->name('update-profile');
 // Route::put('/user-profile', [DashboardController::class, 'password_Update'])->name('update-profile-password');
 
+// testing for password change
+Route::post('/change-password', [DashboardController::class, 'changePassword'])->name('change-password');
+
+
 // User Dashboard Route End
 
 // Admin Dashboard Route Start
@@ -84,7 +88,13 @@ Route::get('/User-{id}',[AdminController::class, 'userData']);
 Route::get('/user-{id}',[AdminController::class, 'userDataUpdate']);
 Route::put('/User-{id}',[AdminController::class, 'userDataUpate']);
 Route::get('/user-request-{id}',[AdminController::class, 'requestView']);
+
+// testing for activate or deactivate account
 Route::put('/user-request-{id}',[AdminController::class, 'requestViewUpdate']);
+
+Route::get('/activate/{user}', [AdminController::class, 'activateAccount'])->name('activate.account');
+Route::get('/deactivate/{user}', [AdminController::class, 'deactivateAccount'])->name('deactivate.account');
+
 
 // Route::get('/investor-request-view', function (){
 //     return view('admin-investor-request');

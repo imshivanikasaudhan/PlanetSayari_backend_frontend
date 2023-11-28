@@ -593,31 +593,28 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form method="PUT" action="">
+                                <form method="POST" action="{{ route('change-password') }}">
                                     @csrf
-                                    @method('PUT')
+                                    {{-- @method('PUT') --}}
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
-                                                <label for="InputCurrentPass" class="form-label">Current
+                                                <label for="current_password" class="form-label">Current
                                                     Password</label>
-                                                <input type="password" class="form-control" id="InputCurrentPass"
-                                                    aria-describedby="InputCurrentPass"  value="" name="CurrentPass">
+                                                <input type="password" class="form-control" id="current_password" value="" name="current_password" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="mb-3">
-                                                <label for="InputNewPass" class="form-label">New Password</label>
-                                                <input type="password" class="form-control" id="InputNewPass"
-                                                    aria-describedby="InputNewPass" name="NewPassword">
+                                                <label for="new_password" class="form-label">New Password</label>
+                                                <input type="password" class="form-control" id="new_password" name="new_password" required>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="mb-3">
-                                                <label for="InputConfirmNewPass" class="form-label">New Password
+                                                <label for="new_password_confirmation" class="form-label">New Password
                                                     Confirm</label>
-                                                <input type="password" class="form-control" id="InputConfirmNewPass"
-                                                    aria-describedby="InputConfirmNewPass" name="ConfirmNewPass">
+                                                <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation" required>
                                             </div>
                                         </div>
                                         <div class="modal-footer">
