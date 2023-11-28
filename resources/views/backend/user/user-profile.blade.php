@@ -596,18 +596,25 @@
                                 <form method="POST" action="{{ route('change-password') }}">
                                     @csrf
                                     {{-- @method('PUT') --}}
+                                    <input type="text" value="{{ Auth::user()->id }}">
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label for="current_password" class="form-label">Current
                                                     Password</label>
                                                 <input type="password" class="form-control" id="current_password" value="" name="current_password" required>
+                                                @error('current_password')
+                                                <p class="text-danger">{{$message}}</p>
+                                                @enderror 
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="mb-3">
                                                 <label for="new_password" class="form-label">New Password</label>
                                                 <input type="password" class="form-control" id="new_password" name="new_password" required>
+                                                @error('current_password')
+                                                <p class="text-danger">{{$message}}</p>
+                                                @enderror 
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
@@ -615,6 +622,9 @@
                                                 <label for="new_password_confirmation" class="form-label">New Password
                                                     Confirm</label>
                                                 <input type="password" class="form-control" id="new_password_confirmation" name="new_password_confirmation" required>
+                                                @error('new_password_confirmation')
+                                                <p class="text-danger">{{$message}}</p>
+                                                @enderror     
                                             </div>
                                         </div>
                                         <div class="modal-footer">

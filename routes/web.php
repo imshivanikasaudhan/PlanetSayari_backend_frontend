@@ -52,7 +52,7 @@ Route::put('/user-profile', [DashboardController::class, 'userprofile_Update'])-
 // Route::put('/user-profile', [DashboardController::class, 'password_Update'])->name('update-profile-password');
 
 // testing for password change
-Route::post('/change-password', [DashboardController::class, 'changePassword'])->name('change-password');
+Route::post('/user-profile', [DashboardController::class, 'changePassword'])->name('change-password');
 
 
 // User Dashboard Route End
@@ -90,7 +90,7 @@ Route::put('/User-{id}',[AdminController::class, 'userDataUpdate']);
 Route::get('/user-request-{id}',[AdminController::class, 'requestView']);
 
 // testing for activate or deactivate account
-Route::put('/user-request-{id}',[AdminController::class, 'requestViewUpdate']);
+// Route::put('/user-request-{id}',[AdminController::class, 'requestViewUpdate']);
 
 Route::get('/activate/{user}', [AdminController::class, 'activateAccount'])->name('activate.account');
 Route::get('/deactivate/{user}', [AdminController::class, 'deactivateAccount'])->name('deactivate.account');
