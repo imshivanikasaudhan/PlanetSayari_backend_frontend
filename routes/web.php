@@ -170,4 +170,10 @@ Route::get('/instrument', function(){
 Route::get('/letter-of-credit', function(){
     return view('/letter-of-credit');
 });
+Route::get('/user-register', function(){
+    return view('/user-register');
+});
+Route::get('/user-login', function(){
+    return view('/user-login');
+});
 
