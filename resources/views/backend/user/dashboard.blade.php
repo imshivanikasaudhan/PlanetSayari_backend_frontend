@@ -32,7 +32,7 @@
                     Profile</button></a>
               </div>
             </div>
-            <div class="col-lg-12 col-md-6 my-3">
+            {{-- <div class="col-lg-12 col-md-6 my-3">
               <div class="p-3">
                 <h5 class="d-flex  mb-3" style="color:black">Change Password
                 </h5>
@@ -53,16 +53,12 @@
                     </button>
                   </div>
                 </div>
-
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
       </div>
-
-    </div>
-    
-    
+    </div>  
   </div>
   <div class="container">
     <div class="row">
@@ -184,8 +180,7 @@
             </table>
             </div>
           </div>
-        </div>
-  
+        </div>  
       </div>
     </div>
     <!-- ======footer =========== -->

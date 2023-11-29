@@ -90,7 +90,7 @@ Route::put('/User-{id}',[AdminController::class, 'userDataUpdate']);
 Route::get('/user-request-{id}',[AdminController::class, 'requestView']);
 
 // testing for activate or deactivate account
-// Route::put('/user-request-{id}',[AdminController::class, 'requestViewUpdate']);
+Route::put('/user-request-{id}',[AdminController::class, 'requestViewUpdateStatus']);
 
 Route::get('/activate/{user}', [AdminController::class, 'activateAccount'])->name('activate.account');
 Route::get('/deactivate/{user}', [AdminController::class, 'deactivateAccount'])->name('deactivate.account');

@@ -12,7 +12,7 @@
           <form action="help-contact" method="POST">
             @csrf
             <div class="mb-3">
-              <label for="Contact_Name" class="form-label">Enter your Name</label>
+              <label for="Contact_Name" class="form-label">Enter Your Name <span class="text-danger">*</span></label>
               <input type="text" class="form-control" id="Contact_Name" aria-describedby="nameHelp"
                 placeholder="Your Full Name" name="name" value="{{Auth::user()->full_name}}">
               @error('name')
@@ -20,7 +20,7 @@
               @enderror
             </div>
             <div class="mb-3">
-              <label for="Contact_email" class="form-label">Email address</label>
+              <label for="Contact_email" class="form-label">Email Address <span class="text-danger">*</span></label>
               <input type="email" class="form-control" id="Contact_email" aria-describedby="emailHelp"
                 placeholder="examle@gmail.com" name="email" value="{{Auth::user()->email}}">
               @error('email')
@@ -29,7 +29,7 @@
               {{-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
             </div>
             <div class="mb-3">
-              <label for="Contact_number" class="form-label">Enter Contact No.</label>
+              <label for="Contact_number" class="form-label">Enter Contact No. <span class="text-danger">*</span></label>
               <input type="number" class="form-control" id="Contact_number" aria-describedby="contactHelp"
                 placeholder="+91 189462030" name="phone" value="{{Auth::user()->phone}}">
               @error('phone')
@@ -37,7 +37,7 @@
               @enderror
             </div>
             <div class="mb-5">
-              <label for="Contact_Message" class="form-label">Enter your Queries</label>
+              <label for="Contact_Message" class="form-label">Enter Your Queries <span class="text-danger">*</span></label>
               <textarea class="form-control" name="Contact_Message" id="Contact_Message" cols="30" rows="8"
                 placeholder="Type Query Message ...!">{{old('Contact_Message')}}</textarea>
               @error('Contact_Message')

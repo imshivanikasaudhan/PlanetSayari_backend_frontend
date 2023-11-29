@@ -153,7 +153,7 @@ class AdminController extends Controller
     }
 
     // Request Data Status Update Function
-    public function requestViewUpdate(Request $request){
+    public function requestViewUpdateStatus(Request $request){
         //NOTE:- 'request_id' field is coming from user profile form from input field. 
         $requestData = Investor::find($request->request_id);
         $requestData->status = $request->status;

@@ -593,10 +593,18 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
+                                @if(session('success'))
+                                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                        <strong>{{session('success')}}</strong>
+                                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                    </div>
+                                    {{-- <div class="alert alert-success">{{session('success')}}</div> --}}
+                                @endif                              
+
                                 <form method="POST" action="{{ route('change-password') }}">
                                     @csrf
                                     {{-- @method('PUT') --}}
-                                    <input type="text" value="{{ Auth::user()->id }}">
+                                    {{-- <input type="text" value="{{ Auth::user()->id }}"> --}}
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="mb-3">
@@ -636,17 +644,9 @@
                                     </div>    
                                 </form>
                             </div>
-
                         </div>
                     </div>
-                </div>
-                <!-- Footer -->
-                <footer class="content-footer footer bg-footer-theme">
-                    <div class="container-xxl flex-wrap text-center py-2 ">
-
-                    </div>
-                </footer>
-                <!-- / Footer -->
+                </div>                
 
                 <div class="content-backdrop fade"></div>
             </div>
