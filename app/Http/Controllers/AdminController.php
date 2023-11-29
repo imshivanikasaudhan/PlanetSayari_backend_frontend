@@ -19,7 +19,7 @@ class AdminController extends Controller
     
     // Admin Login Function
     public function Adminlogin(Request $request){
-        $admin = Admin::where('email', 'admin@gmail.com')->first();
+        $admin = Admin::where('email', $request->email)->first();
             // Retrieve the admin's stored email and hashed password
             $storedEmail = $admin->email;
             $storedPassword = $admin->password;

@@ -62,8 +62,8 @@ class DashboardController extends Controller
         if ($user == null) {
             return redirect('/');
         }
-        $statusDeal = $user->statusDeal;
-
+        // $statusDeal = $user->dashboard()->orderBy('created_at', 'desc')->paginate(10);
+        $statusDeal = $user->statusDeal()->orderBy('created_at', 'desc')->paginate(5);
         // $totalInvestors = user::count();
         // $totalBrokers = Broker::count();
         // $totalDealRequests = DealRequest::count();
