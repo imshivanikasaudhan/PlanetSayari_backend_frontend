@@ -7,7 +7,11 @@
       <div class="card">
         <div class="card-body">
           @if(session('Success'))
-              <div class="alert alert-success">{{session('Success')}}</div>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <strong>{{session('Success')}}</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {{-- <div class="alert alert-success">{{session('Success')}}</div> --}}
           @endif
           <form method="POST" action="request-deal" enctype="multipart/form-data">
             @csrf

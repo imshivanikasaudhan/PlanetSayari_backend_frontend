@@ -8,8 +8,14 @@
                 <div class="table-responsive">
                     <table class="table text-nowrap mb-0 align-middle">                        
                         <thead class="text-dark fs-4">
+                            
                             @if(session('status'))
-                                <div class="alert alert-success">{{session('status')}}</div>
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>{{session('status')}}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                                
+                                {{-- <div class="alert alert-success"></div> --}}
                             @endif
                             <tr>
                                 <th class="border-bottom-0">
@@ -53,6 +59,8 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if($statusDeal->isNotEmpty())
+                            
                             @foreach ($statusDeal as $Status)
                                 <tr>
                                     {{-- <td class="border-bottom-0">
@@ -110,16 +118,31 @@
                                     </td>
                                     <td class="border-bottom-0">
                                         <div class="d-flex align-items-center gap-2">
-                                            <a href="{{url('delete/'.$Status->id)}}" class="btn btn-danger">Delete</a>                                            
+                                            <a href="{{url('delete/'.$Status->id)}}" id="id" class="btn btn-danger">Delete</a>                                            
                                         </div>
                                     </td>
                                 </tr>
                             @endforeach
+                            @else
+                            <tr>
+                                <td colspan="10">Record Not Found</td>
+                            </tr>
+                            @endif
                         </tbody>
                     </table>
+                   
+                </div>
+                <div class="mt-3">
+                    {{ $statusDeal->links()}}
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    function deleteEmployee(id){
+        if(confirm("Are you sure you want delete."))
+        document.getElementById('employee-edit-action-'+id).submit();
+    }
+</script>
 @include('footer')
