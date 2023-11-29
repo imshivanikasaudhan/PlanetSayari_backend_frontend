@@ -19,31 +19,46 @@ class AdminController extends Controller
     
     // Admin Login Function
     public function Adminlogin(Request $request){
-
-        // Validate Data
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-        Admin::where("email", $request->email)->where("password", $request->password)->first();
-        return redirect('/admin-dashboard');
-
-        // if($request->user_type == 'ps-admin'){
-        //     Admin::where("email",$request->email)->where("password", $request->password)->first();
-        //     return redirect('/admin-dashboard');        
-        // }
-        // else if ($request->user_type == 'user'){
-        //     User::where("email",$request->email)->first();
-        //     return redirect();
-        // }
-        // if (Auth::attempt($request->only('email', 'password'))) {
-        //     return redirect('/admin-dashboard');
-        // }
+        $admin = Admin::where('email', 'admin@gmail.com')->first();
+            // Retrieve the admin's stored email and hashed password
+            $storedEmail = $admin->email;
+            $storedPassword = $admin->password;
         
-        // dd($request->all());
-        // return back()->withErrors(['email' => 'Invalid email or password.']);
-        return redirect('/ps-admin')->with('error', 'Email or Password Incorrect');
+            // User-supplied credentials
+            $inputEmail = $request->email; 
+            $inputPassword = $request->password; 
+                    
+            if ($inputEmail === $storedEmail && $inputPassword === $storedPassword) {
+                return redirect('/admin-dashboard');
+            } else {
+                return redirect('/ps-admin')->with('error', 'Email or Password Incorrect');
+            }
+
+        // }
+        // Validate Data
+        // $request->validate([
+        //     'email' => 'required|email',
+        //     'password' => 'required'
+        // ]);
+
+        // Admin::where("email", $request->email)->where("password", $request->password)->first();
+        // return redirect('/admin-dashboard');
+
+        // // if($request->user_type == 'ps-admin'){
+        // //     Admin::where("email",$request->email)->where("password", $request->password)->first();
+        // //     return redirect('/admin-dashboard');        
+        // // }
+        // // else if ($request->user_type == 'user'){
+        // //     User::where("email",$request->email)->first();
+        // //     return redirect();
+        // // }
+        // // if (Auth::attempt($request->only('email', 'password'))) {
+        // //     return redirect('/admin-dashboard');
+        // // }
+        
+        // // dd($request->all());
+        // // return back()->withErrors(['email' => 'Invalid email or password.']);
+        // return redirect('/ps-admin')->with('error', 'Email or Password Incorrect');
 
         // return view('authentication-login');
     }

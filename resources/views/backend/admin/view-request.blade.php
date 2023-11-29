@@ -89,9 +89,9 @@
                         </div>
                         <div class="col">
                             <a href="backend/assets/images/{{ $requestId->document }}" target="_blank"><button
-                                    type="submit" class="btn rounded-pill btn-info mx-3">View Document</button></a>
+                                    type="submit" class="btn rounded-pill btn-info mx-3">View Doc</button></a>
                             <button type="submit" class="btn rounded-pill btn-danger" data-bs-toggle="modal"
-                                data-bs-target="#SetStatusModal">Set Request Status</button>
+                                data-bs-target="#SetStatusModal">Set Status</button>
                         </div>
                     </div>
                 </div>

@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Storage;
 
 class DashboardController extends Controller
 {
-    
     // Password Change User Profile Start
     public function changePassword(Request $request)
     {   
@@ -64,6 +63,11 @@ class DashboardController extends Controller
             return redirect('/');
         }
         $statusDeal = $user->statusDeal;
+
+        // $totalInvestors = user::count();
+        // $totalBrokers = Broker::count();
+        // $totalDealRequests = DealRequest::count();
+
         return view('/dashboard', compact('statusDeal'));
 
         // return view('/dashboard');
@@ -72,7 +76,13 @@ class DashboardController extends Controller
     // Request Deal Function
     public function requestDeal()
     {
-        return view('/request-deal');
+        $user = Auth::user();
+        if ($user == null) {
+            return redirect('/');
+        }else{
+
+            return view('/request-deal');
+        }
     }
     public function requestDealStore(Request $request)
     {
@@ -128,7 +138,8 @@ class DashboardController extends Controller
         if ($user == null) {
             return redirect('/');
         }
-        $statusDeal = $user->statusDeal;
+        // $statusDeal = $user->statusDeal;
+        $statusDeal = $user->statusDeal()->orderBy('created_at', 'desc')->paginate(10);
         return view('/deal-status', compact('statusDeal'));
     }
 
@@ -143,8 +154,13 @@ class DashboardController extends Controller
 
     // Help Contact Form Function 
     public function helpContact()
-    {
-        return view('/help-contact');
+    {   
+        $user = Auth::user();
+        if ($user == null) {
+            return redirect('/');
+        }else{
+            return view('/help-contact');
+        }
     }
     public function helpContactStore(HelpContactRequest $request)
     {
@@ -163,7 +179,12 @@ class DashboardController extends Controller
     // User Profile Function
     public function userprofile()
     {
-        return view('/user-profile');
+        $user = Auth::user();
+        if ($user == null) {
+            return redirect('/');
+        }else{
+            return view('/user-profile');
+        }
     }
     public function userprofile_Update(User $user, Request $request)
     {

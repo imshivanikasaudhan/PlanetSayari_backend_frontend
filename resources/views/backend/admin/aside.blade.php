@@ -84,14 +84,14 @@
                 <span class="hide-menu">User Dashboard Queries</span>
               </a>
             </li>
-            <li class="sidebar-item">
+            {{-- <li class="sidebar-item">
               <a class="sidebar-link" href="{{asset('../admin-website-contact')}}" aria-expanded="false">
                 <span>
                 <i class="ti ti-messages"></i>
                 </span>
                 <span class="hide-menu">Website Queries</span>
               </a>
-            </li>
+            </li> --}}
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">AUTH</span>
