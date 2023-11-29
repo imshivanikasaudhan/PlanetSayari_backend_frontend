@@ -12,22 +12,43 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
-{   
-    public function PlanetAdminLogin(){
+{
+    public function PlanetAdminLogin()
+    {
         return view('authentication-login');
     }
-    
+
     // Admin Login Function
-    public function Adminlogin(Request $request){
+    public function Adminlogin(Request $request)
+    {
+        // info('inside controller');
+        // $admin = Admin::where('email', $request->email)->first();
+        // info($admin);
+        // if ($admin) {
+
+        //     $is_admin_authorized = $admin->update(["is_auth" => 1]);
+        //     if ($is_admin_authorized) {
+        //         // app()->instance('auth_user_email', $admin->email);
+        //         $request->attributes->add(['user_id' => $admin->email]);
+        //         // info(app('auth_user_email'));
+        //         // $request->merge(['email' => $admin->email]);
+        //         info($request->all());
+        //         return redirect('/admin-dashboard');
+
+        //     }
+        // } else {
+        //     return redirect('/ps-admin')->with('error', 'Email or Password Incorrect');
+        // }
+
         $admin = Admin::where('email', $request->email)->first();
             // Retrieve the admin's stored email and hashed password
             $storedEmail = $admin->email;
             $storedPassword = $admin->password;
-        
+
             // User-supplied credentials
             $inputEmail = $request->email; 
             $inputPassword = $request->password; 
-                    
+
             if ($inputEmail === $storedEmail && $inputPassword === $storedPassword) {
                 return redirect('/admin-dashboard');
             } else {
@@ -55,7 +76,7 @@ class AdminController extends Controller
         // // if (Auth::attempt($request->only('email', 'password'))) {
         // //     return redirect('/admin-dashboard');
         // // }
-        
+
         // // dd($request->all());
         // // return back()->withErrors(['email' => 'Invalid email or password.']);
         // return redirect('/ps-admin')->with('error', 'Email or Password Incorrect');
@@ -63,11 +84,13 @@ class AdminController extends Controller
         // return view('authentication-login');
     }
 
-    public function registerView(){
+    public function registerView()
+    {
         return view('authentication-register');
     }
 
-    public function AdminRegisterStore(Request $request){
+    public function AdminRegisterStore(Request $request)
+    {
         // Validate Data
         $request->validate([
             'email' => 'required|email',
@@ -76,10 +99,10 @@ class AdminController extends Controller
 
         // save data
         Admin::create([
-            'email'=> $request->email,
-            'password'=> Hash::make($request->password),
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
         ]);
-        
+
         //login user 
         if (Auth::attempt($request->only('email', 'password'))) {
             return redirect('/admin-dashboard');
@@ -88,14 +111,16 @@ class AdminController extends Controller
     }
 
     // Admin Logout Function
-    public function logout(){
+    public function logout()
+    {
         \Session()::flush();
         \Auth()::logout();
         return redirect('');
     }
 
     // Admin Broker Investor Function
-    public function AdminInvestorData(){
+    public function AdminInvestorData()
+    {
         $users = User::all();
         // Execute a raw SQL query
         $users = DB::select('select * from users');
@@ -103,7 +128,8 @@ class AdminController extends Controller
     }
 
     // Admin Broker User Function
-    public function AdminBrokerData(){
+    public function AdminBrokerData()
+    {
         $users = User::all();
         // Execute a raw SQL query
         $users = DB::select('select * from users');
@@ -111,14 +137,16 @@ class AdminController extends Controller
     }
 
     // Admin Investor Request Function
-    public function AdminInvestorRequest(){
+    public function AdminInvestorRequest()
+    {
         $InvestorRequest = Investor::all();
         // Execute a raw SQL query
         $InvestorRequest = DB::select('select *, DATE(created_at) AS date, TIME(created_at) As time from investor_request ');
         return view('admin-investor-requests', compact('InvestorRequest'));
     }
     // Admin Broker Request Function
-    public function AdminBrokerRequest(){
+    public function AdminBrokerRequest()
+    {
         $BrokerRequest = Investor::all();
         // Execute a raw SQL query
         $BrokerRequest = DB::select('select *, DATE(created_at) AS date, TIME(created_at) As time from investor_request');
@@ -126,7 +154,8 @@ class AdminController extends Controller
     }
 
     // Contact Data Fetch Data Function
-    public function UserFormData(){
+    public function UserFormData()
+    {
         $ContactFormData = Usercontact::all();
         // Execute a raw SQL query
         $ContactFormData = DB::select('select *, DATE(created_at) AS date, TIME(created_at) As time from user_contact');
@@ -135,32 +164,37 @@ class AdminController extends Controller
 
 
     // User Data Fetch Function
-    public function userData($id){
+    public function userData($id)
+    {
         $userData = User::find($id);
         return view('\view-user-data', compact('userData'));
     }
 
     // Active or Deactivate User    
-    public function activateAccount(User $user)    {
+    public function activateAccount(User $user)
+    {
         $user->status = 'active';
         $user->save();
         return redirect()->back()->with('success', 'Account Activated Successfully.');
     }
-    public function deactivateAccount(User $user){
+    public function deactivateAccount(User $user)
+    {
         $user->status = 'inactive';
         $user->save();
         return redirect()->back()->with('success', 'Account Deactivated Successfully.');
     }
 
     // User Data Fetch Update Function
-    public function userDataUpdate($id){
+    public function userDataUpdate($id)
+    {
         $userData = User::find($id);
         // dd($userData);
         return view('\view-user-data', compact('userData'));
     }
 
     // Request Data Fetch Function
-    public function requestView($id){
+    public function requestView($id)
+    {
         // dd($id);
         // $requestView = Investor::all();
         $requestId = Investor::find($id);
@@ -168,7 +202,8 @@ class AdminController extends Controller
     }
 
     // Request Data Status Update Function
-    public function requestViewUpdateStatus(Request $request){
+    public function requestViewUpdateStatus(Request $request)
+    {
         //NOTE:- 'request_id' field is coming from user profile form from input field. 
         $requestData = Investor::find($request->request_id);
         $requestData->status = $request->status;
@@ -176,6 +211,4 @@ class AdminController extends Controller
         //for redirection
         return back()->with('Success', 'Form Submitted Successfully');
     }
-
-    
 }

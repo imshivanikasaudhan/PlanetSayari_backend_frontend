@@ -63,31 +63,46 @@ Route::post('/user-profile', [DashboardController::class, 'changePassword'])->na
 
 // Admin Dashboard Route Start
 
-
 // Route::middleware(['admin.auth'])->group(function () {
 //     // Admin-only routes here
 //     Route::get('/admin-dashboard', 'AdminController@index')->name('admin.dashboard');
 // });
 
-Route::middleware('auth:admin')->get('/admin-dashboard', function () {
-    return view('admin.dashboard');
-});
+// Route::middleware('check.auth')->get('/admin-dashboard', function () {
+//     return view('admin.dashboard');
+// });
+// Route::group(['middleware'=>'check.auth'], function(){
+//     // return view('admin.dashboard');
+//     // Route::get('/', [AuthController::class, 'index']);
+//     // Route::get('/dashboard', [DashboardController::class, 'dashboard']);    
+//     // Route::delete('/', [AuthController::class, 'logout'])->name('logout');
+// });
 
+// Route::get('/admin-dashboard', function () {
+//     return view('admin.dashboard');
+// })->middleware('check.auth');
 
-Route::group(['Middleware'=>'guest'], function(){
-    Route::post('/ps-admin', [AdminController::class, 'Adminlogin'])->name('admin-login');
-});
-Route::group(['Middleware'=>'auth'], function(){
-    Route::get('/ps-admin', [AdminController::class, 'PlanetAdminLogin']);
-});
+// Route::middleware(['check'])->group(function () {
+//     Route::get('/admin-dashboard',function(){
+//         return view('admin.dashboard');
+//     });
+// });
+
+Route::get('/admin-dashboard', function () {
+    return view('admin-dashboard');
+})->middleware('check');
+
+Route::get('/ps-admin', [AdminController::class, 'PlanetAdminLogin']);
+Route::post('/ps-admin', [AdminController::class, 'Adminlogin'])->name('admin-login');
+
+// Route::group(['Middleware'=>'guest'], function(){
+// });
+// Route::group(['Middleware'=>'auth'], function(){
+// });
 
 Route::get('/ps-register', [AdminController::class, 'registerView']);
 Route::post('/ps-register', [AdminController::class, 'AdminRegisterStore'])->name('admin-register');
 
-
-Route::get('/admin-dashboard', function (){
-    return view('admin-dashboard');
-});
 Route::get('/admin-profile', function (){
     return view('admin-profile');
 });
@@ -192,4 +207,3 @@ Route::get('/user-register', function(){
 Route::get('/user-login', function(){
     return view('/user-login');
 });
-
