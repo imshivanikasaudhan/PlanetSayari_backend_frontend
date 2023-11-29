@@ -16,13 +16,13 @@
                         <div class="notification bg-primary rounded-circle"></div>
                     </a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link ">
                         @if (Auth::user())
                             <p>Hello, {{ Auth::user()->username }}</p>
                         @endif
                     </a>
-                </li>
+                </li> --}}
 
             </ul>
             <div class="navbar-collapse justify-content-end px-0" id="navbarNav">

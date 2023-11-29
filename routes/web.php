@@ -44,6 +44,10 @@ Route::get('/delete/{id}', [DashboardController::class, 'deleteStatusDeal']);
 //     return view('/deal-status');
 // });
 
+Route::get('/user-profile/change-password', function(){
+    return view('/change-password');
+});
+
 Route::get('help-contact', [DashboardController::class, 'helpContact']);
 Route::post('help-contact', [DashboardController::class, 'helpContactStore']);
 
@@ -58,6 +62,18 @@ Route::post('/user-profile', [DashboardController::class, 'changePassword'])->na
 // User Dashboard Route End
 
 // Admin Dashboard Route Start
+
+
+// Route::middleware(['admin.auth'])->group(function () {
+//     // Admin-only routes here
+//     Route::get('/admin-dashboard', 'AdminController@index')->name('admin.dashboard');
+// });
+
+Route::middleware('auth:admin')->get('/admin-dashboard', function () {
+    return view('admin.dashboard');
+});
+
+
 Route::group(['Middleware'=>'guest'], function(){
     Route::post('/ps-admin', [AdminController::class, 'Adminlogin'])->name('admin-login');
 });
