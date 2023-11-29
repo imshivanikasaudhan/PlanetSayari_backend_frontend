@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('skypeid');
             $table->string('address');
             $table->string('country');
-            $table->enum('status',['pending', 'processing', 'verified'])->default('pending');
+            $table->enum('status',['Pending', 'Processing', 'Verified'])->default('Pending');
             $table->string('inst_amt')->nullable();
             $table->string('broker_per')->nullable();
             $table->string('document')->nullable();

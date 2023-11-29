@@ -26,11 +26,9 @@ return new class extends Migration
             $table->string('pin')->nullable();
             $table->integer('user_type');
             $table->string('role')->default('user');
-            $table->enum('status',['active', 'inactive'])->default('active');
+            $table->enum('status',['Active', 'Inactive'])->default('Active');
             $table->string('password');
-            // $table->string('cpassword');
             $table->timestamp('email_verified_at')->nullable();
-            // $table->string('password');
             $table->rememberToken();
             $table->timestamps();
         });
