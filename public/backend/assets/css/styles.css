@@ -403,12 +403,12 @@ sup {
 }
 
 a {
-    color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity, 1));
+    color: var(--bs-link-hover-color-rgb);
     text-decoration: underline
 }
 
 a:hover {
-    --bs-link-color-rgb: var(--bs-link-hover-color-rgb)
+    color: #4EC3E8;
 }
 
 a:not([href]):not([class]),
