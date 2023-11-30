@@ -59,15 +59,36 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-8">
             <div class="row">
-                <div class="col-lg-12">
+              
+              <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="card overflow-hidden">
+                            <div class="card-body p-4">
+                                <h5 class="card-title mb-9 fw-semibold">Total Deals Request</h5>
+                                <div class="row align-items-center">
+                                    <div class="col-8">
+                                        <h4 class="fw-semibold mb-3">{{ $totalDeal }}</h4>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="d-flex justify-content-center">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="col-lg-6">
                     <div class="card overflow-hidden">
                         <div class="card-body p-4">
                             <h5 class="card-title mb-9 fw-semibold">Total Deals Pending</h5>
                             <div class="row align-items-center">
                                 <div class="col-8">
-                                    <h4 class="fw-semibold mb-3">{{$totalDealPending}}</h4>
+                                    <h4 class="fw-semibold mb-3">{{ $totalDealPending }}</h4>
                                 </div>
                                 <div class="col-4">
                                     <div class="d-flex justify-content-center">
@@ -77,33 +98,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-12">
-                  <div class="card overflow-hidden">
-                      <div class="card-body p-4">
-                          <h5 class="card-title mb-9 fw-semibold">Total Contact Queries</h5>
-                          <div class="row align-items-center">
-                              <div class="col-8">
-                                  <h4 class="fw-semibold mb-3">{{$totalContactQuery}}</h4>
-                              </div>
-                              <div class="col-4">
-                                  <div class="d-flex justify-content-center">
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
-            <div class="row">
-                <div class="col-lg-12">
+
+                <div class="col-lg-6">
                     <div class="card overflow-hidden">
                         <div class="card-body p-4">
-                            <h5 class="card-title mb-9 fw-semibold">Total Deals Request</h5>
+                            <h5 class="card-title mb-9 fw-semibold">Total Contact Queries</h5>
                             <div class="row align-items-center">
                                 <div class="col-8">
-                                    <h4 class="fw-semibold mb-3">{{ $totalDeal }}</h4>
+                                    <h4 class="fw-semibold mb-3">{{ $totalContactQuery }}</h4>
                                 </div>
                                 <div class="col-4">
                                     <div class="d-flex justify-content-center">
@@ -115,7 +117,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row">
             <div class="container">
                 <div class="row">

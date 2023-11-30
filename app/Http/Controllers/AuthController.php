@@ -38,7 +38,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            if ($user->status === 'active') {
+            if ($user->status === 'Active') {
                 // User is active, log them in
                 // return $this->authenticated($request, $user);
                 return redirect('/dashboard');

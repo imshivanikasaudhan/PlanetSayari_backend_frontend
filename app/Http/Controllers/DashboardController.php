@@ -62,11 +62,13 @@ class DashboardController extends Controller
         if ($user == null) {
             return redirect('/');
         }
-
-        $totalDeal = Investor::count();
-        $totalContactQuery = Usercontact::count();
-
-        $totalDealPending = Investor::where('status', 'Pending')->count();
+        $totalDeal = Investor::where('user_id', Auth::user()->id)->count();
+        // dd(Auth::user()->id);
+        $totalContactQuery = Usercontact::where('user_id', Auth::user()->id)->count();
+        $totalDealPending = Investor::where('user_id', Auth::user()->id)
+        ->where('status', 'Pending')
+        ->count();
+        // $totalDealPending = Investor::where('status', 'Pending')->count();
 
         // $statusDeal = $user->dashboard()->orderBy('created_at', 'desc')->paginate(10);
         $statusDeal = $user->statusDeal()->orderBy('created_at', 'desc')->paginate(5);
@@ -172,6 +174,7 @@ class DashboardController extends Controller
     {
 
         $userContact = new Usercontact();
+        $userContact->user_id = $request->user_id;
         $userContact->full_name = $request->name;
         $userContact->email = $request->email;
         $userContact->number = $request->phone;

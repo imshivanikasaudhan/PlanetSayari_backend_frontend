@@ -11,6 +11,7 @@
           @endif
           <form action="help-contact" method="POST">
             @csrf
+            <input type="hidden" name="user_id" class="form-control" id="Inputusername" aria-describedby="emailHelp" value="{{Auth::user()->id}}">
             <div class="mb-3">
               <label for="Contact_Name" class="form-label">Enter Your Name <span class="text-danger">*</span></label>
               <input type="text" class="form-control" id="Contact_Name" aria-describedby="nameHelp"
