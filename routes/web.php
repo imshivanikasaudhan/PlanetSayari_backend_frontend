@@ -88,9 +88,10 @@ Route::post('/user-profile', [DashboardController::class, 'changePassword'])->na
 //     });
 // });
 
-Route::get('/admin-dashboard', function () {
-    return view('admin-dashboard');
-})->middleware('check');
+Route::get('/admin-dashboard',[AdminController::class, 'AdminDashboardData'])->middleware('check');
+// Route::get('/admin-dashboard', function () {
+//     return view('admin-dashboard');
+// })->middleware('check');
 
 Route::get('/ps-admin', [AdminController::class, 'PlanetAdminLogin']);
 Route::post('/ps-admin', [AdminController::class, 'Adminlogin'])->name('admin-login');

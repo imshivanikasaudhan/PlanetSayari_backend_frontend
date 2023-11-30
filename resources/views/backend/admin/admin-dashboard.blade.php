@@ -27,10 +27,10 @@
         <div class="col-lg-12">
           <div class="card overflow-hidden">
             <div class="card-body p-4">
-              <h5 class="card-title mb-9 fw-semibold">Total Investors</h5>
+              <h5 class="card-title mb-9 fw-semibold">Total Contact Queries</h5>
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h4 class="fw-semibold mb-3">14</h4>
+                  <h4 class="fw-semibold mb-3">{{$totalContactQuery}}</h4>
                 </div>
                 <div class="col-4">
                   <div class="d-flex justify-content-center">
@@ -46,7 +46,7 @@
               <h5 class="card-title mb-9 fw-semibold">Total Brokers</h5>
               <div class="row align-items-center">
                 <div class="col-8">
-                  <h4 class="fw-semibold mb-3">07</h4>
+                  <h4 class="fw-semibold mb-3"></h4>
                 </div>
                 <div class="col-4">
                   <div class="d-flex justify-content-center">
@@ -62,7 +62,7 @@
               <div class="row alig n-items-start">
                 <div class="col-8">
                   <h5 class="card-title mb-9 fw-semibold"> Total Deal Request </h5>
-                  <h4 class="fw-semibold mb-3">09</h4>
+                  <h4 class="fw-semibold mb-3"></h4>
               </div>
             </div>
             {{-- <div id="earning"></div> --}}

@@ -62,13 +62,19 @@ class DashboardController extends Controller
         if ($user == null) {
             return redirect('/');
         }
+
+        $totalDeal = Investor::count();
+        $totalContactQuery = Usercontact::count();
+
+        $totalDealPending = Investor::where('status', 'Pending')->count();
+
         // $statusDeal = $user->dashboard()->orderBy('created_at', 'desc')->paginate(10);
         $statusDeal = $user->statusDeal()->orderBy('created_at', 'desc')->paginate(5);
         // $totalInvestors = user::count();
         // $totalBrokers = Broker::count();
         // $totalDealRequests = DealRequest::count();
 
-        return view('/dashboard', compact('statusDeal'));
+        return view('/dashboard', compact('statusDeal', 'totalDeal', 'totalContactQuery', 'totalDealPending'));
 
         // return view('/dashboard');
     }

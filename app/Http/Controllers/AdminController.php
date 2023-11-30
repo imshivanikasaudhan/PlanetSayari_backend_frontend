@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
-{
+{      
+
     public function PlanetAdminLogin()
     {
         return view('authentication-login');
@@ -116,6 +117,17 @@ class AdminController extends Controller
         \Session()::flush();
         \Auth()::logout();
         return redirect('');
+    }
+
+    // Admin Dashboard Data View Function
+    public function AdminDashboardData(){
+        // $totalInvestor = Investor::where('user_type', 1)->count();
+        // $totalBroker = Investor::where('user_type', 0)->count();
+        $totalContactQuery = Usercontact::count();
+
+        $totalDealPending = Investor::where('status', 'Pending')->count();
+
+        return view('admin-dashboard', compact('totalContactQuery'));
     }
 
     // Admin Broker Investor Function
