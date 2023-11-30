@@ -1,13 +1,22 @@
 @section('title', 'Planet Syari | User Register')
 @include ('components/header')
+<style>
+    .register_card{
+        padding-top: 5rem !important;
+    }
+</style>
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-6">
-            
+
+        <h2 class="text-center mt-5">Sign Up</h2>
+    </div>
+    <div class="row p-5 rounded register_card" >
+        <div class="col-lg-6 ">
+           <img src="images\bg\sayari-img-1.jpg" alt=""style="width:100%">
         </div>
         <div class="col-lg-6">
-            <div class="card my-5 p-5 rounded">
+            <div class="">
                 <div class="card-body">
                     @if (session('success'))
                         <div class="alert alert-success" role="alert">{{ session('success') }}</div>
@@ -15,21 +24,21 @@
                     <form action="{{ route('register') }}" method="POST">
                         @csrf
                         <div class="form-group mb-3">
-                            <input type="text" class="form-control" name="username" id="recipient-username"
+                            <input type="text" class="form-control rounded" name="username" id="recipient-username"
                                 placeholder="User Name" value="{{ old('username') }}" required>
                             @error('username')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group mb-3">
-                            <input type="email" class="form-control" id="recipient-email" placeholder="Email"
+                            <input type="email" class="form-control rounded" id="recipient-email" placeholder="Email"
                                 name="email" required>
                             @error('email')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
                         <div class="form-group mb-3">
-                            <select class="form-select" aria-label="Default select example" name="user_type" required>
+                            <select class="form-select rounded" aria-label="Default select example" name="user_type" required>
                                 <option value="">Register As</option>
                                 <option value="0">Broker</option>
                                 <option value="1">Investor</option>
@@ -39,7 +48,7 @@
                             @enderror
                         </div>
                         <div class="form-group mb-3">
-                            <input type="password" class="form-control @error('password') is-invalid @enderror"
+                            <input type="password" class="form-control rounded @error('password') is-invalid @enderror"
                                 id="password" placeholder="Password" name="password" required>
                             @error('password')
                                 <span class="invalid-feedback" role="alert">
@@ -48,7 +57,7 @@
                             @enderror
                         </div>
                         <div class="form-group mb-3">
-                            <input type="password" class="form-control @error('password') is-invalid @enderror"
+                            <input type="password" class="form-control rounded @error('password') is-invalid @enderror"
                                 id="cpassword" placeholder="Confirm Password" name="password_confirmation" required>
                         </div>
                         <div class="form-check">
