@@ -14,8 +14,15 @@
                                 {{-- <div class="alert alert-info" role="alert">{{ session('success') }}</div> --}}
                             @endif
                             <div class="col-lg-12 col-md-6 d-flex flex-column align-items-center text-center">
-                                <img src="\backend\assets\images\profile\user-1.jpg" alt="Customer" width="150"
+                                @if ($userData->image ==null)
+                                    
+                                <img src="\backend\assets\images\profile\user-1.jpg" alt="User Profile" width="150"
                                     height="150" class="rounded-circle">
+                                @else
+                                    <img src="\backend\assets\images\profile\{{ $userData->image }}" alt="User Profile" width="150"
+                                        height="150" class="rounded-circle">
+                                    
+                                @endif
                                 <div class="mt-3">
                                     <h4 class="text fs-10">
                                         {{ $userData->username }}</h4>

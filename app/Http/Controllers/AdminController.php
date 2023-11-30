@@ -41,7 +41,7 @@ class AdminController extends Controller
         //     return redirect('/ps-admin')->with('error', 'Email or Password Incorrect');
         // }
 
-        $admin = Admin::where('email', $request->email)->first();
+        $admin = Admin::where('email', 'admin@gmail.com')->first();
             // Retrieve the admin's stored email and hashed password
             $storedEmail = $admin->email;
             $storedPassword = $admin->password;

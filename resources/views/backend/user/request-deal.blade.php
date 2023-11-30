@@ -349,7 +349,7 @@
                 <input type="integer" name="Investers" class="form-control" id="Inputuserinvestor"> --}}
                 <label for="InputBudget" class="form-label">Invester Amount : <span class="text-danger">*</span></label>
                 <input type="text" id="put" placeholder="Example  :   $2000 Million" class="form-control mb-4">
-                <input type="range" min="1000" max="500000" value="1000" name="inst_amt" id="get" class="form-range" onchange="budgetValue()" onmousemove="budgetValue()" required>
+                <input type="range" min="1" max="500000" value="1000" name="inst_amt" id="get" class="form-range" onchange="budgetValue()" onmousemove="budgetValue()" required>
                 @error('inst_amt')
                     <div class="text-danger">{{$message}}</div>
                 @enderror

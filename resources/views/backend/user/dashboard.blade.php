@@ -65,7 +65,7 @@
               <div class="col-lg-6">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div class="card overflow-hidden">
+                        <div class="card overflow-hidden bg-secondary bg-opacity-25">
                             <div class="card-body p-4">
                                 <h5 class="card-title mb-9 fw-semibold">Total Deals Request</h5>
                                 <div class="row align-items-center">
@@ -83,7 +83,7 @@
                 </div>
             </div>
                 <div class="col-lg-6">
-                    <div class="card overflow-hidden">
+                    <div class="card overflow-hidden bg-danger bg-opacity-25">
                         <div class="card-body p-4">
                             <h5 class="card-title mb-9 fw-semibold">Total Deals Pending</h5>
                             <div class="row align-items-center">
@@ -100,7 +100,7 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <div class="card overflow-hidden">
+                    <div class="card overflow-hidden bg-info bg-opacity-25">
                         <div class="card-body p-4">
                             <h5 class="card-title mb-9 fw-semibold">Total Contact Queries</h5>
                             <div class="row align-items-center">
