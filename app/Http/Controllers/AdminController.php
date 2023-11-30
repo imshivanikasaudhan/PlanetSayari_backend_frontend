@@ -131,7 +131,13 @@ class AdminController extends Controller
         $totalContactQuery = Usercontact::count();
         $totalDealPending = Investor::where('status', 'Pending')->count();
 
-        return view('admin-dashboard', compact('totalUsers', 'totalInvestor', 'totalBroker' ,'totalDeal', 'totalInvestorDeal', 'totalBrokerDeal', 'totalDealPending', 'totalContactQuery'));
+        // user Investor Table
+        $usersInvestor = DB::table('users')->where('user_type', '1')->orderBy('created_at', 'desc')->paginate(3);
+        
+        // user Broker Table
+        $usersBroker = DB::table('users')->where('user_type', '0')->orderBy('created_at', 'desc')->paginate(3);
+
+        return view('admin-dashboard', compact('totalUsers', 'totalInvestor', 'totalBroker' ,'totalDeal', 'totalInvestorDeal', 'totalBrokerDeal', 'totalDealPending', 'totalContactQuery', 'usersInvestor', 'usersBroker'));
     }
 
     // Admin Broker Investor Function
