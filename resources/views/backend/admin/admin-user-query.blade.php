@@ -36,6 +36,7 @@
               
             </thead>
             <tbody>
+          @if($ContactFormData->isNotEmpty())
             @foreach ($ContactFormData as $FormData)    
               <tr>
                 <td class="border-bottom-0">
@@ -64,9 +65,17 @@
                 </td> --}}
               </tr>
             @endforeach  
+            @else
+              <tr>
+                  <td colspan="10">Record Not Found</td>
+              </tr>
+              @endif
             </tbody>
           </table>
         </div>
+        <div class="mt-3">
+          {{ $ContactFormData->links()}}
+      </div>
       </div>
     </div>
   </div>

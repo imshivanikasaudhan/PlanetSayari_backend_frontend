@@ -2,7 +2,7 @@
 <div class="container-fluid">
   <!--  Row 1 -->
   <div class="row">
-    <div class="col-lg-8 d-flex align-items-strech">
+    {{-- <div class="col-lg-8 d-flex align-items-strech">
       <div class="card w-100">
         <div class="card-body">
           <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
@@ -21,10 +21,122 @@
           <div id="chart"></div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-4">
+    </div> --}}
+    <div class="col-lg-12">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-4">
+          <div class="card overflow-hidden">
+            <div class="card-body p-4">
+              <h5 class="card-title mb-9 fw-semibold">Total Number Users</h5>
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h4 class="fw-semibold mb-3">{{$totalUsers}}</h4>
+                </div>
+                <div class="col-4">
+                  <div class="d-flex justify-content-center">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card overflow-hidden">
+            <div class="card-body p-4">
+              <h5 class="card-title mb-9 fw-semibold">Total Number of Investor</h5>
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h4 class="fw-semibold mb-3">{{$totalInvestor}}</h4>
+                </div>
+                <div class="col-4">
+                  <div class="d-flex justify-content-center">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card overflow-hidden">
+            <div class="card-body p-4">
+              <h5 class="card-title mb-9 fw-semibold">Total Number of Brokers</h5>
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h4 class="fw-semibold mb-3">{{$totalBroker}}</h4>
+                </div>
+                <div class="col-4">
+                  <div class="d-flex justify-content-center">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card overflow-hidden">
+            <div class="card-body p-4">
+              <h5 class="card-title mb-9 fw-semibold">Total Deal Request</h5>
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h4 class="fw-semibold mb-3">{{$totalDeal}}</h4>
+                </div>
+                <div class="col-4">
+                  <div class="d-flex justify-content-center">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card overflow-hidden">
+            <div class="card-body p-4">
+              <h5 class="card-title mb-9 fw-semibold">Total Investor Request</h5>
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h4 class="fw-semibold mb-3">{{$totalInvestorDeal}}</h4>
+                </div>
+                <div class="col-4">
+                  <div class="d-flex justify-content-center">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card overflow-hidden">
+            <div class="card-body p-4">
+              <h5 class="card-title mb-9 fw-semibold">Total Brokers Request</h5>
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h4 class="fw-semibold mb-3">{{$totalBrokerDeal}}</h4>
+                </div>
+                <div class="col-4">
+                  <div class="d-flex justify-content-center">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card overflow-hidden">
+            <div class="card-body p-4">
+              <h5 class="card-title mb-9 fw-semibold">Total Request Pending</h5>
+              <div class="row align-items-center">
+                <div class="col-8">
+                  <h4 class="fw-semibold mb-3">{{$totalDealPending}}</h4>
+                </div>
+                <div class="col-4">
+                  <div class="d-flex justify-content-center">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
           <div class="card overflow-hidden">
             <div class="card-body p-4">
               <h5 class="card-title mb-9 fw-semibold">Total Contact Queries</h5>
@@ -40,35 +152,6 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-12">
-          <div class="card overflow-hidden">
-            <div class="card-body p-4">
-              <h5 class="card-title mb-9 fw-semibold">Total Brokers</h5>
-              <div class="row align-items-center">
-                <div class="col-8">
-                  <h4 class="fw-semibold mb-3"></h4>
-                </div>
-                <div class="col-4">
-                  <div class="d-flex justify-content-center">
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-12">
-          <div class="card">
-            <div class="card-body">
-              <div class="row alig n-items-start">
-                <div class="col-8">
-                  <h5 class="card-title mb-9 fw-semibold"> Total Deal Request </h5>
-                  <h4 class="fw-semibold mb-3"></h4>
-              </div>
-            </div>
-            {{-- <div id="earning"></div> --}}
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 

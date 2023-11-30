@@ -44,10 +44,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @php
+                            @if($InvestorRequest->isNotEmpty())
+                            {{-- @php
                                 $reversedInvestorRequest = array_reverse($InvestorRequest);
-                            @endphp
-                            @foreach($reversedInvestorRequest as $RequestData)
+                            @endphp --}}
+                            @foreach($InvestorRequest as $RequestData)
                                 @if ($RequestData->broker_per == null)
                                     <tr>
                                         <td class="border-bottom-0">
@@ -87,8 +88,16 @@
                                     </tr>
                                 @endif
                             @endforeach
+                            @else
+                            <tr>
+                                <td colspan="10">Record Not Found</td>
+                            </tr>
+                            @endif
                         </tbody>
                     </table>
+                </div>
+                <div class="mt-3">
+                    {{ $InvestorRequest->links()}}
                 </div>
             </div>
         </div>

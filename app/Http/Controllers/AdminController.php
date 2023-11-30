@@ -121,13 +121,17 @@ class AdminController extends Controller
 
     // Admin Dashboard Data View Function
     public function AdminDashboardData(){
-        // $totalInvestor = Investor::where('user_type', 1)->count();
-        // $totalBroker = Investor::where('user_type', 0)->count();
+        $totalUsers = User::count();
+        $totalInvestor = User::where('user_type', '1')->count();
+        $totalBroker = User::where('user_type', '0')->count();
+        $totalDeal = Investor::count();
+        $totalInvestorDeal = Investor::where('broker_per', null)->count();
+        $totalBrokerDeal = Investor::where('inst_amt', null)->count();
+        $totalDealPending = Investor::where('status', 'Pending')->count();
         $totalContactQuery = Usercontact::count();
-
         $totalDealPending = Investor::where('status', 'Pending')->count();
 
-        return view('admin-dashboard', compact('totalContactQuery'));
+        return view('admin-dashboard', compact('totalUsers', 'totalInvestor', 'totalBroker' ,'totalDeal', 'totalInvestorDeal', 'totalBrokerDeal', 'totalDealPending', 'totalContactQuery'));
     }
 
     // Admin Broker Investor Function
@@ -135,7 +139,7 @@ class AdminController extends Controller
     {
         $users = User::all();
         // Execute a raw SQL query
-        $users = DB::select('select * from users');
+        $users = DB::table('users')->where('user_type', '1')->orderBy('created_at', 'desc')->paginate(10);
         return view('admin-investor-data', compact('users'));
     }
 
@@ -144,7 +148,7 @@ class AdminController extends Controller
     {
         $users = User::all();
         // Execute a raw SQL query
-        $users = DB::select('select * from users');
+        $users = DB::table('users')->where('user_type', '0')->orderBy('created_at', 'desc')->paginate(10);
         return view('admin-broker-data', compact('users'));
     }
 
@@ -153,7 +157,11 @@ class AdminController extends Controller
     {
         $InvestorRequest = Investor::all();
         // Execute a raw SQL query
-        $InvestorRequest = DB::select('select *, DATE(created_at) AS date, TIME(created_at) As time from investor_request ');
+        $InvestorRequest = DB::table('investor_request')
+            ->select('*', DB::raw('DATE(created_at) AS date'), DB::raw('TIME(created_at) AS time'))
+            ->where('broker_per', null)
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
         return view('admin-investor-requests', compact('InvestorRequest'));
     }
     // Admin Broker Request Function
@@ -161,7 +169,11 @@ class AdminController extends Controller
     {
         $BrokerRequest = Investor::all();
         // Execute a raw SQL query
-        $BrokerRequest = DB::select('select *, DATE(created_at) AS date, TIME(created_at) As time from investor_request');
+        $BrokerRequest = DB::table('investor_request')
+            ->select('*', DB::raw('DATE(created_at) AS date'), DB::raw('TIME(created_at) AS time'))
+            ->where('inst_amt', null)
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
         return view('admin-broker-requests', compact('BrokerRequest'));
     }
 
@@ -170,7 +182,10 @@ class AdminController extends Controller
     {
         $ContactFormData = Usercontact::all();
         // Execute a raw SQL query
-        $ContactFormData = DB::select('select *, DATE(created_at) AS date, TIME(created_at) As time from user_contact');
+        $ContactFormData = DB::table('user_contact')
+        ->select('*', DB::raw('DATE(created_at) AS date'), DB::raw('TIME(created_at) AS time'))
+        ->orderBy('created_at', 'desc')
+        ->paginate(10);
         return view('admin-user-query', compact('ContactFormData'));
     }
 
@@ -216,7 +231,6 @@ class AdminController extends Controller
     // Request Data Status Update Function
     public function requestViewUpdateStatus(Request $request)
     {
-        //NOTE:- 'request_id' field is coming from user profile form from input field. 
         $requestData = Investor::find($request->request_id);
         $requestData->status = $request->status;
         $requestData->save();
