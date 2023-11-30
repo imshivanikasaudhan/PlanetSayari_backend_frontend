@@ -281,7 +281,11 @@
                                             <div class="mb-3">
                                                 <label for="InputCountry" class="form-label">Country</label>
                                                 <select id="InputCountry" name="country" class="form-control" required>
-                                                    <option value="">Select Country</option>
+                                                    @if (Auth::user()->country)
+                                                    <option value="{{ Auth::user()->country }}">{{ Auth::user()->country }}</option>
+                                                    @else
+                                                        <option value="">Select Country</option>
+                                                    @endif
                                                     <option value="Afghanistan">Afghanistan</option>
                                                     <option value="Åland Islands">Åland Islands</option>
                                                     <option value="Albania">Albania</option>

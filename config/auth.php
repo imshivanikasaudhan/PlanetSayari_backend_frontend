@@ -48,10 +48,9 @@ return [
             'provider' => 'users',
         ],
     
-        // Add the 'admin' guard
         'admin' => [
             'driver' => 'session',
-            'provider' => 'admins',
+            'provider' => 'admin_users',
         ],
     ],
 
@@ -90,8 +89,7 @@ return [
             'model' => App\Models\User::class,
         ],
     
-        // Add the 'admins' provider
-        'admins' => [
+        'admin_users' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
         ],
