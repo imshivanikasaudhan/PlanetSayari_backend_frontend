@@ -33,9 +33,10 @@
               </tr>
             </thead>
             <tbody>
-                @php 
+              @if($users->isNotEmpty())
+                {{-- @php 
                       $users = array_reverse($users);
-                @endphp
+                @endphp --}}
                  @foreach($users as $user)
                  @if ($user->user_type ==1)
                   <tr>
@@ -73,9 +74,17 @@
                 @endif                         
               
               @endforeach
+              @else
+                <tr>
+                    <td colspan="10">Record Not Found</td>
+                </tr>
+                @endif
             </tbody>
           </table>
         </div>
+        <div class="mt-3">
+          {{ $users->links()}}
+      </div>
       </div>
     </div>
   </div>
