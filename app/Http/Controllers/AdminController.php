@@ -200,13 +200,13 @@ class AdminController extends Controller
     // Active or Deactivate User    
     public function activateAccount(User $user)
     {
-        $user->status = 'active';
+        $user->status = 'Active';
         $user->save();
         return redirect()->back()->with('success', 'Account Activated Successfully.');
     }
     public function deactivateAccount(User $user)
     {
-        $user->status = 'inactive';
+        $user->status = 'Inactive';
         $user->save();
         return redirect()->back()->with('success', 'Account Deactivated Successfully.');
     }

@@ -33,7 +33,7 @@
                                         Profile</button>
 
                                     
-                                    @if ($userData->status == 'active')
+                                    @if ($userData->status == 'Active')
                                         <a href="{{ route('deactivate.account', $userData->id) }}"
                                             class="btn rounded-pill btn-danger">Deactivate</a>
                                     @else
